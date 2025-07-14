@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Linux Notebook - Crytpography</title><link href="https://notes.craigderington.dev/" rel="alternate"></link><link href="https://notes.craigderington.dev/feeds/crytpography.atom.xml" rel="self"></link><id>https://notes.craigderington.dev/</id><updated>2025-07-14T12:55:00-04:00</updated><subtitle>My Linux Notebook</subtitle><entry><title>GPG the Easy Way</title><link href="https://notes.craigderington.dev/gpg-the-easy-way.html" rel="alternate"></link><published>2025-07-14T12:55:00-04:00</published><updated>2025-07-14T12:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/gpg-the-easy-way.html</id><summary type="html">&lt;p&gt;Use GPG to Encrypt your Private Communications the Easy Way&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;tags: GPG, cryptography, Linux, Shell, Terminal, Ubuntu
+title: GPG the Easy Way
+created: '2025-07-14T21:12:05.000Z'
+modified: '2025-07-14T21:09:56.411Z'&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4&gt;GPG HowTo&lt;/h4&gt;
+&lt;p&gt;Generate a key-pair and answer the prompts&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --gen-key&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To list your public keys:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --list-keys&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now, let’s say your name is John Doe, and you want to send a message to Jane Doe. 
+This is how you would do it (note that all names used must be the names you see when listing the keys).&lt;/p&gt;
+&lt;p&gt;First, export your public key:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --export --armor youremail@example.com &amp;gt; publickey.asc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Send this file to Jane Doe. Get her to do the same.&lt;/p&gt;
+&lt;p&gt;To import someone else’s public key:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --import publickey.asc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now that you’ve imported Jane Doe’s key, let’s send her an encrypted message.&lt;/p&gt;
+&lt;p&gt;To encrypt a file to send to Jane Doe:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --encrypt --recipient receiversname filename.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --encrypt --recipient Jane Doe secretmessage.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;or, if the previous command doesn’t work:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg -e -u “sender’s name (you)” -r “name of the receiver’s key” filename.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg -e -u “John Doe” -r “Jane Doe” secretmessage.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This will create a file called secretmessage.txt.pgp. Send this to Jane Doe.&lt;/p&gt;
+&lt;p&gt;Now Jane has received your file. This is how she decrypts it:&lt;/p&gt;
+&lt;p&gt;To decrypt to command line (meaning that you’ll only see the message in the command line, and it won’t be saved decrypted to your hard drive):&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --decrypt filename.txt.gpg&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To decrypt to disk:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg filename.txt.gpg&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Digital Signatures&lt;/h4&gt;
+&lt;h5&gt;A digital signature certifies and timestamps a document.&lt;/h5&gt;
+&lt;p&gt;If the document is subsequently modified in any way, a verification of the signature will fail. A digital signature can serve the same purpose as a hand-written signature with the additional benefit of being tamper-resistant.&lt;/p&gt;
+&lt;p&gt;Creating and verifying signatures uses the public/private keypair in an operation different from encryption and decryption. A signature is created using the private key of the signer. The signature is verified using the corresponding public key.&lt;/p&gt;
+&lt;p&gt;To sign a document with PGP, run this in the command-line:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --output document.sig --sign document.pdf&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To verify a document that has been signed with PGP, run this in the command line:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --output document.pdf --decrypt document.sig&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Create a detached signature file&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --output classifiedinfo.sig --sign /path/to-file/classifiedinfo.docx&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Verify the signature against the document that was signed&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --output classifiedinfo.docx --decrypt /path/to/file/classifiedinfo.sig&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg: Signature made 02/12/2016 15:39:05 Central African Time using DSA key ID A657BC83 gpg: Good signature from "Bob &amp;lt; bob@pgp.com &amp;gt;"&lt;/code&gt;&lt;/p&gt;
+&lt;h5&gt;Create a Digital Signature with a specific private key&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;gpg --local-user [fingerprint] --sign --armor --output somefile.tar.xz.asc --detach-sig somefile.tar.xz&lt;/code&gt;&lt;/p&gt;</content><category term="Crytpography"></category><category term="gpg"></category><category term="cryptography"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category></entry></feed>

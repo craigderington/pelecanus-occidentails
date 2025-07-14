@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Linux Notebook - Git</title><link href="https://notes.craigderington.dev/" rel="alternate"></link><link href="https://notes.craigderington.dev/feeds/git.atom.xml" rel="self"></link><id>https://notes.craigderington.dev/</id><updated>2025-07-13T16:55:00-04:00</updated><subtitle>My Linux Notebook</subtitle><entry><title>Things I Like to Do with Git</title><link href="https://notes.craigderington.dev/things-i-like-to-do-with-git.html" rel="alternate"></link><published>2025-07-13T16:55:00-04:00</published><updated>2025-07-13T16:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/things-i-like-to-do-with-git.html</id><summary type="html">&lt;p&gt;Git commands I use on the daily...&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;tags: Git, Commands, Linux, Shell, Terminal, Ubuntu
+title: Things I Like to Do in Git
+created: '2018-12-28T21:12:05.000Z'
+modified: '2019-11-04T21:09:56.411Z'&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;THINGS I LIKE TO DO WITH GIT&lt;/h2&gt;
+&lt;p&gt;Little Things I Like to Do with Git&lt;/p&gt;
+&lt;p&gt;Short Log&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;shortlog&lt;span class="w"&gt; &lt;/span&gt;-sn
+
+$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;shortlog&lt;span class="w"&gt; &lt;/span&gt;-sn&lt;span class="w"&gt; &lt;/span&gt;--since&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;10 weeks&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--until&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;2 weeks&amp;#39;&lt;/span&gt;
+
+--&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;alias&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;stats
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Blame&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;blame&lt;span class="w"&gt; &lt;/span&gt;-L5,10&lt;span class="w"&gt; &lt;/span&gt;_components.buttons.css
+
+$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;config&lt;span class="w"&gt; &lt;/span&gt;--global&lt;span class="w"&gt; &lt;/span&gt;alias.praise&lt;span class="w"&gt; &lt;/span&gt;blame
+
+$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;praise&lt;span class="w"&gt; &lt;/span&gt;-L18,23&lt;span class="w"&gt; &lt;/span&gt;_includes/head.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Diff - Show Changed Words Instead of Whole Lines&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;--word-diff
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;See Which Branches You Recently Worked On&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;-each-ref&lt;span class="w"&gt; &lt;/span&gt;--count&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--sort&lt;span class="o"&gt;=&lt;/span&gt;-committerdate&lt;span class="w"&gt; &lt;/span&gt;refs/heads/&lt;span class="w"&gt; &lt;/span&gt;--format&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;%(refname:short)&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;See What Your Team Has Been Up To&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;-all&lt;span class="w"&gt; &lt;/span&gt;--oneline&lt;span class="w"&gt; &lt;/span&gt;--no-merges
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Remind Yourself What You Have Been Up To&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;--all&lt;span class="w"&gt; &lt;/span&gt;--oneline&lt;span class="w"&gt; &lt;/span&gt;--no-merges&lt;span class="w"&gt; &lt;/span&gt;--author&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;your_email_address&amp;gt;
+
+--&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;alias&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;recap
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Today's Work&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;--since&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt; &lt;/span&gt;--all&lt;span class="w"&gt; &lt;/span&gt;--no-merges&lt;span class="w"&gt; &lt;/span&gt;--oneline&lt;span class="w"&gt; &lt;/span&gt;--author&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;your&lt;span class="w"&gt; &lt;/span&gt;email&lt;span class="w"&gt; &lt;/span&gt;address&amp;gt;
+
+--alias&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;today
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Check Out What Your Are About to Pull&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;--oneline&lt;span class="w"&gt; &lt;/span&gt;--no-merges&lt;span class="w"&gt; &lt;/span&gt;HEAD..&amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;checkout&lt;span class="w"&gt; &lt;/span&gt;feature/fonts
+$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;fetch
+$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;--oneline&lt;span class="w"&gt; &lt;/span&gt;--no-merges&lt;span class="w"&gt; &lt;/span&gt;..origin/feature/fonts
+
+--alias&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;upstream
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Review What You Are About to Push&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git log --oneline --no-merges &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt;..HEAD
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;fetch
+$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;--oneline&lt;span class="w"&gt; &lt;/span&gt;--no-merges&lt;span class="w"&gt; &lt;/span&gt;origin/feature/fonts..HEAD
+
+--alias&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;local&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;View Complex Logs&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;--graph&lt;span class="w"&gt; &lt;/span&gt;--all&lt;span class="w"&gt; &lt;/span&gt;--decorate&lt;span class="w"&gt; &lt;/span&gt;--stat&lt;span class="w"&gt; &lt;/span&gt;--date&lt;span class="o"&gt;=&lt;/span&gt;iso
+
+--alias&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;graph
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Git"></category><category term="git"></category><category term="github"></category><category term="scm"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category></entry></feed>

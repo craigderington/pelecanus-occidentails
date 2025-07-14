@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Linux Notebook - Linux</title><link href="https://notes.craigderington.dev/" rel="alternate"></link><link href="https://notes.craigderington.dev/feeds/linux.atom.xml" rel="self"></link><id>https://notes.craigderington.dev/</id><updated>2025-07-15T19:00:00-04:00</updated><subtitle>My Linux Notebook</subtitle><entry><title>Configure Apache as a Reverse Proxy</title><link href="https://notes.craigderington.dev/configure-apache-as-reverse-proxy-with-ssl.html" rel="alternate"></link><published>2025-07-15T19:00:00-04:00</published><updated>2025-07-15T19:00:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-15:/configure-apache-as-reverse-proxy-with-ssl.html</id><summary type="html">&lt;p&gt;Configure Apache as a Reverse Proxy&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Configure Apache as a Reverse Proxy with SSL&lt;/h4&gt;
+&lt;p&gt;I like to use Apache as a reverse proxy especially for my Java Spring Boot apps.  The configuration syntax is familiar and I prefer Apache over Nginx.  Fire up your application running on localhost as whatever port you define.  Then create this Apache reverse proxy config and restart Apache.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="err"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;ServerName&lt;span class="w"&gt; &lt;/span&gt;domain-name.tld&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;ServerAlias&lt;span class="w"&gt; &lt;/span&gt;domain-name.tld
+
+&lt;span class="w"&gt;    &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;Redirect&lt;span class="w"&gt; &lt;/span&gt;HTTP&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;HTTPS
+&lt;span class="w"&gt;    &lt;/span&gt;RewriteEngine&lt;span class="w"&gt; &lt;/span&gt;On
+&lt;span class="w"&gt;    &lt;/span&gt;RewriteCond&lt;span class="w"&gt; &lt;/span&gt;%{HTTPS}&lt;span class="w"&gt; &lt;/span&gt;off
+&lt;span class="w"&gt;    &lt;/span&gt;RewriteRule&lt;span class="w"&gt; &lt;/span&gt;^(.*)$&lt;span class="w"&gt; &lt;/span&gt;https://%{SERVER_NAME}$1&lt;span class="w"&gt; &lt;/span&gt;[R=301,L]
+
+&lt;span class="w"&gt;    &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;Proxy&lt;span class="w"&gt; &lt;/span&gt;settings&lt;span class="w"&gt; &lt;/span&gt;for&lt;span class="w"&gt; &lt;/span&gt;local&lt;span class="w"&gt; &lt;/span&gt;app
+&lt;span class="w"&gt;    &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;ProxyPreserveHost&lt;span class="w"&gt; &lt;/span&gt;On
+&lt;span class="w"&gt;    &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;ProxyPass&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;http://localhost:8000/
+&lt;span class="w"&gt;    &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;ProxyPassReverse&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;http://localhost:8000/
+
+&lt;span class="w"&gt;    &lt;/span&gt;ErrorLog&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/application-name-error.log
+&lt;span class="w"&gt;    &lt;/span&gt;CustomLog&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/application-name-access.log&lt;span class="w"&gt; &lt;/span&gt;combined
+
+&lt;span class="nt"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="err"&gt;*:443&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;ServerName&lt;span class="w"&gt; &lt;/span&gt;domain-name.tld
+&lt;span class="w"&gt;    &lt;/span&gt;ServerAlias&lt;span class="w"&gt; &lt;/span&gt;domain-name.tld
+&lt;span class="w"&gt;    &lt;/span&gt;ServerAdmin&lt;span class="w"&gt; &lt;/span&gt;user@domain-name.tld
+
+&lt;span class="w"&gt;    &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;SSL&lt;span class="w"&gt; &lt;/span&gt;Configuration
+&lt;span class="w"&gt;    &lt;/span&gt;SSLEngine&lt;span class="w"&gt; &lt;/span&gt;on
+&lt;span class="w"&gt;    &lt;/span&gt;SSLCertificateFile&lt;span class="w"&gt; &lt;/span&gt;/etc/ssl/certs/certificate.crt
+&lt;span class="w"&gt;    &lt;/span&gt;SSLCertificateKeyFile&lt;span class="w"&gt; &lt;/span&gt;/etc/ssl/certs/private.key
+&lt;span class="w"&gt;    &lt;/span&gt;SSLCertificateChainFile&lt;span class="w"&gt; &lt;/span&gt;/etc/ssl/certs/ca_bundle.crt
+
+&lt;span class="w"&gt;    &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;Proxy&lt;span class="w"&gt; &lt;/span&gt;settings&lt;span class="w"&gt; &lt;/span&gt;for&lt;span class="w"&gt; &lt;/span&gt;your&lt;span class="w"&gt; &lt;/span&gt;application&lt;span class="w"&gt; &lt;/span&gt;running&lt;span class="w"&gt; &lt;/span&gt;locally
+&lt;span class="w"&gt;    &lt;/span&gt;ProxyPreserveHost&lt;span class="w"&gt; &lt;/span&gt;On
+&lt;span class="w"&gt;    &lt;/span&gt;ProxyPass&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;http://localhost:8000/
+&lt;span class="w"&gt;    &lt;/span&gt;ProxyPassReverse&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;http://localhost:8000/
+
+&lt;span class="w"&gt;    &lt;/span&gt;ErrorLog&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/application-name-ssl-error.log
+&lt;span class="w"&gt;    &lt;/span&gt;CustomLog&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/application-name-ssl-access.log&lt;span class="w"&gt; &lt;/span&gt;combined
+
+&lt;span class="nt"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="apache2"></category><category term="web server"></category><category term="reverse proxy"></category><category term="configuration"></category></entry><entry><title>Tmux, the Terminal Multiplexer</title><link href="https://notes.craigderington.dev/tmux-the-terminal-multiplexer.html" rel="alternate"></link><published>2025-07-14T14:55:00-04:00</published><updated>2025-07-14T14:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/tmux-the-terminal-multiplexer.html</id><summary type="html">&lt;p&gt;Go Mouseless with Tmux, the terminal multiplexer...&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;tags: Tmux, Linux, Shell, Terminal, Ubuntu
+title: Tmux, the Terminal Multiplexer for Seamless, Mouseless Software Development
+created: '2025-07-14T21:12:05.000Z'
+modified: '2025-07-14T21:09:56.411Z'&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4&gt;TMUX&lt;/h4&gt;
+&lt;p&gt;A Terminal Multiplexer&lt;/p&gt;
+&lt;p&gt;start new tmux session:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tmux&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;start new with session name:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tmux new -s myname&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;attach to an existing session:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tmux a  #  (or at, or attach)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;attach to named session:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tmux a -t myname&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;list tmux sessions:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tmux ls&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;kill tmux session:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tmux kill-session -t &amp;lt;myname&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Kill all the tmux sessions:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;In tmux, hit the prefix Ctrl+b and then:&lt;/p&gt;
+&lt;h5&gt;Sessions&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;carriage&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;session&lt;/span&gt;
+&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sessions&lt;/span&gt;
+&lt;span class="n"&gt;$&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;session&lt;/span&gt;
+&lt;span class="n"&gt;Windows&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tabs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;c&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;create&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;window&lt;/span&gt;
+&lt;span class="nv"&gt;w&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;windows&lt;/span&gt;
+&lt;span class="nv"&gt;n&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;next&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;window&lt;/span&gt;
+&lt;span class="nv"&gt;p&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;previous&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;window&lt;/span&gt;
+&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;find&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;window&lt;/span&gt;
+,&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;window&lt;/span&gt;
+&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;kill&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;window&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Panes (splits)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;%  vertical split&lt;/span&gt;
+&amp;quot;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;horizontal&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;split&lt;/span&gt;
+&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s"&gt;swap&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;panes&lt;/span&gt;
+&lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s"&gt;show&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;pane&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;numbers&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s"&gt;kill&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;pane&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;into&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;text&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;mouse&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;restore&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt;
+⍽&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;space&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;toggle&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;between&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;layouts&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Show&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;up&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;goto&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;that&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Move&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;current&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Move&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;current&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;toggle&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;zoom&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sync Panes&lt;/p&gt;
+&lt;p&gt;You can do this by switching to the appropriate window, typing your Tmux prefix (commonly Ctrl-B or Ctrl-A) and then a colon to bring up a Tmux command line, and typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:setw synchronize-panes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can optionally add on or off to specify which state you want; otherwise the option is simply toggled. This option is specific to one window, so it won’t change the way your other sessions or windows operate. When you’re done, toggle it off again by repeating the command. tip source&lt;/p&gt;
+&lt;p&gt;Resizing Panes&lt;/p&gt;
+&lt;p&gt;You can also resize panes if you don’t like the layout defaults. I personally rarely need to do this, though it’s handy to know how. Here is the basic syntax to resize panes:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;PREFIX&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;resize-pane&lt;/span&gt; &lt;span class="err"&gt;-D&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;Resizes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;current&lt;/span&gt; &lt;span class="err"&gt;pane&lt;/span&gt; &lt;span class="err"&gt;down&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;PREFIX&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;resize-pane&lt;/span&gt; &lt;span class="err"&gt;-U&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;Resizes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;current&lt;/span&gt; &lt;span class="err"&gt;pane&lt;/span&gt; &lt;span class="err"&gt;upward&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;PREFIX&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;resize-pane&lt;/span&gt; &lt;span class="err"&gt;-L&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;Resizes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;current&lt;/span&gt; &lt;span class="err"&gt;pane&lt;/span&gt; &lt;span class="err"&gt;left&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;PREFIX&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;resize-pane&lt;/span&gt; &lt;span class="err"&gt;-R&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;Resizes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;current&lt;/span&gt; &lt;span class="err"&gt;pane&lt;/span&gt; &lt;span class="err"&gt;right&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;PREFIX&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;resize-pane&lt;/span&gt; &lt;span class="err"&gt;-D&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;Resizes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;current&lt;/span&gt; &lt;span class="err"&gt;pane&lt;/span&gt; &lt;span class="err"&gt;down&lt;/span&gt; &lt;span class="err"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="err"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;PREFIX&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;resize-pane&lt;/span&gt; &lt;span class="err"&gt;-U&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;Resizes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;current&lt;/span&gt; &lt;span class="err"&gt;pane&lt;/span&gt; &lt;span class="err"&gt;upward&lt;/span&gt; &lt;span class="err"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="err"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;PREFIX&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;resize-pane&lt;/span&gt; &lt;span class="err"&gt;-L&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;Resizes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;current&lt;/span&gt; &lt;span class="err"&gt;pane&lt;/span&gt; &lt;span class="err"&gt;left&lt;/span&gt; &lt;span class="err"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="err"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;PREFIX&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;resize-pane&lt;/span&gt; &lt;span class="err"&gt;-R&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;Resizes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;current&lt;/span&gt; &lt;span class="err"&gt;pane&lt;/span&gt; &lt;span class="err"&gt;right&lt;/span&gt; &lt;span class="err"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="err"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;PREFIX&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;resize-pane&lt;/span&gt; &lt;span class="err"&gt;-t&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;Resizes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;pane&lt;/span&gt; &lt;span class="err"&gt;with&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;id&lt;/span&gt; &lt;span class="err"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="err"&gt;down&lt;/span&gt; &lt;span class="err"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="err"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;PREFIX&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;resize-pane&lt;/span&gt; &lt;span class="err"&gt;-t&lt;/span&gt; &lt;span class="err"&gt;-L&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;Resizes&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;pane&lt;/span&gt; &lt;span class="err"&gt;with&lt;/span&gt; &lt;span class="err"&gt;the&lt;/span&gt; &lt;span class="err"&gt;id&lt;/span&gt; &lt;span class="err"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="err"&gt;left&lt;/span&gt; &lt;span class="err"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="err"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Copy mode:&lt;/p&gt;
+&lt;p&gt;Pressing PREFIX [ places us in Copy mode. We can then use our movement keys to move our cursor around the screen. By default, the arrow keys work. we set our configuration file to use Vim keys for moving between windows and resizing panes so we wouldn’t have to take our hands off the home row. tmux has a vi mode for working with the buffer as well. To enable it, add this line to .tmux.conf:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;setw -g mode-keys vi&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;With this option set, we can use h, j, k, and l to move around our buffer.&lt;/p&gt;
+&lt;p&gt;To get out of Copy mode, we just press the ENTER key. Moving around one character at a time isn’t very efficient. Since we enabled vi mode, we can also use some other visible shortcuts to move around the buffer.&lt;/p&gt;
+&lt;p&gt;For example, we can use "w" to jump to the next word and "b" to jump back one word. And we can use "f", followed by any character, to jump to that character on the same line, and "F" to jump backwards on the line.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Function&lt;/span&gt;&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="nv"&gt;vi&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="nv"&gt;emacs&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Back&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;indentation&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;m&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Clear&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;selection&lt;/span&gt;&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="nv"&gt;Escape&lt;/span&gt;&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;g&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Copy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;selection&lt;/span&gt;&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;Enter&lt;/span&gt;&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;w&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Cursor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;down&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="nv"&gt;j&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;Down&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Cursor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;left&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="nv"&gt;h&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;Left&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Cursor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;right&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nv"&gt;l&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;Right&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Cursor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bottom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;line&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;L&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Cursor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;middle&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;line&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;M&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Cursor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;top&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;line&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nv"&gt;H&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;R&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Cursor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;up&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="nv"&gt;k&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;Up&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Delete&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;entire&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;line&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;u&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Delete&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;line&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;D&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;k&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="k"&gt;End&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;line&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;$&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;e&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="k"&gt;Goto&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;line&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;:&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;g&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Half&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;page&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;down&lt;/span&gt;&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nv"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Down&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Half&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;page&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;up&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;u&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nv"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Up&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="k"&gt;Next&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;page&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nv"&gt;Page&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;down&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="k"&gt;Next&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;word&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="nv"&gt;w&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Paste&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nv"&gt;p&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;y&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Previous&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;page&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;b&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nv"&gt;Page&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;up&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Previous&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;word&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="nv"&gt;b&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;b&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Quit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;mode&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="nv"&gt;q&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;Escape&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Scroll&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;down&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Down&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;J&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Down&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Scroll&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;up&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Up&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;K&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Up&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Search&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;again&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nv"&gt;n&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;n&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Search&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;backward&lt;/span&gt;&lt;span class="w"&gt;         &lt;/span&gt;?&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;r&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Search&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;forward&lt;/span&gt;&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;line&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;a&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;selection&lt;/span&gt;&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="nv"&gt;Space&lt;/span&gt;&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Space&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nv"&gt;Transpose&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;chars&lt;/span&gt;&lt;span class="w"&gt;                        &lt;/span&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;t&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Misc&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;d  detach
+t  big clock
+?  list shortcuts
+:  prompt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Configurations Options:&lt;/p&gt;
+&lt;p&gt;Mouse support - set to on if you want to use the mouse
+    • :setw -g mode-mouse off
+    • :set -g mouse-select-pane off
+    • :set -g mouse-resize-pane off
+    • :set -g mouse-select-window off&lt;/p&gt;
+&lt;p&gt;Set the default terminal mode to 256color mode&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;:set -g default-terminal "screen-256color"&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;enable activity alerts&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;:setw -g monitor-activity on
+:set -g visual-activity on&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Center the window list&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;:set -g status-justify centre&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Maximize and restore a pane&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;unbind Up bind Up new-window -d -n tmp \; swap-pane -s tmp.1 \; select-window -t tmp
+unbind Down
+bind Down last-window \; swap-pane -s tmp.1 \; kill-window -t tmp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="ubuntu"></category><category term="command line"></category><category term="terminal"></category><category term="multiplexer"></category></entry><entry><title>Encrypt a Single File in Linux with OpenSSL</title><link href="https://notes.craigderington.dev/encrypt-a-single-file-in-ubuntu-with-openssl.html" rel="alternate"></link><published>2025-07-14T09:55:00-04:00</published><updated>2025-07-14T09:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/encrypt-a-single-file-in-ubuntu-with-openssl.html</id><summary type="html">&lt;p&gt;How to encrypt a single file in Linux using OpenSSL&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;tags: BASH, Commands, Linux, Notebooks/Linux, Shell, Terminal, Ubuntu
+title: Encrypt a Single File in Linux with OpenSSL
+created: '2019-12-28T21:12:05.000Z'
+modified: '2019-11-04T21:09:56.411Z'&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4&gt;ENCRYPT SINGLE FILE&lt;/h4&gt;
+&lt;p&gt;Encrypting a Single File in Ubuntu&lt;/p&gt;
+&lt;p&gt;Encrypt:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl aes-256-cdc &amp;lt; yourfile.txt &amp;gt; yourfile.txt.asc
+
+openssl enc -d -aes-256-cbc -pass pass:the-encrypted-files-passphrase -p -in yourfile.txt -out yourfile.enc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Alternatively, use -in and -out for your input and output file instead of &amp;lt; and &amp;gt;&lt;/p&gt;
+&lt;p&gt;This will prompt you for a passphrase, which you will need to enter later when decrypting the file.&lt;/p&gt;
+&lt;p&gt;Decrypt:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl aes-256-cdc -d &amp;lt; yourfile.txt.asc &amp;gt; yourfile.txt.decrypted
+
+openssl enc -aes-256-cbc -pass pass:the-encrypted-files-passphrase -d -in yourfile.enc -out yourfile.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category><category term="openssl"></category><category term="encryption"></category><category term="decryption"></category></entry><entry><title>Supervisord</title><link href="https://notes.craigderington.dev/orchestrate-your-system-services-with-supervisor-d.html" rel="alternate"></link><published>2025-07-13T19:55:00-04:00</published><updated>2025-07-13T19:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/orchestrate-your-system-services-with-supervisor-d.html</id><summary type="html">&lt;p&gt;Orchestrate your Linux services with supervisord &amp;amp; systemd-monitor&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;tags: Linux, Shell, Terminal, Ubuntu, supervisor
+title: Orchestrate your Linux system services with Supervisord
+created: '2018-12-28T21:12:05.000Z'
+modified: '2019-11-04T21:09:56.411Z'&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4&gt;Supervisor&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get install -y supervisor
+service supervisor restart
+
+sudo supervisorctl start &amp;lt;daemon_name&amp;gt;
+sudo supervisorctl stop &amp;lt;daemon_name&amp;gt;
+sudo supervisorctl reread
+sudo supervisorctl update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;start on boot&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo systemctl enable supervisor
+sudo systemctl start supervisor
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;lanternv2 celery worker supervisor conf file&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervisord&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;lanternv2celery&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;full&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;celery&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;using&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virtualenv&lt;/span&gt;
+&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;LanternV2&lt;/span&gt;&lt;span class="o"&gt;/.&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;celery&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;loglevel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;INFO&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Django&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;
+&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;LanternV2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wsnowebv2&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervisord&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;switch&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;unix&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;account&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;before&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;processing&lt;/span&gt;
+&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervisord&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;will&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;many&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;instances&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;oof&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;named&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;numprocs&lt;/span&gt;
+&lt;span class="n"&gt;numprocs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;put&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;stdout&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;outut&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;
+&lt;span class="n"&gt;stdout_logfile&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;log&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;celery&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lanternv2_worker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;put&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;stderr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;
+&lt;span class="n"&gt;stderr_logfile&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;log&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;celery&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lanternv2_worker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="bp"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;will&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;automatically&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervisord&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;started&lt;/span&gt;
+&lt;span class="n"&gt;autostart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;true&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;exits&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;without&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;standard&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;autorestart&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="bp"&gt;true&lt;/span&gt;
+&lt;span class="n"&gt;autorestart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;true&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;seconds&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;which&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;needs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;stay&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;running&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;after&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;startup&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;consider&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;successful&lt;/span&gt;
+&lt;span class="n"&gt;startsecs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;need&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;currently&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;executing&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tasks&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;finish&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;at&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;shutdown&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;increase&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;long&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;running&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tasks&lt;/span&gt;
+&lt;span class="n"&gt;stopwaitsecs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;600&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;resorting&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sending&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;SIGKILL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;terminate&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;SIGKILL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;its&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;entire&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;process&lt;/span&gt;
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;taking&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;care&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s children priocesses as well&lt;/span&gt;
+&lt;span class="n"&gt;killasgroup&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;true&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervised&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s priority higher so it starts first&lt;/span&gt;
+&lt;span class="n"&gt;priority&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;998&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;lanternv2 celery beat supervisor conf file&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervisord&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;lanternv2celerybeat&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;full&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;celery&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;using&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virtualenv&lt;/span&gt;
+&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;LanternV2&lt;/span&gt;&lt;span class="o"&gt;/.&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;celery&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;beat&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;loglevel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;INFO&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;
+&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;LanternV2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;wsnowebv2&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervisord&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;us&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;switch&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;accounts&lt;/span&gt;
+&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervisord&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;will&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;many&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;instances&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;named&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;numprocs&lt;/span&gt;
+&lt;span class="n"&gt;numprocs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;put&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;stdout&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;log&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;
+&lt;span class="n"&gt;stdout_logfile&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;log&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;celery&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lanternv2_beat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;put&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;stderr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;log&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;
+&lt;span class="n"&gt;stderr_logfile&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;log&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;celery&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lanternv2_beat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="bp"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;will&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;automatically&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervisord&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;started&lt;/span&gt;
+&lt;span class="n"&gt;autostart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;true&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;exits&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;without&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;valid&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;restart&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;
+&lt;span class="n"&gt;autorestart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;true&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;seconds&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;which&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;needs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;stay&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;running&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;after&lt;/span&gt;
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;startup&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;consider&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;successful&lt;/span&gt;
+&lt;span class="n"&gt;startsecs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
+
+&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervised&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s priority higher so it starts first&lt;/span&gt;
+&lt;span class="n"&gt;priority&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;999&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category><category term="automation"></category><category term="systemd"></category><category term="supervisord"></category></entry><entry><title>50 Linux Commands I Use Regularly</title><link href="https://notes.craigderington.dev/50-linux-commands-i-use-on-the-regular.html" rel="alternate"></link><published>2025-07-11T19:55:00-04:00</published><updated>2025-07-11T19:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-11:/50-linux-commands-i-use-on-the-regular.html</id><summary type="html">&lt;p&gt;The top 50 Linux commands I use regularly.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;tags: BASH, Commands, Linux, Notebooks/Linux, Shell, Terminal, Ubuntu
+title: 50 Linux Commands
+created: '2018-12-28T21:12:05.000Z'
+modified: '2019-11-04T21:09:56.411Z'&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;50 Linux Commands&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Terminal Commands To Check System Memory.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;1.1. The Free Command.
+It’s the most frequently used command to track memory usage on Linux.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;| 123456 | $ free -m              total       used       free     shared    buffers     cachedMem:           993        922         71          0         61        216-/+ buffers/cache:        644        349Swap:         1023          0       1023 |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The “-m” option returns the usage data in MB format.&lt;/p&gt;
+&lt;p&gt;1.2. The &lt;/Proc/Meminfo&gt; Command.
+Another way to quickly check the memory consumption is by printing the command. You need root or access to run this command.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;/proc/meminfo&lt;span class="w"&gt; &lt;/span&gt;MemTotal:&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="m"&gt;1017536&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kBMemFree:&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="m"&gt;72092&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kBBuffers:&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="m"&gt;63160&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kBCached:&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="m"&gt;221464&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kBSwapCached:&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="m"&gt;576&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kB...&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;1.3. The &lt;Vmstat&gt; Command.
+It reverts with the memory usage in the same way as the command does. But you need not be a root user to run this command.&lt;/p&gt;
+&lt;p&gt;The VMSTAT command example.Shell
+| click me | click me |
+| 1234567 | $ vmstat -s      1017536 K total memory       944492 K used memory       406372 K active memory       239000 K inactive memory        73044 K free memory        ... |&lt;/p&gt;
+&lt;p&gt;1.4. The Top Command.
+If you are in a situation, where the memory usage is between 90-100%. Then, you should use top command to determine the process responsible. Most of the time, you can verify the process consuming resources by looking at the &amp;lt;%CPU&amp;gt; or the &amp;lt;%MEM&amp;gt; columns in the top output.&lt;/p&gt;
+&lt;p&gt;Running the TOP command.Shell
+| click me | click me |
+| 1 | $ top |&lt;/p&gt;
+&lt;p&gt;Running Top Command in Terminal
+It also allows sorting on the columns. Press (Shift+O) to select a column via field letter. For example, press “a” letter to sort process with PID (Process ID).
+Sort Top Command Output
+TOC&lt;/p&gt;
+&lt;p&gt;1.5. The &lt;Htop&gt; Command.
+It’s an extension to the top command. And it provides several other options and details along with displaying the memory usage.&lt;/p&gt;
+&lt;p&gt;Executing HTOP command.Shell
+| click me | click me |
+| 1 | $ htop |&lt;/p&gt;
+&lt;p&gt;The top header in its output shows the CPU usage, RAM and swap statistics.
+Running HTOP Command in Terminal.
+TOC&lt;/p&gt;
+&lt;p&gt;1.6. Additional Linux Commands To Isolate Memory Issues.
+1. Print the top 10 processes consuming a lot of memory.&lt;/p&gt;
+&lt;p&gt;Print processes consuming a lot of memory.Shell
+| click me | click me |
+| 123456 | $ ps aux --sort=-resident|head -11USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMANDroot       983  0.3 11.3 286388 115944 tty7    Ss+  14:22   1:11 /usr/bin/X :0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch -background nonetest       1524  0.9  6.4 1073492 65804 ?       Sl   14:22   2:49 compiztest       1550  0.0  2.8 745372 28700 ?        Sl   14:22   0:00 nautilus -ntest       1892  1.2  2.3 526612 24372 ?        Sl   14:22   3:45 /usr/lib/unity/unity-panel-service |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Kill a process while running the top command.
+Run top and press “k”. It’ll prompt you for the process ID and ask for the signal to kill. You can enter the PID of your choice and provide 15 as the signal value.
+Using Top Command to Kill a Process.&lt;/li&gt;
+&lt;li&gt;Modify top command to print the absolute path in its output.
+After running top, press “c” to display the processes with full path and arguments.&lt;/li&gt;
+&lt;li&gt;Sort “ps” output by memory usage, from high to low.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;SortShell
+| click me | click me |
+| 1 | $ ps aux --sort -rss |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Terminal Commands To Check Disk/File Usage.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;2.1. The Du Command.
+It’s one of the standard Linux commands to retrieve the disk usage of files and folders.
+1. If you wish to check the disk usage of a folder and its subfolder, then run the following command.&lt;/p&gt;
+&lt;p&gt;DU command to report disk usage.Shell
+| click me | click me |
+| 123456789 | $ sudo du /home/techbeamers/4       /home/techbeamers/.X11-unix4       /home/techbeamers/VBoxOGL/system8       /home/techbeamers/VBoxOGL4       /home/techbeamers/ssh-oWoYdKmZ11624       /home/techbeamers/.ICE-unix4       /home/techbeamers/keyring-z6fUcL8       /home/techbeamers/pulse-H52d267kpZZH40      /home/techbeamers/ |&lt;/p&gt;
+&lt;p&gt;It displays the output in the form of disk blocks. To print in bytes, kilo bytes, mega or Gigabytes, use the “-h” option with du command.
+2. To check the total space occupied by a directory, use the “-s” option with the du command.&lt;/p&gt;
+&lt;p&gt;Another DU command example.Shell
+| click me | click me |
+| 12 | $ sudo du -sh /home/techbeamers40K     /home/techbeamers |&lt;/p&gt;
+&lt;p&gt;3. Using “-c” switch will get the total size of the directory including the subdirectories printed at the last line. There is also an “-a” flag to display the usage of all files and folders.
+4. With the “–exclude” switch, you can specify a file pattern. Then, the du command will filter the files matching the given pattern.&lt;/p&gt;
+&lt;p&gt;Exclude files from the DU report.Shell
+| click me | click me |
+| 1 | $ du -ah --exclude="*.txt" /home/techbeamers |&lt;/p&gt;
+&lt;p&gt;5. Locate the biggest files in the current directory and sub-directories.&lt;/p&gt;
+&lt;p&gt;Linux command to find the largest file.Shell
+| click me | click me |
+| 1 | $ ls -lSrh |&lt;/p&gt;
+&lt;p&gt;6. Look out for the largest directories.&lt;/p&gt;
+&lt;p&gt;Using DU command to search for largest directories.Shell
+| click me | click me |
+| 1 | $ du -kx | egrep -v "./.+/" | sort -n |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;p&gt;2.2. The Df Command.
+Another Linux command to monitor disk space is df (disk free). Now, let’s see what can we do with it.
+1. Print the disk usage of all the file systems.&lt;/p&gt;
+&lt;p&gt;DF command to print disk usage.Shell
+| click me | click me |
+| 12345 | $ df -aFilesystem                   1K-blocks    Used Available Use% Mounted on/dev/mapper/vagrant--vg-root 129664620 6684216 116370692   6% /proc                                 0       0         0    - /procsysfs                                0       0         0    - /sys |&lt;/p&gt;
+&lt;p&gt;2. Use a fixed memory block size.
+By default, it prints memory blocks of 1K. But with the “-B” option, we can alter the default memory size.&lt;/p&gt;
+&lt;p&gt;DF command to print disk usage in 100B blocks.Shell
+| click me | click me |
+| 12345 | $ df -B 100Filesystem                   100B-blocks     Used  Available Use% Mounted on/dev/mapper/vagrant--vg-root  1327765709 68446372 1191635887   6% /udev                             5099439       41    5099398   1% /devtmpfs                            1041982     7578    1034404   1% /run |&lt;/p&gt;
+&lt;p&gt;3. Style output to human readable format.
+Use “-h” option, it makes the display memory in the form of gigabytes, megabytes, etc.
+4. Check the type of available file systems.
+You can run the df command with “-T” option to show the type of all file systems.&lt;/p&gt;
+&lt;p&gt;DF command to show types of all file systems.Shell
+| click me | click me |
+| 12345 | $ df -TFilesystem                   Type     1K-blocks    Used Available Use% Mounted on/dev/mapper/vagrant--vg-root ext4     129664620 6684216 116370692   6% /udev                         devtmpfs    497992       4    497988   1% /devtmpfs                        tmpfs       101756     740    101016   1% /run |&lt;/p&gt;
+&lt;p&gt;You can even exclude a file system with -x option. Or provide a type with -t option, it’ll result in displaying the same kind of file systems.&lt;/p&gt;
+&lt;p&gt;DF command to exclude a file system using its type.Shell
+| click me | click me |
+| 123 | $ df -t ext2#OR$ df -x ext2 |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;p&gt;2.3. Additional Terminal Commands For File Management.
+There are some other useful tips that you can use to optimizing your disk management tasks.
+1. Delete files marked for deletion but not yet deleted.&lt;/p&gt;
+&lt;p&gt;Delete files marked for deletion.Shell
+| click me | click me |
+| 1 | $ lsof | grep delete |&lt;/p&gt;
+&lt;p&gt;2. Search for files more than 100 MB.&lt;/p&gt;
+&lt;p&gt;Find files occupying more than 100 MB.Shell
+| click me | click me |
+| 1 | $ find . -size +100M |&lt;/p&gt;
+&lt;p&gt;3. Check files created within the last one week.&lt;/p&gt;
+&lt;p&gt;Check files created within the last one week.Shell
+| click me | click me |
+| 1 | $ find . -mtime -7 |&lt;/p&gt;
+&lt;p&gt;4. Remove files older than two weeks.&lt;/p&gt;
+&lt;p&gt;Remove files older than two weeks.Shell
+| click me | click me |
+| 1 | $ find *.gz -mtime +14 -type f -exec rm {} \; |&lt;/p&gt;
+&lt;p&gt;5. Monitor a log file for errors or some text.&lt;/p&gt;
+&lt;p&gt;Monitor a log file for errors.Shell
+| click me | click me |
+| 1 | $ tail -f file.log | grep -i "error" |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Terminal Commands To Check On Running Processes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;3.1. The Ps Command.
+It’s one of the most used Linux commands which returns a preview of the running processes along with their PID, CPU/RAM usage, and other details.
+1. Check the Shell you are using.&lt;/p&gt;
+&lt;p&gt;To known the Shell you are using.Shell
+| click me | click me |
+| 123 | $ ps -p $$  PID TTY          TIME CMD 2480 pts/1    00:00:00 bash |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Check the processes not owned by you.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Check the processes not own by you.Shell
+| click me | click me |
+| 1 | $ ps aux | grep -v &lt;code&gt;whoami&lt;/code&gt; |&lt;/p&gt;
+&lt;p&gt;grep -v option inverts the selection.
+3. Remove grep command while filtering the process list.&lt;/p&gt;
+&lt;p&gt;Find a process while excludingShell
+| click me | click me |
+| 123 | $ ps aux | grep '[b]ash'#Or$ ps aux | grep bash | grep -v grep |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Display all process including params and hierarchy.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Display all process including params and hierarchy.Shell
+| click me | click me |
+| 1 | $ ps auxww -H |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;List the files opened by a process.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;List the files opened by a process.Shell
+| click me | click me |
+| 1 | $ lsof -p $PID |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Print the process running time since it started.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Print the process running time, since it started.Shell
+| click me | click me |
+| 123 | # ps -p -o &lt;PID&gt;,etime= $ ps -p 1,2233 -o pid,etime= |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Check all threads of a running process.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Check all threads of a running process.Shell
+| click me | click me |
+| 1234567 | $ ps -C firefox -L -o pid,tid,pcpu,state,nlwp,args  PID   TID %CPU S NLWP COMMAND 3415  3415  5.1 S   29 /usr/lib/firefox/firefox 3415  3421  0.0 S   29 /usr/lib/firefox/firefox 3415  3422  0.0 S   29 /usr/lib/firefox/firefox 3415  3423  0.0 S   29 /usr/lib/firefox/firefox 3415  3424  0.0 S   29 /usr/lib/firefox/firefox |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;p&gt;3.2. The Kill Command.
+Use case – When you’ve to stop a process behaving intermittently and which refuses to close itself. So the kill command comes for rescue in such conditions. Its syntax is as follows.&lt;/p&gt;
+&lt;p&gt;KILL command syntax.Shell
+| click me | click me |
+| 1 | $ kill [signal or option] PID(s) |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Terminate a process by ID.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Terminate a process by ID.Shell
+| click me | click me |
+| 1 | $ kill -9 PID or kill -KILL PID |&lt;/p&gt;
+&lt;p&gt;The “-9” flag refers to KILL signal. Some of the other signals are HUP (-1), SIGINT (-2) and TERM (15).
+TOC&lt;/p&gt;
+&lt;p&gt;3.2. The Killall Command.
+Another Linux command which kills a process by name is as follows.&lt;/p&gt;
+&lt;p&gt;Linux command which kills a process by name.Shell
+| click me | click me |
+| 1 | $ killall firefox |&lt;/p&gt;
+&lt;p&gt;You can even kill multiple processes using the single command.&lt;/p&gt;
+&lt;p&gt;Kill multiple processes using the single command.Shell
+| click me | click me |
+| 1 | $ killall firefox soffice.bin |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;p&gt;3.3. The STRACE Command.
+It is one of the Linux commands which allows watching a process execution. It intercepts the system calls and signals that a program exercises while running.
+1. Trace a program using its PID.&lt;/p&gt;
+&lt;p&gt;Trace a program using its PID.Shell
+| click me | click me |
+| 1 | $ strace -f -p $PID |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Monitor a process for any specific system call.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Monitor a process for any specific system call.Shell
+| click me | click me |
+| 1234567 | $ strace -e open touch test.txtopen("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3open("/lib/x86_64-linux-gnu/librt.so.1", O_RDONLY|O_CLOEXEC) = 3open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3open("/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3open("test.txt", O_WRONLY|O_CREAT|O_NOCTTY|O_NONBLOCK, 0666) = 3 |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;p&gt;3.4. The Watch Command.
+Sometimes, we need to monitor a process at regular intervals. For example, tracking the progress of copying a large release build or folder. That’s where the watch command is useful.
+1. Run ls command after every 1 second.&lt;/p&gt;
+&lt;p&gt;Run LS command after every 1 second.Shell
+| click me | click me |
+| 1 | $ watch -n 1 ls -l |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;See the differences between previous and present output.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;WATCH to differentiate between previous and present output.Shell
+| click me | click me |
+| 1 | $ watch -d -n 1 free |&lt;/p&gt;
+&lt;p&gt;You can anytime press CTRL+z to take control back from the watch command.
+TOC&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Terminal Commands To Monitor &amp;amp; Manage Network.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;4.1. The IFCONFIG And Related Commands.
+The most common usage of command is to return the IP address of the system you are using. But you can also use it to initialize an interface, assign a new IP address and enable/disable the interface.
+1. The below command will print the IP address of the current machine.&lt;/p&gt;
+&lt;p&gt;Print the IP address of the current machine.Shell
+| click me | click me |
+| 1234567891011121314151617 | $ ifconfigeth0      Link encap:Ethernet  HWaddr 08:00:27:4d:2e:ff          inet6 addr: fe80::a00:27ff:fe4d:2eff/64 Scope:Link          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1          RX packets:0 errors:0 dropped:0 overruns:0 frame:0          TX packets:1999 errors:0 dropped:0 overruns:0 carrier:0          collisions:0 txqueuelen:1000          RX bytes:0 (0.0 B)  TX bytes:400055 (400.0 KB) eth1      Link encap:Ethernet  HWaddr 08:00:27:d8:13:46          inet addr:192.168.1.6  Bcast:192.168.1.255  Mask:255.255.255.0          inet6 addr: fe80::a00:27ff:fed8:1346/64 Scope:Link          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1          RX packets:16660 errors:0 dropped:0 overruns:0 frame:0          TX packets:16506 errors:0 dropped:0 overruns:0 carrier:0          collisions:0 txqueuelen:1000          RX bytes:10200264 (10.2 MB)  TX bytes:2778520 (2.7 MB) |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;To print the information related to a particular interface, run the following.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Print the information related to a particular interfaceShell
+| click me | click me |
+| 1 | $ ifconfig eth0 |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Assign IP address and set gateway.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Assign IP address and set gateway.Shell
+| click me | click me |
+| 1 | $ ifconfig eth0 192.168.1.1 netmask 255.255.255.0 |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Enable/disable an interface.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Enable/disable an interface.Shell
+| click me | click me |
+| 12 | $ ifup eth0$ ifdown eth0 |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;p&gt;4.2. Some Nice Ping Command Examples.
+It’s basically to find out whether a machine on the network or the gateway is reachable. Here are some good examples.
+1. Increase/decrease ping time interval.&lt;/p&gt;
+&lt;p&gt;Increase/decrease ping time interval.Shell
+| click me | click me |
+| 12 | $ ping -i 2 target$ ping -i 0.1 target |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Check if local I/F is active.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Check if local I/F is active.Shell
+| click me | click me |
+| 12 | $ ping 0$ ping localhost |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Update the size of the ping packet.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Update the size of the ping packet.Shell
+| click me | click me |
+| 1 | $ ping -s 112 localhost |&lt;/p&gt;
+&lt;p&gt;The above command changes the default packet size from 56 to 112.
+4. Timeout a ping request.&lt;/p&gt;
+&lt;p&gt;Timeout a ping request.Shell
+| click me | click me |
+| 1 | $ ping -w 5 localhost |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Send X no. of packets and stop.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Send X no. of packets and stop.Shell
+| click me | click me |
+| 1 | $ ping -c X IP_ADDRESS |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;p&gt;4.3. The TRACEROUTE Command.
+It’s for troubleshooting the network issues. It prints the no. of hops taken to reach the target.&lt;/p&gt;
+&lt;p&gt;TRACEROUTE Command example.Shell
+| click me | click me |
+| 12345 | $ traceroute ubuntu.comtraceroute to ubuntu.com (91.189.94.40), 30 hops max, 60 byte packets 1  D-Link.Home (192.168.1.1)  4.566 ms  4.960 ms  5.038 ms 2  abts-north-static-236.220.160.122.airtelbroadband.in (122.160.220.236)  36.117 ms  37.111 ms  38.686 ms 3  abts-north-static-181.130.160.122.airtelbroadband.in (122.160.130.181)  39.867 ms  41.269 ms * |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;p&gt;4.4. The NETSTAT Command.
+This command allows a user to monitor both incoming and outgoing network connections. Most of the operating systems support this command. Let’s see some of its real-time applications.
+1. Listing all TCP and UDP connections opened at a time.&lt;/p&gt;
+&lt;p&gt;Listing all TCP and UDP connections.Shell
+| click me | click me |
+| 1 | $ netstat -a | more |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;List connections without resolving host, port and user name.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;List connections without resolving host, port and user name.Shell
+| click me | click me |
+| 1 | $ netstat -an |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Listing only TCP connections.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Listing only TCP connections.Shell
+| click me | click me |
+| 1 | $ netstat -at |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Listing only UDP connections.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Listing only UDP connections.Shell
+| click me | click me |
+| 1 | $ netstat -au |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Display TCP connections in Listen state.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Display TCP connections in Listen state.Shell
+| click me | click me |
+| 1 | $ netstat -lt |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Display UDP connections in Listen state.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Display UDP connections in Listen state.Shell
+| click me | click me |
+| 1 | $ netstat -lu |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Display service names with PID.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Display service names with PID.Shell
+| click me | click me |
+| 1 | $ netstat -tp |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Print routing table summary.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Print routing table summary.Shell
+| click me | click me |
+| 1 | $ netstat -r |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Retrieve IP address statistics.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Retrieve IP address statistics.Shell
+| click me | click me |
+| 1 | $ netstat -g |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Locate all programs in Listen state.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Locate all programs in Listen state.Shell
+| click me | click me |
+| 1 | $ netstat -ap | grep http |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Find the port of a program is using.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Find the port of a program is using.Shell
+| click me | click me |
+| 1 | $ netstat -ap | grep ssh |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Show all ports listening with process PID.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Show all ports listening with process PID.Shell
+| click me | click me |
+| 1 | $ netstat -tlnp |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;p&gt;4.5. The Dig Command.
+The full form of DIG command is domain information groper. It retrieves the DNS details like A record, CNAME, and MX records.&lt;/p&gt;
+&lt;p&gt;The DIG command example.Shell
+| click me | click me |
+| 12345678910111213141516 | $ dig www.google.com; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.8.1-P1 &amp;lt;&amp;lt;&amp;gt;&amp;gt; www.google.com;; global options: +cmd;; Got answer:;; -&amp;gt;&amp;gt;HEADER&amp;lt; ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0 ;; QUESTION SECTION:;www.google.com. IN A ;; ANSWER SECTION:www.google.com. 261 IN A 216.58.196.68 ;; Query time: 35 msec;; SERVER: 127.0.0.1#53(127.0.0.1);; WHEN: Thu Sep 8 16:55:01 2016;; MSG SIZE rcvd: 48 |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Display only MX Records.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Display only MX Records.Shell
+| click me | click me |
+| 12345 | $ dig -t MX ubuntu.com +noall +answer ; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.8.1-P1 &amp;lt;&amp;lt;&amp;gt;&amp;gt; -t MX ubuntu.com +noall +answer;; global options: +cmdubuntu.com. 2845 IN MX 10 mx.canonical.com. |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Display only NS Records.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Display only NS Records.Shell
+| click me | click me |
+| 12345678 | $ dig -t NS ubuntu.com +noall +answer ; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.8.1-P1 &amp;lt;&amp;lt;&amp;gt;&amp;gt; -t NS ubuntu.com +noall +answer;; global options: +cmdubuntu.com. 1328 IN NS ns3.p27.dynect.net.ubuntu.com. 1328 IN NS ns2.p27.dynect.net.ubuntu.com. 1328 IN NS ns4.p27.dynect.net.ubuntu.com. 1328 IN NS ns1.p27.dynect.net. |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;p&gt;4.6. Miscellaneous Network Linux Commands.
+1. Display all TCP sockets in use.&lt;/p&gt;
+&lt;p&gt;Display all TCP sockets in use.Shell
+| click me | click me |
+| 123 | $ lsof -nPi tcpCOMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAMEubuntu-ge 1957 vagrant 11u IPv4 12280 0t0 TCP 192.168.1.6:42056-&amp;gt;91.189.94.25:80 (CLOSE_WAIT) |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Resolve IP address from the hostname.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Resolve IP address from the hostname.Shell
+| click me | click me |
+| 1 | $ host ubuntu.com |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;MTR – Top like traceroute command.
+It combines the functionality of traceroute and ping tools. It examines the connectivity between the host and the given target system.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Top like traceroute command.Shell
+| click me | click me |
+| 1 | $ mtr google.com |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Linux Commands To Configure Terminal &amp;amp; Screen.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;5.1. The Screen Command.
+It might now be available on your system by default. So, to install it either use apt or yum as per the distribution you are using.
+1. Start a screen session as the current user.&lt;/p&gt;
+&lt;p&gt;Start a screen session.Shell
+| click me | click me |
+| 1 | $ screen -x |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Reattach to a screen session.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Reattach to a screen session.Shell
+| click me | click me |
+| 1 | $ screen -r |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Record a terminal session.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Record a terminal session.Shell
+| click me | click me |
+| 1 | $ script file.out 2&amp;gt; file.rec |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Play back a recorded terminal session.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Play back a recorded terminal session.Shell
+| click me | click me |
+| 1 | $ scriptreplay file.rec file.out |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;p&gt;5.2. Some Useful Terminal Command Shortcuts.
+1. Open a new terminal.&lt;/p&gt;
+&lt;p&gt;Open a new terminal.Shell
+| click me | click me |
+| 1 | Press CTRL+ALT+t |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a new tab in the existing terminal window.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Open a new tab.Shell
+| click me | click me |
+| 1 | Press CTRL+SHIFT+t |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Clear the screen.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Clear the screen.Shell
+| click me | click me |
+| 1 | Press CTRL+l or type clear and enter. |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cache console output.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Cache console output.Shell
+| click me | click me |
+| 1 | $ script my.terminal.session |&lt;/p&gt;
+&lt;p&gt;TOC&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Some Important Terminal Commands For Quick Reference.&lt;/li&gt;
+&lt;li&gt;How to run a previous command as root?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Run Previous command as root.Shell
+| click me | click me |
+| 1 | $ sudo !! |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;How to find differences between two directories?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Find differences between two directories.Shell
+| click me | click me |
+| 1 | $ diff -y &amp;lt;(ls -l ${DIR1}) &amp;lt;(ls -l ${DIR2}) |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;How to lock a directory.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Lock a directory.Shell
+| click me | click me |
+| 1 | $ chmod 0000 /test |&lt;/p&gt;
+&lt;p&gt;The root user will still have access. To restore the permission, run the below command.&lt;/p&gt;
+&lt;p&gt;To restore the normal permissions.Shell
+| click me | click me |
+| 1 | $ chmod 0755 /test |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Smart cd commands.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Smart CD commands.Shell
+| click me | click me |
+| 12345 | #To change to last working directory.$ cd - #To return to your home directory.$ cd |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;How to replace same text in multiple files.
+To replace the text Apple with Linux in all text files in current directory and down you can run this.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Replacing same text in multiple files.Shell
+| click me | click me |
+| 1 | $ find . -name '&lt;em&gt;.txt' -print | xargs perl -pi -e's/Apple/Linux/ig' &lt;/em&gt;.txt |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Listing files changed today.
+Sometimes, we create a file during the day and forget what name we gave it. So here is the command to locate such files.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Listing files changed today.Shell
+| click me | click me |
+| 1 | $ ls -al --time-style=+%D | grep &lt;code&gt;date +%D&lt;/code&gt; |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Shorten long commands.
+Not all of us has the ability to memorize the long Linux commands. With the below command, we can assign user-friendly names in such cases.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Shorten long commands.Shell
+| click me | click me |
+| 1 | $ alias ls="ls -al" |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Copy a file into multiple directories.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Copy a file into multiple directories.Shell
+| click me | click me |
+| 1 | $ echo /home/dir1 /test/dir2 /prod/dir3 | xargs -n 1 cp -v /path/to/file |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Disable incoming ping requests.
+To block a flood of incoming pings, do the following.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Block a flood of incoming pings.Shell
+| click me | click me |
+| 1 | $ sysctl -w net.ipv4.icmp_echo_ignore_all=1 |&lt;/p&gt;
+&lt;p&gt;To turn the above setting back, run the below command.&lt;/p&gt;
+&lt;p&gt;Turn the above setting back.Shell
+| click me | click me |
+| 1 | $ sysctl -w net.ipv4.icmp_echo_ignore_all=0 |&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Some cool Nautilus tricks.
+• Press CTRL+l to open a location.
+• Use CTRL+up to open the parent directory.
+• Press arrow keys to navigate through folders.&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Linux"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category><category term="shell"></category><category term="terminal"></category></entry></feed>

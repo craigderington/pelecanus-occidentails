@@ -1,0 +1,762 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="https://notes.craigderington.dev/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://notes.craigderington.dev/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://notes.craigderington.dev/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://notes.craigderington.dev/theme/pygments/monokai.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/solid.css">
+
+
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Microsoft EDGE -->
+  <meta name="msapplication-TileColor" content="#333333">
+
+  <link href="https://notes.craigderington.dev/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="My Linux Notebook Atom">
+
+
+
+ 
+
+<meta name="author" content="Craig Derington" />
+<meta name="description" content="The top 50 Linux commands I use regularly." />
+<meta name="keywords" content="linux, command line, useful commands, shell, terminal">
+
+
+  <meta property="og:site_name" content="My Linux Notebook"/>
+  <meta property="og:title" content="50 Linux Commands I Use Regularly"/>
+  <meta property="og:description" content="The top 50 Linux commands I use regularly."/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://notes.craigderington.dev/50-linux-commands-i-use-on-the-regular.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2025-07-11 19:55:00-04:00"/>
+  <meta property="article:modified_time" content="2025-07-11 19:55:00-04:00"/>
+  <meta property="article:author" content="https://notes.craigderington.dev/author/craig-derington.html">
+  <meta property="article:section" content="Linux"/>
+  <meta property="article:tag" content="linux"/>
+  <meta property="article:tag" content="command line"/>
+  <meta property="article:tag" content="useful commands"/>
+  <meta property="article:tag" content="shell"/>
+  <meta property="article:tag" content="terminal"/>
+  <meta property="og:image" content="/images/craig-128x128.png">
+
+  <title>My Linux Notebook &ndash; 50 Linux Commands I Use Regularly</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://notes.craigderington.dev/">
+      <img src="/images/craig-128x128.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://notes.craigderington.dev/"></a>
+    </h1>
+
+    <p>My Linux Notebook</p>
+
+
+
+    <ul class="social">
+      <li>
+        <a class="sc-github"
+           href="https://github.com/craigderington"
+           target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-docker"
+           href="https://hub.docker.com/u/craigderington"
+           target="_blank">
+          <i class="fa-brands fa-docker"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-python"
+           href="https://craigderington.dev"
+           target="_blank">
+          <i class="fa-brands fa-python"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-java"
+           href="https://craigderington.github.io"
+           target="_blank">
+          <i class="fa-brands fa-java"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-btc"
+           href="https://strike.me/cderington17"
+           target="_blank">
+          <i class="fa-brands fa-btc"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+
+<nav>
+  <a href="#">Home</a>
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+  <a href="/feeds/all.atom.xml">Atom</a>
+</nav>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="50-linux-commands-i-use-on-the-regular">50 Linux Commands I Use Regularly</h1>
+    <p>
+      Posted on July 11, 2025 in <a href="https://notes.craigderington.dev/category/linux.html">Linux</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <hr>
+<p>tags: BASH, Commands, Linux, Notebooks/Linux, Shell, Terminal, Ubuntu
+title: 50 Linux Commands
+created: '2018-12-28T21:12:05.000Z'
+modified: '2019-11-04T21:09:56.411Z'</p>
+<hr>
+<h2>50 Linux Commands</h2>
+<ol>
+<li>Terminal Commands To Check System Memory.</li>
+</ol>
+<p>1.1. The Free Command.
+It’s the most frequently used command to track memory usage on Linux.</p>
+<div class="highlight"><pre><span></span><code>| 123456 | $ free -m              total       used       free     shared    buffers     cachedMem:           993        922         71          0         61        216-/+ buffers/cache:        644        349Swap:         1023          0       1023 |
+</code></pre></div>
+
+<p>The “-m” option returns the usage data in MB format.</p>
+<p>1.2. The </Proc/Meminfo> Command.
+Another way to quickly check the memory consumption is by printing the command. You need root or access to run this command.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>cat<span class="w"> </span>/proc/meminfo<span class="w"> </span>MemTotal:<span class="w">        </span><span class="m">1017536</span><span class="w"> </span>kBMemFree:<span class="w">           </span><span class="m">72092</span><span class="w"> </span>kBBuffers:<span class="w">           </span><span class="m">63160</span><span class="w"> </span>kBCached:<span class="w">           </span><span class="m">221464</span><span class="w"> </span>kBSwapCached:<span class="w">          </span><span class="m">576</span><span class="w"> </span>kB...<span class="w"> </span><span class="p">|</span>
+</code></pre></div>
+
+<p>1.3. The <Vmstat> Command.
+It reverts with the memory usage in the same way as the command does. But you need not be a root user to run this command.</p>
+<p>The VMSTAT command example.Shell
+| click me | click me |
+| 1234567 | $ vmstat -s      1017536 K total memory       944492 K used memory       406372 K active memory       239000 K inactive memory        73044 K free memory        ... |</p>
+<p>1.4. The Top Command.
+If you are in a situation, where the memory usage is between 90-100%. Then, you should use top command to determine the process responsible. Most of the time, you can verify the process consuming resources by looking at the &lt;%CPU&gt; or the &lt;%MEM&gt; columns in the top output.</p>
+<p>Running the TOP command.Shell
+| click me | click me |
+| 1 | $ top |</p>
+<p>Running Top Command in Terminal
+It also allows sorting on the columns. Press (Shift+O) to select a column via field letter. For example, press “a” letter to sort process with PID (Process ID).
+Sort Top Command Output
+TOC</p>
+<p>1.5. The <Htop> Command.
+It’s an extension to the top command. And it provides several other options and details along with displaying the memory usage.</p>
+<p>Executing HTOP command.Shell
+| click me | click me |
+| 1 | $ htop |</p>
+<p>The top header in its output shows the CPU usage, RAM and swap statistics.
+Running HTOP Command in Terminal.
+TOC</p>
+<p>1.6. Additional Linux Commands To Isolate Memory Issues.
+1. Print the top 10 processes consuming a lot of memory.</p>
+<p>Print processes consuming a lot of memory.Shell
+| click me | click me |
+| 123456 | $ ps aux --sort=-resident|head -11USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMANDroot       983  0.3 11.3 286388 115944 tty7    Ss+  14:22   1:11 /usr/bin/X :0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch -background nonetest       1524  0.9  6.4 1073492 65804 ?       Sl   14:22   2:49 compiztest       1550  0.0  2.8 745372 28700 ?        Sl   14:22   0:00 nautilus -ntest       1892  1.2  2.3 526612 24372 ?        Sl   14:22   3:45 /usr/lib/unity/unity-panel-service |</p>
+<ol>
+<li>Kill a process while running the top command.
+Run top and press “k”. It’ll prompt you for the process ID and ask for the signal to kill. You can enter the PID of your choice and provide 15 as the signal value.
+Using Top Command to Kill a Process.</li>
+<li>Modify top command to print the absolute path in its output.
+After running top, press “c” to display the processes with full path and arguments.</li>
+<li>Sort “ps” output by memory usage, from high to low.</li>
+</ol>
+<p>SortShell
+| click me | click me |
+| 1 | $ ps aux --sort -rss |</p>
+<p>TOC</p>
+<ol>
+<li>Terminal Commands To Check Disk/File Usage.</li>
+</ol>
+<p>2.1. The Du Command.
+It’s one of the standard Linux commands to retrieve the disk usage of files and folders.
+1. If you wish to check the disk usage of a folder and its subfolder, then run the following command.</p>
+<p>DU command to report disk usage.Shell
+| click me | click me |
+| 123456789 | $ sudo du /home/techbeamers/4       /home/techbeamers/.X11-unix4       /home/techbeamers/VBoxOGL/system8       /home/techbeamers/VBoxOGL4       /home/techbeamers/ssh-oWoYdKmZ11624       /home/techbeamers/.ICE-unix4       /home/techbeamers/keyring-z6fUcL8       /home/techbeamers/pulse-H52d267kpZZH40      /home/techbeamers/ |</p>
+<p>It displays the output in the form of disk blocks. To print in bytes, kilo bytes, mega or Gigabytes, use the “-h” option with du command.
+2. To check the total space occupied by a directory, use the “-s” option with the du command.</p>
+<p>Another DU command example.Shell
+| click me | click me |
+| 12 | $ sudo du -sh /home/techbeamers40K     /home/techbeamers |</p>
+<p>3. Using “-c” switch will get the total size of the directory including the subdirectories printed at the last line. There is also an “-a” flag to display the usage of all files and folders.
+4. With the “–exclude” switch, you can specify a file pattern. Then, the du command will filter the files matching the given pattern.</p>
+<p>Exclude files from the DU report.Shell
+| click me | click me |
+| 1 | $ du -ah --exclude="*.txt" /home/techbeamers |</p>
+<p>5. Locate the biggest files in the current directory and sub-directories.</p>
+<p>Linux command to find the largest file.Shell
+| click me | click me |
+| 1 | $ ls -lSrh |</p>
+<p>6. Look out for the largest directories.</p>
+<p>Using DU command to search for largest directories.Shell
+| click me | click me |
+| 1 | $ du -kx | egrep -v "./.+/" | sort -n |</p>
+<p>TOC</p>
+<p>2.2. The Df Command.
+Another Linux command to monitor disk space is df (disk free). Now, let’s see what can we do with it.
+1. Print the disk usage of all the file systems.</p>
+<p>DF command to print disk usage.Shell
+| click me | click me |
+| 12345 | $ df -aFilesystem                   1K-blocks    Used Available Use% Mounted on/dev/mapper/vagrant--vg-root 129664620 6684216 116370692   6% /proc                                 0       0         0    - /procsysfs                                0       0         0    - /sys |</p>
+<p>2. Use a fixed memory block size.
+By default, it prints memory blocks of 1K. But with the “-B” option, we can alter the default memory size.</p>
+<p>DF command to print disk usage in 100B blocks.Shell
+| click me | click me |
+| 12345 | $ df -B 100Filesystem                   100B-blocks     Used  Available Use% Mounted on/dev/mapper/vagrant--vg-root  1327765709 68446372 1191635887   6% /udev                             5099439       41    5099398   1% /devtmpfs                            1041982     7578    1034404   1% /run |</p>
+<p>3. Style output to human readable format.
+Use “-h” option, it makes the display memory in the form of gigabytes, megabytes, etc.
+4. Check the type of available file systems.
+You can run the df command with “-T” option to show the type of all file systems.</p>
+<p>DF command to show types of all file systems.Shell
+| click me | click me |
+| 12345 | $ df -TFilesystem                   Type     1K-blocks    Used Available Use% Mounted on/dev/mapper/vagrant--vg-root ext4     129664620 6684216 116370692   6% /udev                         devtmpfs    497992       4    497988   1% /devtmpfs                        tmpfs       101756     740    101016   1% /run |</p>
+<p>You can even exclude a file system with -x option. Or provide a type with -t option, it’ll result in displaying the same kind of file systems.</p>
+<p>DF command to exclude a file system using its type.Shell
+| click me | click me |
+| 123 | $ df -t ext2#OR$ df -x ext2 |</p>
+<p>TOC</p>
+<p>2.3. Additional Terminal Commands For File Management.
+There are some other useful tips that you can use to optimizing your disk management tasks.
+1. Delete files marked for deletion but not yet deleted.</p>
+<p>Delete files marked for deletion.Shell
+| click me | click me |
+| 1 | $ lsof | grep delete |</p>
+<p>2. Search for files more than 100 MB.</p>
+<p>Find files occupying more than 100 MB.Shell
+| click me | click me |
+| 1 | $ find . -size +100M |</p>
+<p>3. Check files created within the last one week.</p>
+<p>Check files created within the last one week.Shell
+| click me | click me |
+| 1 | $ find . -mtime -7 |</p>
+<p>4. Remove files older than two weeks.</p>
+<p>Remove files older than two weeks.Shell
+| click me | click me |
+| 1 | $ find *.gz -mtime +14 -type f -exec rm {} \; |</p>
+<p>5. Monitor a log file for errors or some text.</p>
+<p>Monitor a log file for errors.Shell
+| click me | click me |
+| 1 | $ tail -f file.log | grep -i "error" |</p>
+<p>TOC</p>
+<ol>
+<li>Terminal Commands To Check On Running Processes.</li>
+</ol>
+<p>3.1. The Ps Command.
+It’s one of the most used Linux commands which returns a preview of the running processes along with their PID, CPU/RAM usage, and other details.
+1. Check the Shell you are using.</p>
+<p>To known the Shell you are using.Shell
+| click me | click me |
+| 123 | $ ps -p $$  PID TTY          TIME CMD 2480 pts/1    00:00:00 bash |</p>
+<ol>
+<li>Check the processes not owned by you.</li>
+</ol>
+<p>Check the processes not own by you.Shell
+| click me | click me |
+| 1 | $ ps aux | grep -v <code>whoami</code> |</p>
+<p>grep -v option inverts the selection.
+3. Remove grep command while filtering the process list.</p>
+<p>Find a process while excludingShell
+| click me | click me |
+| 123 | $ ps aux | grep '[b]ash'#Or$ ps aux | grep bash | grep -v grep |</p>
+<ol>
+<li>Display all process including params and hierarchy.</li>
+</ol>
+<p>Display all process including params and hierarchy.Shell
+| click me | click me |
+| 1 | $ ps auxww -H |</p>
+<ol>
+<li>List the files opened by a process.</li>
+</ol>
+<p>List the files opened by a process.Shell
+| click me | click me |
+| 1 | $ lsof -p $PID |</p>
+<ol>
+<li>Print the process running time since it started.</li>
+</ol>
+<p>Print the process running time, since it started.Shell
+| click me | click me |
+| 123 | # ps -p -o <PID>,etime= $ ps -p 1,2233 -o pid,etime= |</p>
+<ol>
+<li>Check all threads of a running process.</li>
+</ol>
+<p>Check all threads of a running process.Shell
+| click me | click me |
+| 1234567 | $ ps -C firefox -L -o pid,tid,pcpu,state,nlwp,args  PID   TID %CPU S NLWP COMMAND 3415  3415  5.1 S   29 /usr/lib/firefox/firefox 3415  3421  0.0 S   29 /usr/lib/firefox/firefox 3415  3422  0.0 S   29 /usr/lib/firefox/firefox 3415  3423  0.0 S   29 /usr/lib/firefox/firefox 3415  3424  0.0 S   29 /usr/lib/firefox/firefox |</p>
+<p>TOC</p>
+<p>3.2. The Kill Command.
+Use case – When you’ve to stop a process behaving intermittently and which refuses to close itself. So the kill command comes for rescue in such conditions. Its syntax is as follows.</p>
+<p>KILL command syntax.Shell
+| click me | click me |
+| 1 | $ kill [signal or option] PID(s) |</p>
+<ol>
+<li>Terminate a process by ID.</li>
+</ol>
+<p>Terminate a process by ID.Shell
+| click me | click me |
+| 1 | $ kill -9 PID or kill -KILL PID |</p>
+<p>The “-9” flag refers to KILL signal. Some of the other signals are HUP (-1), SIGINT (-2) and TERM (15).
+TOC</p>
+<p>3.2. The Killall Command.
+Another Linux command which kills a process by name is as follows.</p>
+<p>Linux command which kills a process by name.Shell
+| click me | click me |
+| 1 | $ killall firefox |</p>
+<p>You can even kill multiple processes using the single command.</p>
+<p>Kill multiple processes using the single command.Shell
+| click me | click me |
+| 1 | $ killall firefox soffice.bin |</p>
+<p>TOC</p>
+<p>3.3. The STRACE Command.
+It is one of the Linux commands which allows watching a process execution. It intercepts the system calls and signals that a program exercises while running.
+1. Trace a program using its PID.</p>
+<p>Trace a program using its PID.Shell
+| click me | click me |
+| 1 | $ strace -f -p $PID |</p>
+<ol>
+<li>Monitor a process for any specific system call.</li>
+</ol>
+<p>Monitor a process for any specific system call.Shell
+| click me | click me |
+| 1234567 | $ strace -e open touch test.txtopen("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3open("/lib/x86_64-linux-gnu/librt.so.1", O_RDONLY|O_CLOEXEC) = 3open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3open("/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3open("test.txt", O_WRONLY|O_CREAT|O_NOCTTY|O_NONBLOCK, 0666) = 3 |</p>
+<p>TOC</p>
+<p>3.4. The Watch Command.
+Sometimes, we need to monitor a process at regular intervals. For example, tracking the progress of copying a large release build or folder. That’s where the watch command is useful.
+1. Run ls command after every 1 second.</p>
+<p>Run LS command after every 1 second.Shell
+| click me | click me |
+| 1 | $ watch -n 1 ls -l |</p>
+<ol>
+<li>See the differences between previous and present output.</li>
+</ol>
+<p>WATCH to differentiate between previous and present output.Shell
+| click me | click me |
+| 1 | $ watch -d -n 1 free |</p>
+<p>You can anytime press CTRL+z to take control back from the watch command.
+TOC</p>
+<ol>
+<li>Terminal Commands To Monitor &amp; Manage Network.</li>
+</ol>
+<p>4.1. The IFCONFIG And Related Commands.
+The most common usage of command is to return the IP address of the system you are using. But you can also use it to initialize an interface, assign a new IP address and enable/disable the interface.
+1. The below command will print the IP address of the current machine.</p>
+<p>Print the IP address of the current machine.Shell
+| click me | click me |
+| 1234567891011121314151617 | $ ifconfigeth0      Link encap:Ethernet  HWaddr 08:00:27:4d:2e:ff          inet6 addr: fe80::a00:27ff:fe4d:2eff/64 Scope:Link          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1          RX packets:0 errors:0 dropped:0 overruns:0 frame:0          TX packets:1999 errors:0 dropped:0 overruns:0 carrier:0          collisions:0 txqueuelen:1000          RX bytes:0 (0.0 B)  TX bytes:400055 (400.0 KB) eth1      Link encap:Ethernet  HWaddr 08:00:27:d8:13:46          inet addr:192.168.1.6  Bcast:192.168.1.255  Mask:255.255.255.0          inet6 addr: fe80::a00:27ff:fed8:1346/64 Scope:Link          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1          RX packets:16660 errors:0 dropped:0 overruns:0 frame:0          TX packets:16506 errors:0 dropped:0 overruns:0 carrier:0          collisions:0 txqueuelen:1000          RX bytes:10200264 (10.2 MB)  TX bytes:2778520 (2.7 MB) |</p>
+<ol>
+<li>To print the information related to a particular interface, run the following.</li>
+</ol>
+<p>Print the information related to a particular interfaceShell
+| click me | click me |
+| 1 | $ ifconfig eth0 |</p>
+<ol>
+<li>Assign IP address and set gateway.</li>
+</ol>
+<p>Assign IP address and set gateway.Shell
+| click me | click me |
+| 1 | $ ifconfig eth0 192.168.1.1 netmask 255.255.255.0 |</p>
+<ol>
+<li>Enable/disable an interface.</li>
+</ol>
+<p>Enable/disable an interface.Shell
+| click me | click me |
+| 12 | $ ifup eth0$ ifdown eth0 |</p>
+<p>TOC</p>
+<p>4.2. Some Nice Ping Command Examples.
+It’s basically to find out whether a machine on the network or the gateway is reachable. Here are some good examples.
+1. Increase/decrease ping time interval.</p>
+<p>Increase/decrease ping time interval.Shell
+| click me | click me |
+| 12 | $ ping -i 2 target$ ping -i 0.1 target |</p>
+<ol>
+<li>Check if local I/F is active.</li>
+</ol>
+<p>Check if local I/F is active.Shell
+| click me | click me |
+| 12 | $ ping 0$ ping localhost |</p>
+<ol>
+<li>Update the size of the ping packet.</li>
+</ol>
+<p>Update the size of the ping packet.Shell
+| click me | click me |
+| 1 | $ ping -s 112 localhost |</p>
+<p>The above command changes the default packet size from 56 to 112.
+4. Timeout a ping request.</p>
+<p>Timeout a ping request.Shell
+| click me | click me |
+| 1 | $ ping -w 5 localhost |</p>
+<ol>
+<li>Send X no. of packets and stop.</li>
+</ol>
+<p>Send X no. of packets and stop.Shell
+| click me | click me |
+| 1 | $ ping -c X IP_ADDRESS |</p>
+<p>TOC</p>
+<p>4.3. The TRACEROUTE Command.
+It’s for troubleshooting the network issues. It prints the no. of hops taken to reach the target.</p>
+<p>TRACEROUTE Command example.Shell
+| click me | click me |
+| 12345 | $ traceroute ubuntu.comtraceroute to ubuntu.com (91.189.94.40), 30 hops max, 60 byte packets 1  D-Link.Home (192.168.1.1)  4.566 ms  4.960 ms  5.038 ms 2  abts-north-static-236.220.160.122.airtelbroadband.in (122.160.220.236)  36.117 ms  37.111 ms  38.686 ms 3  abts-north-static-181.130.160.122.airtelbroadband.in (122.160.130.181)  39.867 ms  41.269 ms * |</p>
+<p>TOC</p>
+<p>4.4. The NETSTAT Command.
+This command allows a user to monitor both incoming and outgoing network connections. Most of the operating systems support this command. Let’s see some of its real-time applications.
+1. Listing all TCP and UDP connections opened at a time.</p>
+<p>Listing all TCP and UDP connections.Shell
+| click me | click me |
+| 1 | $ netstat -a | more |</p>
+<ol>
+<li>List connections without resolving host, port and user name.</li>
+</ol>
+<p>List connections without resolving host, port and user name.Shell
+| click me | click me |
+| 1 | $ netstat -an |</p>
+<ol>
+<li>Listing only TCP connections.</li>
+</ol>
+<p>Listing only TCP connections.Shell
+| click me | click me |
+| 1 | $ netstat -at |</p>
+<ol>
+<li>Listing only UDP connections.</li>
+</ol>
+<p>Listing only UDP connections.Shell
+| click me | click me |
+| 1 | $ netstat -au |</p>
+<ol>
+<li>Display TCP connections in Listen state.</li>
+</ol>
+<p>Display TCP connections in Listen state.Shell
+| click me | click me |
+| 1 | $ netstat -lt |</p>
+<ol>
+<li>Display UDP connections in Listen state.</li>
+</ol>
+<p>Display UDP connections in Listen state.Shell
+| click me | click me |
+| 1 | $ netstat -lu |</p>
+<ol>
+<li>Display service names with PID.</li>
+</ol>
+<p>Display service names with PID.Shell
+| click me | click me |
+| 1 | $ netstat -tp |</p>
+<ol>
+<li>Print routing table summary.</li>
+</ol>
+<p>Print routing table summary.Shell
+| click me | click me |
+| 1 | $ netstat -r |</p>
+<ol>
+<li>Retrieve IP address statistics.</li>
+</ol>
+<p>Retrieve IP address statistics.Shell
+| click me | click me |
+| 1 | $ netstat -g |</p>
+<ol>
+<li>Locate all programs in Listen state.</li>
+</ol>
+<p>Locate all programs in Listen state.Shell
+| click me | click me |
+| 1 | $ netstat -ap | grep http |</p>
+<ol>
+<li>Find the port of a program is using.</li>
+</ol>
+<p>Find the port of a program is using.Shell
+| click me | click me |
+| 1 | $ netstat -ap | grep ssh |</p>
+<ol>
+<li>Show all ports listening with process PID.</li>
+</ol>
+<p>Show all ports listening with process PID.Shell
+| click me | click me |
+| 1 | $ netstat -tlnp |</p>
+<p>TOC</p>
+<p>4.5. The Dig Command.
+The full form of DIG command is domain information groper. It retrieves the DNS details like A record, CNAME, and MX records.</p>
+<p>The DIG command example.Shell
+| click me | click me |
+| 12345678910111213141516 | $ dig www.google.com; &lt;&lt;&gt;&gt; DiG 9.8.1-P1 &lt;&lt;&gt;&gt; www.google.com;; global options: +cmd;; Got answer:;; -&gt;&gt;HEADER&lt; ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0 ;; QUESTION SECTION:;www.google.com. IN A ;; ANSWER SECTION:www.google.com. 261 IN A 216.58.196.68 ;; Query time: 35 msec;; SERVER: 127.0.0.1#53(127.0.0.1);; WHEN: Thu Sep 8 16:55:01 2016;; MSG SIZE rcvd: 48 |</p>
+<ol>
+<li>Display only MX Records.</li>
+</ol>
+<p>Display only MX Records.Shell
+| click me | click me |
+| 12345 | $ dig -t MX ubuntu.com +noall +answer ; &lt;&lt;&gt;&gt; DiG 9.8.1-P1 &lt;&lt;&gt;&gt; -t MX ubuntu.com +noall +answer;; global options: +cmdubuntu.com. 2845 IN MX 10 mx.canonical.com. |</p>
+<ol>
+<li>Display only NS Records.</li>
+</ol>
+<p>Display only NS Records.Shell
+| click me | click me |
+| 12345678 | $ dig -t NS ubuntu.com +noall +answer ; &lt;&lt;&gt;&gt; DiG 9.8.1-P1 &lt;&lt;&gt;&gt; -t NS ubuntu.com +noall +answer;; global options: +cmdubuntu.com. 1328 IN NS ns3.p27.dynect.net.ubuntu.com. 1328 IN NS ns2.p27.dynect.net.ubuntu.com. 1328 IN NS ns4.p27.dynect.net.ubuntu.com. 1328 IN NS ns1.p27.dynect.net. |</p>
+<p>TOC</p>
+<p>4.6. Miscellaneous Network Linux Commands.
+1. Display all TCP sockets in use.</p>
+<p>Display all TCP sockets in use.Shell
+| click me | click me |
+| 123 | $ lsof -nPi tcpCOMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAMEubuntu-ge 1957 vagrant 11u IPv4 12280 0t0 TCP 192.168.1.6:42056-&gt;91.189.94.25:80 (CLOSE_WAIT) |</p>
+<ol>
+<li>Resolve IP address from the hostname.</li>
+</ol>
+<p>Resolve IP address from the hostname.Shell
+| click me | click me |
+| 1 | $ host ubuntu.com |</p>
+<ol>
+<li>MTR – Top like traceroute command.
+It combines the functionality of traceroute and ping tools. It examines the connectivity between the host and the given target system.</li>
+</ol>
+<p>Top like traceroute command.Shell
+| click me | click me |
+| 1 | $ mtr google.com |</p>
+<p>TOC</p>
+<ol>
+<li>Linux Commands To Configure Terminal &amp; Screen.</li>
+</ol>
+<p>5.1. The Screen Command.
+It might now be available on your system by default. So, to install it either use apt or yum as per the distribution you are using.
+1. Start a screen session as the current user.</p>
+<p>Start a screen session.Shell
+| click me | click me |
+| 1 | $ screen -x |</p>
+<ol>
+<li>Reattach to a screen session.</li>
+</ol>
+<p>Reattach to a screen session.Shell
+| click me | click me |
+| 1 | $ screen -r |</p>
+<ol>
+<li>Record a terminal session.</li>
+</ol>
+<p>Record a terminal session.Shell
+| click me | click me |
+| 1 | $ script file.out 2&gt; file.rec |</p>
+<ol>
+<li>Play back a recorded terminal session.</li>
+</ol>
+<p>Play back a recorded terminal session.Shell
+| click me | click me |
+| 1 | $ scriptreplay file.rec file.out |</p>
+<p>TOC</p>
+<p>5.2. Some Useful Terminal Command Shortcuts.
+1. Open a new terminal.</p>
+<p>Open a new terminal.Shell
+| click me | click me |
+| 1 | Press CTRL+ALT+t |</p>
+<ol>
+<li>Open a new tab in the existing terminal window.</li>
+</ol>
+<p>Open a new tab.Shell
+| click me | click me |
+| 1 | Press CTRL+SHIFT+t |</p>
+<ol>
+<li>Clear the screen.</li>
+</ol>
+<p>Clear the screen.Shell
+| click me | click me |
+| 1 | Press CTRL+l or type clear and enter. |</p>
+<ol>
+<li>Cache console output.</li>
+</ol>
+<p>Cache console output.Shell
+| click me | click me |
+| 1 | $ script my.terminal.session |</p>
+<p>TOC</p>
+<ol>
+<li>Some Important Terminal Commands For Quick Reference.</li>
+<li>How to run a previous command as root?</li>
+</ol>
+<p>Run Previous command as root.Shell
+| click me | click me |
+| 1 | $ sudo !! |</p>
+<ol>
+<li>How to find differences between two directories?</li>
+</ol>
+<p>Find differences between two directories.Shell
+| click me | click me |
+| 1 | $ diff -y &lt;(ls -l ${DIR1}) &lt;(ls -l ${DIR2}) |</p>
+<ol>
+<li>How to lock a directory.</li>
+</ol>
+<p>Lock a directory.Shell
+| click me | click me |
+| 1 | $ chmod 0000 /test |</p>
+<p>The root user will still have access. To restore the permission, run the below command.</p>
+<p>To restore the normal permissions.Shell
+| click me | click me |
+| 1 | $ chmod 0755 /test |</p>
+<ol>
+<li>Smart cd commands.</li>
+</ol>
+<p>Smart CD commands.Shell
+| click me | click me |
+| 12345 | #To change to last working directory.$ cd - #To return to your home directory.$ cd |</p>
+<ol>
+<li>How to replace same text in multiple files.
+To replace the text Apple with Linux in all text files in current directory and down you can run this.</li>
+</ol>
+<p>Replacing same text in multiple files.Shell
+| click me | click me |
+| 1 | $ find . -name '<em>.txt' -print | xargs perl -pi -e's/Apple/Linux/ig' </em>.txt |</p>
+<ol>
+<li>Listing files changed today.
+Sometimes, we create a file during the day and forget what name we gave it. So here is the command to locate such files.</li>
+</ol>
+<p>Listing files changed today.Shell
+| click me | click me |
+| 1 | $ ls -al --time-style=+%D | grep <code>date +%D</code> |</p>
+<ol>
+<li>Shorten long commands.
+Not all of us has the ability to memorize the long Linux commands. With the below command, we can assign user-friendly names in such cases.</li>
+</ol>
+<p>Shorten long commands.Shell
+| click me | click me |
+| 1 | $ alias ls="ls -al" |</p>
+<ol>
+<li>Copy a file into multiple directories.</li>
+</ol>
+<p>Copy a file into multiple directories.Shell
+| click me | click me |
+| 1 | $ echo /home/dir1 /test/dir2 /prod/dir3 | xargs -n 1 cp -v /path/to/file |</p>
+<ol>
+<li>Disable incoming ping requests.
+To block a flood of incoming pings, do the following.</li>
+</ol>
+<p>Block a flood of incoming pings.Shell
+| click me | click me |
+| 1 | $ sysctl -w net.ipv4.icmp_echo_ignore_all=1 |</p>
+<p>To turn the above setting back, run the below command.</p>
+<p>Turn the above setting back.Shell
+| click me | click me |
+| 1 | $ sysctl -w net.ipv4.icmp_echo_ignore_all=0 |</p>
+<ol>
+<li>Some cool Nautilus tricks.
+• Press CTRL+l to open a location.
+• Use CTRL+up to open the parent directory.
+• Press arrow keys to navigate through folders.</li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://notes.craigderington.dev/tag/linux.html">linux</a>
+      <a href="https://notes.craigderington.dev/tag/command-line.html">command line</a>
+      <a href="https://notes.craigderington.dev/tag/useful-commands.html">useful commands</a>
+      <a href="https://notes.craigderington.dev/tag/shell.html">shell</a>
+      <a href="https://notes.craigderington.dev/tag/terminal.html">terminal</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2025  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://notes.craigderington.dev/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " My Linux Notebook ",
+  "url" : "https://notes.craigderington.dev",
+  "image": "/images/craig-128x128.png",
+  "description": "My Computer Programming Notebook "
+}
+</script><a href="https://github.com/craigderington" target="_blank" class="github-corner" aria-label="View source on Github">
+    <svg width="80"
+         height="80"
+         viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor"
+              style="transform-origin: 130px 106px;"
+              class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor"
+              class="octo-body">
+        </path>
+    </svg>
+</a>
+
+</body>
+</html>
