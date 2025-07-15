@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="https://notes.craigderington.dev/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://notes.craigderington.dev/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://notes.craigderington.dev/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://notes.craigderington.dev/theme/pygments/monokai.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/solid.css">
+
+
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Microsoft EDGE -->
+  <meta name="msapplication-TileColor" content="#333333">
+
+  <link href="https://notes.craigderington.dev/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="My Linux Notebook Atom">
+
+
+
+ 
+
+<meta name="author" content="Craig Derington" />
+<meta name="description" content="Who&#39;s managing your containers?" />
+<meta name="keywords" content="docker, compose, containers, networking, services, ingress, load balancer, docker engine">
+
+
+  <meta property="og:site_name" content="My Linux Notebook"/>
+  <meta property="og:title" content="Docker Compose makes containers simple and fun"/>
+  <meta property="og:description" content="Who&#39;s managing your containers?"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://notes.craigderington.dev/docker-compose-makes-containers-simple-and-fun.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2025-06-18 08:45:00-04:00"/>
+  <meta property="article:modified_time" content="2025-06-19 14:30:00-04:00"/>
+  <meta property="article:author" content="https://notes.craigderington.dev/author/craig-derington.html">
+  <meta property="article:section" content="Docker"/>
+  <meta property="article:tag" content="docker"/>
+  <meta property="article:tag" content="compose"/>
+  <meta property="article:tag" content="containers"/>
+  <meta property="article:tag" content="networking"/>
+  <meta property="article:tag" content="services"/>
+  <meta property="article:tag" content="ingress"/>
+  <meta property="article:tag" content="load balancer"/>
+  <meta property="article:tag" content="docker engine"/>
+  <meta property="og:image" content="/images/craig-128x128.png">
+
+  <title>My Linux Notebook &ndash; Docker Compose makes containers simple and fun</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://notes.craigderington.dev/">
+      <img src="/images/craig-128x128.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://notes.craigderington.dev/"></a>
+    </h1>
+
+    <p>My Linux Notebook</p>
+
+
+
+    <ul class="social">
+      <li>
+        <a class="sc-github"
+           href="https://github.com/craigderington"
+           target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-docker"
+           href="https://hub.docker.com/u/craigderington"
+           target="_blank">
+          <i class="fa-brands fa-docker"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-python"
+           href="https://craigderington.dev"
+           target="_blank">
+          <i class="fa-brands fa-python"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-java"
+           href="https://craigderington.github.io"
+           target="_blank">
+          <i class="fa-brands fa-java"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-btc"
+           href="https://strike.me/cderington17"
+           target="_blank">
+          <i class="fa-brands fa-btc"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+
+<nav>
+  <a href="#">Home</a>
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+  <a href="/feeds/all.atom.xml">Atom</a>
+</nav>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="docker-compose-makes-containers-simple-and-fun">Docker Compose makes containers simple and fun</h1>
+    <p>
+      Posted on June 18, 2025 in <a href="https://notes.craigderington.dev/category/docker.html">Docker</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h4>Docker Compose: Making Containers Simple and Fun!</h4>
+<p><img alt="docker logo" src="images/docker-500x281.jpg"></p>
+<p>Why Docker Compose?</p>
+<p>Docker Compose uses a single file <code>docker-compose.yml</code> to describe how multiple containers should work together. Instead of running lots of complicated Docker commands, you write one file, type docker-compose up, and boom—your app is running! It’s perfect for setting up apps with multiple parts, like a website, a database, and a helper tool, all talking to each other.</p>
+<h4>Getting Started with Docker Compose</h4>
+<p>First, you need Docker and Docker Compose installed. On most systems, Docker Desktop includes Compose. Then, you create a docker-compose.yml file to describe your containers.</p>
+<p>My Docker Hub repository at https://hub.docker.com/u/craigderington. </p>
+<h4>Example 1: A Simple Python Web App</h4>
+<p>Python web app using craigderington/flaskdock:latest. </p>
+<p>You want it to run with a web server. Here’s a docker-compose.yml to set it up:</p>
+<div class="highlight"><pre><span></span><code>version: &#39;3.8&#39;
+services:
+  python-app:
+    image: craigderington/docker-python
+    ports:
+      <span class="k">-</span> &quot;5000:5000&quot;
+    volumes:
+      <span class="k">-</span> ./app:/app
+    environment:
+      <span class="k">-</span> FLASK_ENV=development
+</code></pre></div>
+
+<p>What’s happening?</p>
+<ul>
+<li>
+<p>Toy box: A container running your craigderington/docker-python image.</p>
+</li>
+<li>
+<p>Ports: Connects port 5000 on your computer to port 5000 in the container, so you can visit your app in a browser.</p>
+</li>
+<li>
+<p>Volumes: Shares your local app folder with the container, so your code updates instantly.</p>
+</li>
+<li>
+<p>Environment: Tells the app it’s in “development” mode.</p>
+</li>
+</ul>
+<p>Run it with:</p>
+<div class="highlight"><pre><span></span><code>docker-compose up
+</code></pre></div>
+
+<p>Visit http://localhost:5000 to view the app.</p>
+<h4>Example 2: Node.js App with Nginx</h4>
+<p>Node and nginx images are perfect for a Node.js app with a web server. Let’s make them team up:</p>
+<div class="highlight"><pre><span></span><code>version: &#39;3.8&#39;
+services:
+  node-app:
+    image: node:current-alpine3.22
+    ports:
+      <span class="k">-</span> &quot;3000:3000&quot;
+    volumes:
+      <span class="k">-</span> ./node-app:/app
+    environment:
+      <span class="k">-</span> NODE_ENV=production
+  nginx:
+    image: nginx:stable-perl
+    ports:
+      <span class="k">-</span> &quot;80:80&quot;
+    depends_on:
+      <span class="k">-</span> node-app
+    volumes:
+      <span class="k">-</span> ./nginx.conf:/etc/nginx/nginx.conf
+</code></pre></div>
+
+<h4>Example 3: Python App with Database</h4>
+<p>Let’s combine your craigderington/docker-python with a PostgreSQL database for a full-stack app:</p>
+<div class="highlight"><pre><span></span><code><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.8&#39;</span>
+<span class="n">services</span><span class="p">:</span>
+<span class="w">  </span><span class="n">python</span><span class="o">-</span><span class="n">app</span><span class="p">:</span>
+<span class="w">    </span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="n">craigderington</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">python</span>
+<span class="w">    </span><span class="n">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="s2">&quot;5000:5000&quot;</span>
+<span class="w">    </span><span class="n">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">DATABASE_URL</span><span class="o">=</span><span class="n">postgres</span><span class="p">:</span><span class="o">//</span><span class="n">user</span><span class="p">:</span><span class="n">password</span><span class="err">@</span><span class="n">db</span><span class="p">:</span><span class="mi">5432</span><span class="o">/</span><span class="n">mydb</span>
+<span class="w">    </span><span class="n">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">db</span>
+<span class="w">  </span><span class="n">db</span><span class="p">:</span>
+<span class="w">    </span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="n">postgres</span><span class="p">:</span><span class="n">latest</span>
+<span class="w">    </span><span class="n">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">POSTGRES_USER</span><span class="o">=</span><span class="n">user</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">POSTGRES_PASSWORD</span><span class="o">=</span><span class="n">password</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">POSTGRES_DB</span><span class="o">=</span><span class="n">mydb</span>
+<span class="w">    </span><span class="n">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">db</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">data</span>
+<span class="n">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="n">db</span><span class="o">-</span><span class="n">data</span><span class="p">:</span>
+</code></pre></div>
+
+<h4>Why Docker Compose is Awesome</h4>
+<p>Docker Compose is like a magic wand for your containers. Instead of juggling multiple docker run commands, you write one file, and Compose handles the rest. It’s perfect for:</p>
+<ul>
+<li>Testing: Spin up a whole app (web, database, etc.) in seconds.</li>
+<li>Development: Share your docker-compose.yml with teammates for consistent setups.</li>
+<li>Learning: Play with different images without breaking anything.</li>
+</ul>
+<p>To stop your containers:</p>
+<div class="highlight"><pre><span></span><code>docker-compose down
+</code></pre></div>
+
+<p>To remove containers and volumes:</p>
+<div class="highlight"><pre><span></span><code>docker-compose down -v
+</code></pre></div>
+
+<h4>Portainer to Manage the Fleet</h4>
+<p><a href="https://www.portainer.io/">Portainer</a></p>
+<p>Launch a portainer agent:</p>
+<div class="highlight"><pre><span></span><code><span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">9001</span><span class="p">:</span><span class="mi">9001</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">name</span><span class="w"> </span><span class="n">portainer_agent</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">restart</span><span class="o">=</span><span class="n">always</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">docker</span><span class="o">.</span><span class="n">sock</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">docker</span><span class="o">.</span><span class="n">sock</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">volumes</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">volumes</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">host</span><span class="w"> </span>\
+<span class="w">  </span><span class="n">portainer</span><span class="o">/</span><span class="n">agent</span><span class="p">:</span><span class="mf">2.27</span><span class="o">.</span><span class="mi">6</span>
+</code></pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://notes.craigderington.dev/tag/docker.html">docker</a>
+      <a href="https://notes.craigderington.dev/tag/compose.html">compose</a>
+      <a href="https://notes.craigderington.dev/tag/containers.html">containers</a>
+      <a href="https://notes.craigderington.dev/tag/networking.html">networking</a>
+      <a href="https://notes.craigderington.dev/tag/services.html">services</a>
+      <a href="https://notes.craigderington.dev/tag/ingress.html">ingress</a>
+      <a href="https://notes.craigderington.dev/tag/load-balancer.html">load balancer</a>
+      <a href="https://notes.craigderington.dev/tag/docker-engine.html">docker engine</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2025  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://notes.craigderington.dev/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " My Linux Notebook ",
+  "url" : "https://notes.craigderington.dev",
+  "image": "/images/craig-128x128.png",
+  "description": "My Computer Programming Notebook "
+}
+</script><a href="https://github.com/craigderington" target="_blank" class="github-corner" aria-label="View source on Github">
+    <svg width="80"
+         height="80"
+         viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor"
+              style="transform-origin: 130px 106px;"
+              class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor"
+              class="octo-body">
+        </path>
+    </svg>
+</a>
+
+</body>
+</html>

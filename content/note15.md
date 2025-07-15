@@ -1,4 +1,4 @@
-Title: 
+Title: Your Home Network's Nosy Neighbor
 Date: 2025-07-01 12:30
 Modified: 2025-07-01 12:30
 Category: Networking
@@ -7,12 +7,9 @@ Slug: nmap-the-swiss-army-knife-of-network-tools
 Authors: Craig Derington
 Summary: Who's sniffing your network?
 
-
-
 #### Nmap: Your Home Network’s Nosy Neighbor
 
 Have you ever wondered who is using your Wi-Fi excessively or what sly gadgets are on your home network? Here comes Nmap, the heroic network scanner that is half prankster and half detective. It is like to wearing a wizard hat and conducting a lie detector test on your router. This humorous guide will show you how to use Nmap to scan your home network. It's full with entertaining examples that will make you the coolest nerd in town.
-
 
 
 <small>* Disclaimer: Only scan networks you own or have permission to poke. Nmap is powerful, not a free pass to snoop on your neighbor’s smart fridge.</small>
