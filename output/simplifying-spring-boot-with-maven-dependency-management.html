@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="https://notes.craigderington.dev/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://notes.craigderington.dev/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://notes.craigderington.dev/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://notes.craigderington.dev/theme/pygments/monokai.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/solid.css">
+
+
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Microsoft EDGE -->
+  <meta name="msapplication-TileColor" content="#333333">
+
+  <link href="https://notes.craigderington.dev/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="My Linux Notebook Atom">
+
+
+
+ 
+
+<meta name="author" content="Craig Derington" />
+<meta name="description" content="Start your projects with the Spring Initialzer" />
+<meta name="keywords" content="java, spring boot, spring initializer, java beans">
+
+
+  <meta property="og:site_name" content="My Linux Notebook"/>
+  <meta property="og:title" content="Simplifying Spring Boot with Maven&#39;s Dependency Management"/>
+  <meta property="og:description" content="Start your projects with the Spring Initialzer"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://notes.craigderington.dev/simplifying-spring-boot-with-maven-dependency-management.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2025-07-14 13:30:00-04:00"/>
+  <meta property="article:modified_time" content="2025-07-14 13:30:00-04:00"/>
+  <meta property="article:author" content="https://notes.craigderington.dev/author/craig-derington.html">
+  <meta property="article:section" content="Java"/>
+  <meta property="article:tag" content="java"/>
+  <meta property="article:tag" content="spring boot"/>
+  <meta property="article:tag" content="spring initializer"/>
+  <meta property="article:tag" content="java beans"/>
+  <meta property="og:image" content="/images/craig-128x128.png">
+
+  <title>My Linux Notebook &ndash; Simplifying Spring Boot with Maven&#39;s Dependency Management</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://notes.craigderington.dev/">
+      <img src="/images/craig-128x128.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://notes.craigderington.dev/"></a>
+    </h1>
+
+    <p>My Linux Notebook</p>
+
+
+
+    <ul class="social">
+      <li>
+        <a class="sc-github"
+           href="https://github.com/craigderington"
+           target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-docker"
+           href="https://hub.docker.com/u/craigderington"
+           target="_blank">
+          <i class="fa-brands fa-docker"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-python"
+           href="https://craigderington.dev"
+           target="_blank">
+          <i class="fa-brands fa-python"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-java"
+           href="https://craigderington.github.io"
+           target="_blank">
+          <i class="fa-brands fa-java"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-btc"
+           href="https://strike.me/cderington17"
+           target="_blank">
+          <i class="fa-brands fa-btc"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+
+<nav>
+  <a href="#">Home</a>
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+  <a href="/feeds/all.atom.xml">Atom</a>
+</nav>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="simplifying-spring-boot-with-maven-dependency-management">Simplifying Spring Boot with Maven's Dependency Management</h1>
+    <p>
+      Posted on July 14, 2025 in <a href="https://notes.craigderington.dev/category/java.html">Java</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h4>Simplifying Spring Boot with Maven's Dependency Management</h4>
+<p>Using Maven to manage dependencies in Spring Boot development can be like trying to herd cats. However, the dependencyManagement block in Maven is a straightforward, frequently disregarded feature that gives your project a Spring-like clean. </p>
+<p>This gem keeps your pom.xml as clean as a Spring configuration, minimizes conflicts, and streamlines dependency versions.</p>
+<h4>Dependency Management, Why?</h4>
+<p>Numerous dependencies, including Spring Web, Data JPA, Security, and others, are pulled in by Spring Boot projects. Version discrepancies may infiltrate without centralized oversight, leading to bloated builds or runtime issues. You can define versions only once with the dependencyManagement block, guaranteeing uniformity across modules or even several projects.</p>
+<h4>Setting It Up</h4>
+<p>In your pom.xml, add a dependencyManagement block under the spring-boot-starter-parent:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;parent&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-parent<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;version&gt;</span>3.3.4<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/parent&gt;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependencyManagement&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">        </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">            </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">            </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">            </span><span class="nt">&lt;version&gt;</span><span class="cp">${</span><span class="n">spring</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">version</span><span class="cp">}</span><span class="nt">&lt;/version&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/dependency&gt;</span>
+<span class="w">        </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">            </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">            </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-data-jpa<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">            </span><span class="nt">&lt;version&gt;</span><span class="cp">${</span><span class="n">spring</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">version</span><span class="cp">}</span><span class="nt">&lt;/version&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/dependencyManagement&gt;</span>
+</code></pre></div>
+
+<p>Here, <code>${spring-boot.version}</code> is inherited from the parent, ensuring all Spring Boot dependencies align.</p>
+<h4>Using Dependencies Without Versions</h4>
+<p>In your dependencies section, you can now omit version tags for managed dependencies:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-data-jpa<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div>
+
+<p>This keeps your pom.xml clean and prevents version drift. If you’re working on a multi-module project, child modules inherit these versions automatically.</p>
+<h4>Overlooked Simplicity</h4>
+<p>Why is this overlooked? Developers often rely solely on spring-boot-starter-parent or manually specify versions, missing the flexibility of dependencyManagement. It’s especially useful when:</p>
+<ul>
+<li>Using a custom parent POM but still wanting Spring Boot’s version management.</li>
+<li>Managing third-party libraries (e.g., Jackson, Log4j) that Spring Boot doesn’t cover.</li>
+<li>Sharing dependency versions across multiple projects without duplicating effort.</li>
+</ul>
+<p>For example, to manage a non-Spring dependency like Jackson:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependencyManagement&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">        </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">            </span><span class="nt">&lt;groupId&gt;</span>com.fasterxml.jackson.core<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">            </span><span class="nt">&lt;artifactId&gt;</span>jackson-databind<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">            </span><span class="nt">&lt;version&gt;</span>2.17.2<span class="nt">&lt;/version&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/dependencyManagement&gt;</span>
+</code></pre></div>
+
+<p>Then, in dependencies:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>com.fasterxml.jackson.core<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>jackson-databind<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+
+<h4>Pro Tip: Import a BOM</h4>
+<p>For even cleaner management, import Spring Boot’s Bill of Materials (BOM):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependencyManagement&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">        </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">            </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">            </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-dependencies<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">            </span><span class="nt">&lt;version&gt;</span>3.3.4<span class="nt">&lt;/version&gt;</span>
+<span class="w">            </span><span class="nt">&lt;type&gt;</span>pom<span class="nt">&lt;/type&gt;</span>
+<span class="w">            </span><span class="nt">&lt;scope&gt;</span>import<span class="nt">&lt;/scope&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/dependencyManagement&gt;</span>
+</code></pre></div>
+
+<p>This imports all Spring Boot-managed versions without needing a parent POM, perfect for projects with custom parent configurations.
+Why It’s Simple and Clean</p>
+<p>Like Spring’s philosophy, dependencyManagement reduces boilerplate and enforces consistency. It’s a small trick that saves time, prevents errors, and keeps your pom.xml as elegant as a well-crafted Spring service. Next time you’re wrestling with dependency hell, let dependencyManagement bring order to the chaos.</p>
+<p><a href="https://start.spring.io/">Spring Intializer</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://notes.craigderington.dev/tag/java.html">java</a>
+      <a href="https://notes.craigderington.dev/tag/spring-boot.html">spring boot</a>
+      <a href="https://notes.craigderington.dev/tag/spring-initializer.html">spring initializer</a>
+      <a href="https://notes.craigderington.dev/tag/java-beans.html">java beans</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2025  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://notes.craigderington.dev/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " My Linux Notebook ",
+  "url" : "https://notes.craigderington.dev",
+  "image": "/images/craig-128x128.png",
+  "description": "My Computer Programming Notebook "
+}
+</script><a href="https://github.com/craigderington" target="_blank" class="github-corner" aria-label="View source on Github">
+    <svg width="80"
+         height="80"
+         viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor"
+              style="transform-origin: 130px 106px;"
+              class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor"
+              class="octo-body">
+        </path>
+    </svg>
+</a>
+
+</body>
+</html>

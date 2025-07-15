@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Linux Notebook - Programming</title><link href="https://notes.craigderington.dev/" rel="alternate"></link><link href="https://notes.craigderington.dev/feeds/programming.atom.xml" rel="self"></link><id>https://notes.craigderington.dev/</id><updated>2025-07-15T09:00:00-04:00</updated><subtitle>My Linux Notebook</subtitle><entry><title>Eagleson's Law</title><link href="https://notes.craigderington.dev/eaglesons-law-codes-rebellion-against-sanity.html" rel="alternate"></link><published>2025-07-15T09:00:00-04:00</published><updated>2025-07-15T09:00:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-15:/eaglesons-law-codes-rebellion-against-sanity.html</id><summary type="html">&lt;p&gt;Eagleson's Law&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Eagleson's Law&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Any code you have written that you have not looked at in 6 months or more might as well been written by someone else. &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Code's Rebellion Against Sanity: Eagleson's Law&lt;/p&gt;
+&lt;p&gt;Imagine opening a stale Python script from the previous year. Deciphering hieroglyphs written by an inebriated alien is similar to that. You nestled those loops, but why? What is x_y_z? You are now an archeologist rather than a developer.&lt;/p&gt;
+&lt;p&gt;An instance of your previous "genius":&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;def wtf_func(a, b): # Why did I have to do this?
+    return [x * b if x!= b for x in a]  # &lt;span class="gs"&gt;*cries*&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Eagleson's Law encourages us to record as if we were describing it to a squirrel or a toddler. Make use of comments, distinct variable names, and perhaps a README with the words, "I apologize to the future me."&lt;/p&gt;
+&lt;p&gt;So, write code like you're writing a love letter to your forgetful future self, accept the ridiculousness, and giggle at the mayhem. Because that squirrel isn't helping.&lt;/p&gt;</content><category term="Programming"></category><category term="programming"></category><category term="humor"></category><category term="data scientist"></category></entry></feed>

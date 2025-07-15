@@ -1,11 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>My Linux Notebook - Python</title><link href="https://notes.craigderington.dev/" rel="alternate"></link><link href="https://notes.craigderington.dev/feeds/python.atom.xml" rel="self"></link><id>https://notes.craigderington.dev/</id><updated>2025-07-16T14:55:00-04:00</updated><subtitle>My Linux Notebook</subtitle><entry><title>Python's Static Methods vs. Class Methods</title><link href="https://notes.craigderington.dev/python-static-vs-class-methods.html" rel="alternate"></link><published>2025-07-14T16:55:00-04:00</published><updated>2025-07-16T14:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/python-static-vs-class-methods.html</id><summary type="html">&lt;p&gt;What's the difference between Python's static and class methods&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
-&lt;p&gt;tags:python, programming, linux, ubuntu, class, static, methods
-title: Python's Static Methods vs. Class Methods
-created: '2025-07-14T21:12:05.000Z'
-modified: '2025-07-14T21:09:56.411Z'&lt;/p&gt;
-&lt;hr&gt;
-&lt;h4&gt;Python:  Class Method vs Static Method&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Linux Notebook - Python</title><link href="https://notes.craigderington.dev/" rel="alternate"></link><link href="https://notes.craigderington.dev/feeds/python.atom.xml" rel="self"></link><id>https://notes.craigderington.dev/</id><updated>2025-07-16T14:55:00-04:00</updated><subtitle>My Linux Notebook</subtitle><entry><title>Manage Your Virtual Environments with uv and pipx</title><link href="https://notes.craigderington.dev/manage-python-virtual-environments-with-uv-pipx.html" rel="alternate"></link><published>2025-07-15T08:30:00-04:00</published><updated>2025-07-15T08:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-15:/manage-python-virtual-environments-with-uv-pipx.html</id><summary type="html">&lt;p&gt;Manage your virtual environments with uv and pipx&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Using uv and pipx for Python Virtual Environments&lt;/h4&gt;
+&lt;p&gt;Managing Python virtual environments efficiently is crucial for clean, isolated project setups. Two tools, uv and pipx, simplify this process. Here's a concise guide with examples.&lt;/p&gt;
+&lt;h4&gt;uv: Fast Virtual Environment Management&lt;/h4&gt;
+&lt;p&gt;uv is a lightweight, Rust-based tool for creating and managing Python virtual environments. It’s faster than venv and integrates package management seamlessly.&lt;/p&gt;
+&lt;p&gt;Installing uv&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install uv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;Creating a Virtual Environment&lt;/h5&gt;
+&lt;p&gt;Create a virtual environment with a specific Python version (e.g., 3.10):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uv venv --python 3.10 myenv
+source myenv/bin/activate  # On Windows: myenv\Scripts\activate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;Installing Packages&lt;/h5&gt;
+&lt;p&gt;Install packages directly into the environment:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uv pip install requests
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;Managing Dependencies&lt;/h5&gt;
+&lt;p&gt;Generate a requirements.txt file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uv pip freeze &amp;gt; requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;Install from requirements.txt:&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uv pip install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Why uv?&lt;/h4&gt;
+&lt;p&gt;Speed: Faster environment creation and package installation.
+Simplicity: Unified commands for environment and package management.
+Cross-platform: Works on Windows, macOS, and Linux.&lt;/p&gt;
+&lt;p&gt;pipx: Isolated CLI Tools
+pipx installs Python CLI tools in isolated environments, preventing conflicts with project dependencies.&lt;/p&gt;
+&lt;p&gt;Installing pipx&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install pipx
+pipx ensurepath
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Installing a CLI Tool
+Install a tool like black globally, but in an isolated environment:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pipx install black
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Running a Tool
+Run a tool without activating an environment:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pipx run black myfile.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Upgrading Tools
+Upgrade an installed tool:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pipx upgrade black
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Why pipx?&lt;/h4&gt;
+&lt;p&gt;Isolation: Tools don’t interfere with project environments.
+Ease: Run CLI tools without manual environment activation.
+Clean: Avoids cluttering global Python environments.&lt;/p&gt;
+&lt;p&gt;Combining uv and pipx
+Use uv for project-specific environments and pipx for global CLI tools. Example workflow:&lt;/p&gt;
+&lt;h4&gt;Create a project environment with uv:uv venv myproject&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;source myproject/bin/activate
+uv pip install flask
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Install black globally with pipx:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pipx install black
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Format code in the project:black myproject/&lt;/p&gt;
+&lt;p&gt;The Python environment is managed more efficiently with uv and pipx. While pipx maintains the accessibility and isolation of CLI tools, uv shines in project-specific environments with quick setup and package handling. When combined, they guarantee Python development that is clear and devoid of conflicts.&lt;/p&gt;</content><category term="Python"></category><category term="python"></category><category term="programming"></category><category term="uv"></category><category term="pipx"></category><category term="virtual"></category><category term="environments"></category><category term="pipfile"></category></entry><entry><title>Python's Static Methods vs. Class Methods</title><link href="https://notes.craigderington.dev/python-static-vs-class-methods.html" rel="alternate"></link><published>2025-07-14T16:55:00-04:00</published><updated>2025-07-16T14:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/python-static-vs-class-methods.html</id><summary type="html">&lt;p&gt;What's the difference between Python's static and class methods&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Python:  Class Method vs Static Method&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;class&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;A&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;executing foo(%s,%s)&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -48,4 +112,89 @@ modified: '2025-07-14T21:09:56.411Z'&lt;/p&gt;
 &lt;p&gt;A.static_foo('hi')&lt;/p&gt;
 &lt;h1&gt;executing static_foo(hi)&lt;/h1&gt;
 &lt;p&gt;```&lt;/p&gt;
-&lt;p&gt;Staticmethods are used to group functions which have some logical connection with a class to the class.&lt;/p&gt;</content><category term="Python"></category><category term="python"></category><category term="programming"></category><category term="linux"></category><category term="ubuntu"></category><category term="class"></category><category term="static"></category><category term="methods"></category></entry></feed>
+&lt;p&gt;Staticmethods are used to group functions which have some logical connection with a class to the class.&lt;/p&gt;</content><category term="Python"></category><category term="python"></category><category term="programming"></category><category term="linux"></category><category term="ubuntu"></category><category term="class"></category><category term="static"></category><category term="methods"></category></entry><entry><title>Python Automation Tricks with Shutil</title><link href="https://notes.craigderington.dev/python-automation-tricks-with-shutil.html" rel="alternate"></link><published>2025-07-12T09:45:00-04:00</published><updated>2025-07-12T09:45:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-12:/python-automation-tricks-with-shutil.html</id><summary type="html">&lt;p&gt;Manage your virtual environments with uv and pipx&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Python Automation Tricks with Shutil&lt;/h4&gt;
+&lt;p&gt;Python’s shutil library is a hidden gem for automating file and directory operations, often overlooked for its simplicity and power. It’s perfect for streamlining repetitive tasks like copying, moving, or cleaning up files, embodying Python’s clean, elegant ethos. Here’s a quick guide to shutil tricks for automation, with examples.&lt;/p&gt;
+&lt;h4&gt;Why Shutil?&lt;/h4&gt;
+&lt;p&gt;shutil (shell utilities) provides high-level file operations, surpassing os for tasks like copying directories or zipping files. It’s cross-platform and intuitive, ideal for automation scripts.&lt;/p&gt;
+&lt;h4&gt;Key Tricks&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Copy Files and Directories
+Copy a file or entire directory (including contents) effortlessly:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;shutil&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Copy a single file&lt;/span&gt;
+&lt;span class="n"&gt;shutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;source.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;destination.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Copy a directory and its contents&lt;/span&gt;
+&lt;span class="n"&gt;shutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copytree&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;src_folder&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dst_folder&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dirs_exist_ok&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Move Files
+Move files or directories, overwriting if needed:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;shutil.move(&amp;quot;old_location.txt&amp;quot;, &amp;quot;new_location.txt&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Delete Directories
+Remove a directory and all its contents (like rm -rf):&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;shutil.rmtree(&amp;quot;temp_folder&amp;quot;, ignore_errors=True)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create Zip Archives
+Zip a directory for backups or sharing:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;shutil.make_archive(&amp;quot;backup&amp;quot;, &amp;quot;zip&amp;quot;, &amp;quot;my_folder&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Disk Usage
+Check disk space before operations:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;total, used, free = shutil.disk_usage(&amp;quot;/&amp;quot;)
+print(f&amp;quot;Free space: {free // (2**30)} GB&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Automation Example: Organize Files&lt;/h4&gt;
+&lt;p&gt;Here’s a script to organize files by extension into folders:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;shutil&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;os&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;organize_files&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;listdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="n"&gt;ext&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;splitext&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ext&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="n"&gt;dest_dir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ext&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;makedirs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dest_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;exist_ok&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="n"&gt;shutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;move&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dest_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="n"&gt;organize_files&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;downloads&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This moves files like doc.pdf to a PDF folder, image.jpg to JPG, etc.&lt;/p&gt;
+&lt;h4&gt;Bonus: List Comprehension with Shutil&lt;/h4&gt;
+&lt;p&gt;Combine shutil with list comprehensions for concise automation. Example: Copy all .py files to a backup folder:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;shutil&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;glob&lt;/span&gt;
+
+&lt;span class="n"&gt;backup_dir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;backup_python&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;makedirs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;backup_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;exist_ok&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;shutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;backup_dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;glob&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;glob&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;*.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Why It’s Cool&lt;/h4&gt;
+&lt;p&gt;shutil simplifies file operations with minimal code, making automation scripts clean and maintainable. It’s perfect for quick tasks like organizing downloads, backing up projects, or checking disk space. Its intuitive methods reduce boilerplate, aligning with Python’s philosophy of simplicity.&lt;/p&gt;
+&lt;h4&gt;Pro Tip&lt;/h4&gt;
+&lt;p&gt;Pair shutil with pathlib for modern path handling:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;pathlib&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Path&lt;/span&gt;
+&lt;span class="n"&gt;shutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;source.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dest.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This keeps your automation scripts robust and readable.&lt;/p&gt;
+&lt;p&gt;Embrace shutil for file-handling automation—it’s the unsung hero of Python’s standard library, saving you from manual file chaos.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/library/shutil.html"&gt;shutil&lt;/a&gt;&lt;/p&gt;</content><category term="Python"></category><category term="python"></category><category term="programming"></category><category term="standard library"></category><category term="shutil"></category><category term="directory"></category><category term="operations"></category><category term="automation"></category></entry></feed>

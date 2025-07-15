@@ -158,7 +158,17 @@
 
   <div>
     <h4>Configure Apache as a Reverse Proxy with SSL</h4>
-<p>I like to use Apache as a reverse proxy especially for my Java Spring Boot apps.  The configuration syntax is familiar and I prefer Apache over Nginx.  Fire up your application running on localhost as whatever port you define.  Then create this Apache reverse proxy config and restart Apache.  </p>
+<p>I like to use Apache as a reverse proxy especially for my Java Spring Boot &amp; Python apps.  The configuration syntax is familiar and I prefer Apache over Nginx.  Fire up your application running on localhost and whatever port you have defined.  Next, create this Apache reverse proxy site configuration file, enable the site:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>a2ensite<span class="w"> </span>your-site-name
+</code></pre></div>
+
+<p>and then restart Apache.  </p>
+<div class="highlight"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">reload</span><span class="w"> </span><span class="n">apache2</span>
+<span class="o">-</span><span class="ow">or</span><span class="o">-</span>
+<span class="o">$</span><span class="n">sudo</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="n">restart</span><span class="w"> </span><span class="n">apache2</span>
+</code></pre></div>
+
+<p>Here is the contents of your-site-name.conf.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;VirtualHost</span> <span class="err">*:80</span><span class="nt">&gt;</span><span class="w"> </span>
 <span class="w">    </span>ServerName<span class="w"> </span>domain-name.tld<span class="w"> </span>
 <span class="w">    </span>ServerAlias<span class="w"> </span>domain-name.tld
