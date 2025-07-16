@@ -5,7 +5,7 @@ Category: Kubernetes
 Tags: docker, kubernetes, container management, orchestration, kubectl
 Slug: kubernetes-cheat-for-dummies
 Authors: Craig Derington
-Summary: 
+Summary: Because I can never remember all these terminal commands.
 
 #### Kubernetes Command Cheat Sheet
 

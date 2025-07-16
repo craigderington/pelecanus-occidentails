@@ -1389,7 +1389,247 @@ Nmap’s scripting engine is where the real fun begins. Check for vulnerabilitie
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This dumps results to myscan.txt for later bragging rights.&lt;/p&gt;
-&lt;p&gt;So, fire up Nmap, channel your inner network wizard, and give your devices a playful interrogation. Just don’t be surprised if your smart fridge starts pleading the Fifth.&lt;/p&gt;</content><category term="Networking"></category><category term="nmap"></category><category term="networking"></category><category term="linux"></category><category term="windows"></category><category term="mac"></category><category term="network utilities"></category><category term="network scan"></category><category term="open ports"></category></entry><entry><title>Docker Compose makes containers simple and fun</title><link href="https://notes.craigderington.dev/docker-compose-makes-containers-simple-and-fun.html" rel="alternate"></link><published>2025-06-18T08:45:00-04:00</published><updated>2025-06-19T14:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-06-18:/docker-compose-makes-containers-simple-and-fun.html</id><summary type="html">&lt;p&gt;Who's managing your containers?&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Docker Compose: Making Containers Simple and Fun!&lt;/h4&gt;
+&lt;p&gt;So, fire up Nmap, channel your inner network wizard, and give your devices a playful interrogation. Just don’t be surprised if your smart fridge starts pleading the Fifth.&lt;/p&gt;</content><category term="Networking"></category><category term="nmap"></category><category term="networking"></category><category term="linux"></category><category term="windows"></category><category term="mac"></category><category term="network utilities"></category><category term="network scan"></category><category term="open ports"></category></entry><entry><title>Kubernetes Cheatsheat</title><link href="https://notes.craigderington.dev/kubernetes-cheat-for-dummies.html" rel="alternate"></link><published>2025-06-22T12:45:00-04:00</published><updated>2025-06-23T14:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-06-22:/kubernetes-cheat-for-dummies.html</id><summary type="html">&lt;p&gt;Because I can never remember all these terminal commands.&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Kubernetes Command Cheat Sheet&lt;/h4&gt;
+&lt;p&gt;Containers, which are little app boxes, coexist and function together in Kubernetes, which is like to a magical toy box for apps. We utilize kubectl, a command-line utility that communicates with Kubernetes like a kind wizard, to control this box. Kubectl is your magic tool for managing pods, deploying apps, and assessing cluster health. Motivated by your passion for simple, useful tools, this primer enumerates key kubectl commands for Linux, Docker, and app developers (think Python, Java, and PostgreSQL). Let's explore the Kubernetes ecosystem!&lt;/p&gt;
+&lt;h4&gt;What’s Kubectl?&lt;/h4&gt;
+&lt;p&gt;Kubectl is your go-to tool for Kubernetes, ideal for Docker enthusiasts and Linux geeks. With only a few instructions, you can automate operations, debug apps, and manage your cluster. You have a neat and effective solution for your Notes site projects when you combine it with your craigderington Docker images for Python, Node.js, or Nginx.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Pro Tip: Set up autocomplete for faster typing:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;source &amp;lt;(kubectl completion bash)  # Add to ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Essential Kubectl Commands&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Cluster Management&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Check your cluster’s pulse or switch contexts for multi-cluster setups.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Version info: &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;kubectl version --short&lt;/code&gt;&lt;br /&gt;
+&lt;small&gt;Shows client and server Kubernetes versions.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Cluster info: &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;kubectl cluster-info&lt;/code&gt; &lt;br /&gt;
+&lt;small&gt;Displays control plane and service endpoints (e.g., KubeDNS).&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;List contexts: &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;kubectl config get-contexts&lt;/code&gt; &lt;br /&gt;
+&lt;small&gt;See available clusters and their namespaces.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Switch context:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;kubectl config use-context &amp;lt;context-name&amp;gt;&lt;/code&gt;&lt;br/&gt;
+&lt;small&gt;Jump between clusters.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Set namespace: &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;kubectl config set-context --current --namespace=&amp;lt;namespace&amp;gt;&lt;/code&gt; &lt;br /&gt;
+&lt;small&gt;Focus on a specific namespace.&lt;/small&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Namespace Management
+Namespaces keep your apps organized&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Create namespace: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl create namespace my-app-namepace
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;List namespaces: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl get namespaces.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Describe namespace: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl describe namespace my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Delete namespace: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl delete namespace my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Pod Management
+Pods are the smallest units, like containers running your Python or Java apps.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;List pods: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl get pods -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Detailed pod info: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl describe pod my-pod -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Pod logs: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl logs my-pod -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Run command in pod: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;kubectl&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;it&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;pod&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;n&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;app&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bash&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Create pod: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl run my-pod --image=craigderington/docker-python --restart=never
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Deployment Management&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Deployments manage pods, ensuring your app (e.g., a Java Spring Boot app) stays running.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Create deployment: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl create deployment my-app --image=craigderington/docker-node
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;List deployments: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl get deployments -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Scale deployment: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl scale deployment my-app --replicas=3 -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Update deployment: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl set image deployment/my-app my-app=craigderington/docker-python:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Rollback deployment: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl rollout undo deployment/my-app -n my-app 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Check rollout status: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl rollout status deployment/my-app -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Service Management&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Services let pods talk to each other or the outside world, like a network bridge.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Expose deployment: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;kubectl&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;expose&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;deployment&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;app&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nx"&gt;port&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;LoadBalancer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;n&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;app&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;List services:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl get services -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Describe service: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl describe service my-app -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Node Operations&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Nodes are the machines running your pods, like your Linux servers.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;List nodes: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl get nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Describe node: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl describe node my-node
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Cordon node: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl cordon my-node
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Un-cordon node: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl uncordon my-node
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Drain node: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl drain my-node --ignore-daemonsets
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;ConfigMaps and Secrets&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Store configs or sensitive data (e.g., PostgreSQL credentials) for your apps.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Create ConfigMap: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl create configmap app-config --from-literal=key=value -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Create Secret: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl create secret generic db-secret --from-literal=password=secret -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;List ConfigMaps: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl get configmaps -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Describe Secret:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl describe secret db-secret -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Resource Monitoring&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Keep an eye on resource usage for your Python or Java apps.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Node resources: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl top node
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Pod resources: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl top pod -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Events: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl get events -n my-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Declarative Management&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Use YAML files for reproducible setups, like your Docker Compose setups.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Apply file: &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;kubectl apply -f my-app.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Delete from file: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl delete -f my-app.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Example YAML for your Python &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;apiVersion&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;v1&lt;/span&gt;
+&lt;span class="n"&gt;kind&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Deployment&lt;/span&gt;
+&lt;span class="n"&gt;metadata&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="kd"&gt;namespace&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;
+&lt;span class="n"&gt;spec&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;replicas&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;selector&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;matchLabels&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;metadata&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;spec&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="n"&gt;containers&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;craigderington&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;ports&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;containerPort&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;5000&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Pro Tips&lt;/h4&gt;
+&lt;p&gt;Alias it: Add &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;alias kc=kubectl 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To your ~/.bashrc for shorter commands.&lt;/p&gt;
+&lt;p&gt;Debug trick: Use &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;kubectl debug pod/my-pod -n my-app 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To troubleshoot issues (e.g., network problems with your PostgreSQL container).&lt;/p&gt;
+&lt;p&gt;Save output: Use -o yaml &amp;gt; output.yaml to save resource configs for later.&lt;/p&gt;
+&lt;p&gt;Resources:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://kubernetes.io/docs/home/"&gt;Kubernetes Official&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.k8s.guide/overview/"&gt;K8s Guide&lt;/a&gt;&lt;/p&gt;</content><category term="Kubernetes"></category><category term="docker"></category><category term="kubernetes"></category><category term="container management"></category><category term="orchestration"></category><category term="kubectl"></category></entry><entry><title>Docker Compose makes containers simple and fun</title><link href="https://notes.craigderington.dev/docker-compose-makes-containers-simple-and-fun.html" rel="alternate"></link><published>2025-06-18T08:45:00-04:00</published><updated>2025-06-19T14:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-06-18:/docker-compose-makes-containers-simple-and-fun.html</id><summary type="html">&lt;p&gt;Who's managing your containers?&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Docker Compose: Making Containers Simple and Fun!&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="docker logo" src="images/docker-500x281.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Why Docker Compose?&lt;/p&gt;
 &lt;p&gt;Docker Compose uses a single file &lt;code&gt;docker-compose.yml&lt;/code&gt; to describe how multiple containers should work together. Instead of running lots of complicated Docker commands, you write one file, type docker-compose up, and boom—your app is running! It’s perfect for setting up apps with multiple parts, like a website, a database, and a helper tool, all talking to each other.&lt;/p&gt;
