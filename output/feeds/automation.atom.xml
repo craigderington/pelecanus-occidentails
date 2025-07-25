@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Linux Notebook - Automation</title><link href="https://notes.craigderington.dev/" rel="alternate"/><link href="https://notes.craigderington.dev/feeds/automation.atom.xml" rel="self"/><id>https://notes.craigderington.dev/</id><updated>2025-07-13T23:30:00-04:00</updated><subtitle>My Linux Notebook</subtitle><entry><title>n8n is automation simplified</title><link href="https://notes.craigderington.dev/n8n-is-automation-simplified.html" rel="alternate"/><published>2025-07-13T23:30:00-04:00</published><updated>2025-07-13T23:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/n8n-is-automation-simplified.html</id><summary type="html">&lt;p&gt;Automate All the Things&lt;/p&gt;</summary><content type="html">&lt;h3&gt;🛡️ n8n Workflow Backup Repository&lt;/h3&gt;
+&lt;p&gt;This repo is a dedicated vault for backing up and organizing n8n workflows, ensuring your automation masterpieces are safe, versioned, and ready to deploy. Built for n8n, the open-source automation platform, this repo focuses on preserving your workflows for data syncs, API integrations, and AI-driven tasks.&lt;/p&gt;
+&lt;p&gt;🎯 Purpose
+This repo backs up my personal n8n workflows, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Data Syncs: Automating data transfers between Google Sheets, Airtable, and CRMs like HubSpot.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;API Integrations: Connecting tools like Slack, Trello, and custom APIs for seamless workflows.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AI Workflows: Using LLMs (e.g., OpenAI) for content generation and data enrichment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;No Python scripts or dependencies are included—pure n8n JSON workflows and documentation.&lt;/p&gt;
+&lt;p&gt;📂 What's Inside?&lt;/p&gt;
+&lt;p&gt;/workflows: Stores .json workflow files, named clearly (e.g., sheets_to_hubspot_sync.json, slack_notification.json).&lt;/p&gt;
+&lt;p&gt;/docs: Markdown files detailing each workflow’s purpose, setup, and credentials needed.&lt;/p&gt;
+&lt;p&gt;🚀 Getting Started with n8n&lt;/p&gt;
+&lt;h4&gt;Option 1: Run n8n Locally&lt;/h4&gt;
+&lt;p&gt;Install Docker (if not already installed):
+Docker Installation Guide&lt;/p&gt;
+&lt;p&gt;Run n8n:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker run -it --rm -p 5678:5678 n8nio/n8n
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Open http://localhost:5678 in your browser to access the n8n Editor UI.&lt;/p&gt;
+&lt;h4&gt;Import workflows:&lt;/h4&gt;
+&lt;p&gt;Clone this repo:git clone https://github.com/craigderington/n8n-workflows.git&lt;/p&gt;
+&lt;p&gt;In n8n UI, go to Menu (☰) → Import Workflow.&lt;/p&gt;
+&lt;p&gt;Select a .json file from /workflows.&lt;/p&gt;
+&lt;p&gt;Configure credentials and activate.&lt;/p&gt;
+&lt;h4&gt;Option 2: Use n8n Cloud&lt;/h4&gt;
+&lt;p&gt;Sign up at n8n.io for a cloud instance.&lt;/p&gt;
+&lt;p&gt;Clone this repo:git clone https://github.com/craigderington/n8n-workflows.git&lt;/p&gt;
+&lt;p&gt;In the n8n Cloud UI, import workflows from /workflows as described above.
+Set up credentials for your connected apps.&lt;/p&gt;
+&lt;p&gt;🛡️ Best Practices&lt;/p&gt;
+&lt;p&gt;Test Workflows: Validate in a sandbox environment before production.
+Secure Credentials: Store API keys securely in n8n’s credential manager.
+Regular Backups: Manually export workflows from n8n UI and commit to this repo.
+Sanitize Inputs: For AI workflows, prevent prompt injection by validating inputs.&lt;/p&gt;
+&lt;p&gt;🌍 Contributing
+Want to share a workflow? &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add your .json workflow to /workflows with a descriptive name.&lt;/li&gt;
+&lt;li&gt;Create a markdown file in /docs explaining its setup and use case.&lt;/li&gt;
+&lt;li&gt;Submit a pull request!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;📜 License
+MIT License. Workflows are provided "as is."&lt;/p&gt;
+&lt;p&gt;Keep your automations safe and soar with n8n! 🦅&lt;/p&gt;</content><category term="Automation"/><category term="linux"/><category term="automation"/><category term="n8n"/><category term="events"/><category term="tasks"/><category term="api"/></entry></feed>

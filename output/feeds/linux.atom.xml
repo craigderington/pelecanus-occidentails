@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>My Linux Notebook - Linux</title><link href="https://notes.craigderington.dev/" rel="alternate"></link><link href="https://notes.craigderington.dev/feeds/linux.atom.xml" rel="self"></link><id>https://notes.craigderington.dev/</id><updated>2025-07-15T19:00:00-04:00</updated><subtitle>My Linux Notebook</subtitle><entry><title>Configure Apache as a Reverse Proxy</title><link href="https://notes.craigderington.dev/configure-apache-as-reverse-proxy-with-ssl.html" rel="alternate"></link><published>2025-07-15T19:00:00-04:00</published><updated>2025-07-15T19:00:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-15:/configure-apache-as-reverse-proxy-with-ssl.html</id><summary type="html">&lt;p&gt;Configure Apache as a Reverse Proxy&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Configure Apache as a Reverse Proxy with SSL&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Linux Notebook - Linux</title><link href="https://notes.craigderington.dev/" rel="alternate"/><link href="https://notes.craigderington.dev/feeds/linux.atom.xml" rel="self"/><id>https://notes.craigderington.dev/</id><updated>2025-07-15T19:00:00-04:00</updated><subtitle>My Linux Notebook</subtitle><entry><title>Configure Apache as a Reverse Proxy</title><link href="https://notes.craigderington.dev/configure-apache-as-reverse-proxy-with-ssl.html" rel="alternate"/><published>2025-07-15T19:00:00-04:00</published><updated>2025-07-15T19:00:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-15:/configure-apache-as-reverse-proxy-with-ssl.html</id><summary type="html">&lt;p&gt;Configure Apache as a Reverse Proxy&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Configure Apache as a Reverse Proxy with SSL&lt;/h4&gt;
 &lt;p&gt;I like to use Apache as a reverse proxy especially for my Java Spring Boot &amp;amp; Python apps.  The configuration syntax is familiar and I prefer Apache over Nginx.  Fire up your application running on localhost and whatever port you have defined.  Next, create this Apache reverse proxy site configuration file, enable the site:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;a2ensite&lt;span class="w"&gt; &lt;/span&gt;your-site-name
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -51,7 +51,7 @@
 &lt;span class="w"&gt;    &lt;/span&gt;CustomLog&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/application-name-ssl-access.log&lt;span class="w"&gt; &lt;/span&gt;combined
 
 &lt;span class="nt"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="apache2"></category><category term="web server"></category><category term="reverse proxy"></category><category term="configuration"></category></entry><entry><title>Tmux, the Terminal Multiplexer</title><link href="https://notes.craigderington.dev/tmux-the-terminal-multiplexer.html" rel="alternate"></link><published>2025-07-14T14:55:00-04:00</published><updated>2025-07-14T14:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/tmux-the-terminal-multiplexer.html</id><summary type="html">&lt;p&gt;Go Mouseless with Tmux, the terminal multiplexer...&lt;/p&gt;</summary><content type="html">&lt;h4&gt;TMUX&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"/><category term="linux"/><category term="apache2"/><category term="web server"/><category term="reverse proxy"/><category term="configuration"/></entry><entry><title>Tmux, the Terminal Multiplexer</title><link href="https://notes.craigderington.dev/tmux-the-terminal-multiplexer.html" rel="alternate"/><published>2025-07-14T14:55:00-04:00</published><updated>2025-07-14T14:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/tmux-the-terminal-multiplexer.html</id><summary type="html">&lt;p&gt;Go Mouseless with Tmux, the terminal multiplexer...&lt;/p&gt;</summary><content type="html">&lt;h4&gt;TMUX&lt;/h4&gt;
 &lt;p&gt;A Terminal Multiplexer&lt;/p&gt;
 &lt;p&gt;start new tmux session:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;tmux&lt;/code&gt;&lt;/p&gt;
@@ -182,7 +182,7 @@ t  big clock
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;unbind Up bind Up new-window -d -n tmp \; swap-pane -s tmp.1 \; select-window -t tmp
 unbind Down
 bind Down last-window \; swap-pane -s tmp.1 \; kill-window -t tmp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="ubuntu"></category><category term="command line"></category><category term="terminal"></category><category term="multiplexer"></category></entry><entry><title>Encrypt a Single File in Linux with OpenSSL</title><link href="https://notes.craigderington.dev/encrypt-a-single-file-in-ubuntu-with-openssl.html" rel="alternate"></link><published>2025-07-14T09:55:00-04:00</published><updated>2025-07-14T09:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/encrypt-a-single-file-in-ubuntu-with-openssl.html</id><summary type="html">&lt;p&gt;How to encrypt a single file in Linux using OpenSSL&lt;/p&gt;</summary><content type="html">&lt;h4&gt;ENCRYPT SINGLE FILE&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"/><category term="linux"/><category term="ubuntu"/><category term="command line"/><category term="terminal"/><category term="multiplexer"/></entry><entry><title>Encrypt a Single File in Linux with OpenSSL</title><link href="https://notes.craigderington.dev/encrypt-a-single-file-in-ubuntu-with-openssl.html" rel="alternate"/><published>2025-07-14T09:55:00-04:00</published><updated>2025-07-14T09:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/encrypt-a-single-file-in-ubuntu-with-openssl.html</id><summary type="html">&lt;p&gt;How to encrypt a single file in Linux using OpenSSL&lt;/p&gt;</summary><content type="html">&lt;h4&gt;ENCRYPT SINGLE FILE&lt;/h4&gt;
 &lt;p&gt;Encrypting a Single File in Ubuntu&lt;/p&gt;
 &lt;p&gt;Encrypt:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl aes-256-cdc &amp;lt; yourfile.txt &amp;gt; yourfile.txt.asc
@@ -196,7 +196,7 @@ openssl enc -d -aes-256-cbc -pass pass:the-encrypted-files-passphrase -p -in you
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl aes-256-cdc -d &amp;lt; yourfile.txt.asc &amp;gt; yourfile.txt.decrypted
 
 openssl enc -aes-256-cbc -pass pass:the-encrypted-files-passphrase -d -in yourfile.enc -out yourfile.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category><category term="openssl"></category><category term="encryption"></category><category term="decryption"></category></entry><entry><title>Supervisord</title><link href="https://notes.craigderington.dev/orchestrate-your-system-services-with-supervisor-d.html" rel="alternate"></link><published>2025-07-13T19:55:00-04:00</published><updated>2025-07-13T19:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/orchestrate-your-system-services-with-supervisor-d.html</id><summary type="html">&lt;p&gt;Orchestrate your Linux services with supervisord &amp;amp; systemd-monitor&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Supervisor&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"/><category term="linux"/><category term="command line"/><category term="useful commands"/><category term="openssl"/><category term="encryption"/><category term="decryption"/></entry><entry><title>Supervisord</title><link href="https://notes.craigderington.dev/orchestrate-your-system-services-with-supervisor-d.html" rel="alternate"/><published>2025-07-13T19:55:00-04:00</published><updated>2025-07-13T19:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/orchestrate-your-system-services-with-supervisor-d.html</id><summary type="html">&lt;p&gt;Orchestrate your Linux services with supervisord &amp;amp; systemd-monitor&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Supervisor&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get install -y supervisor
 service supervisor restart
 
@@ -288,7 +288,7 @@ sudo systemctl start supervisor
 
 &lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervised&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s priority higher so it starts first&lt;/span&gt;
 &lt;span class="n"&gt;priority&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;999&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category><category term="automation"></category><category term="systemd"></category><category term="supervisord"></category></entry><entry><title>50 Linux Commands I Use Regularly</title><link href="https://notes.craigderington.dev/50-linux-commands-i-use-on-the-regular.html" rel="alternate"></link><published>2025-07-10T19:55:00-04:00</published><updated>2025-07-10T19:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-10:/50-linux-commands-i-use-on-the-regular.html</id><summary type="html">&lt;p&gt;The top 50 Linux commands I use regularly.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;50 Linux Commands&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"/><category term="linux"/><category term="command line"/><category term="useful commands"/><category term="automation"/><category term="systemd"/><category term="supervisord"/></entry><entry><title>50 Linux Commands I Use Regularly</title><link href="https://notes.craigderington.dev/50-linux-commands-i-use-on-the-regular.html" rel="alternate"/><published>2025-07-10T19:55:00-04:00</published><updated>2025-07-10T19:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-10:/50-linux-commands-i-use-on-the-regular.html</id><summary type="html">&lt;p&gt;The top 50 Linux commands I use regularly.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;50 Linux Commands&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Terminal Commands To Check System Memory.&lt;/li&gt;
 &lt;/ol&gt;
@@ -809,4 +809,222 @@ To block a flood of incoming pings, do the following.&lt;/li&gt;
 • Press CTRL+l to open a location.
 • Use CTRL+up to open the parent directory.
 • Press arrow keys to navigate through folders.&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Linux"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category><category term="shell"></category><category term="terminal"></category></entry></feed>
+&lt;/ol&gt;</content><category term="Linux"/><category term="linux"/><category term="command line"/><category term="useful commands"/><category term="shell"/><category term="terminal"/></entry><entry><title>Cron, automation simplified.</title><link href="https://notes.craigderington.dev/mastering-cron-for-automation-success.html" rel="alternate"/><published>2025-07-01T12:30:00-04:00</published><updated>2025-07-01T12:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-01:/mastering-cron-for-automation-success.html</id><summary type="html">&lt;p&gt;Do you cron?&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Cron: My Automation Sidekick&lt;/h4&gt;
+&lt;p&gt;Linux’s cron is the trusty sidekick for scheduling tasks, like a robot butler that runs your scripts exactly when you want. It’s perfect for automating backups, monitoring, or running your Python and Docker apps (like those in your craigderington Docker Hub repo). While cron isn’t as obscure as some Linux tools, its flexibility and logging tricks are often underused. This post dives into cron’s scheduling magic, with examples of different schedules and tips for piping output to logs, keeping your Notes site practical and awesome.&lt;/p&gt;
+&lt;h4&gt;Why Cron?&lt;/h4&gt;
+&lt;p&gt;Cron schedules jobs to run at specific times or intervals, from hourly backups to daily cleanup scripts. It’s built into every Linux system, reliable, and simple, making it ideal for automating tasks like checking your Docker containers or syncing data.
+Setting Up Cron
+Cron jobs are defined in a crontab file. Edit yours with:
+crontab -e&lt;/p&gt;
+&lt;p&gt;This opens your user’s crontab in your default editor (e.g., nano or vim). Each line is a job with a schedule and command.
+Cron Schedule Basics
+A cron schedule has five fields: minute, hour, day of month, month, day of week. The format is:
+* * * * * /path/to/script.sh&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;means “every” (e.g., every minute if in the minute field).
+Numbers, ranges, or lists specify exact times.
+Special characters like / (step) or , (list) add flexibility.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Example Schedules
+1. Run Every Minute
+For testing or frequent tasks (e.g., checking a Docker container):
+* * * * * /bin/bash /scripts/check_docker.sh &amp;gt;&amp;gt; /logs/docker.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;p&gt;Runs every minute.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;/logs/docker.log 2&amp;gt;&amp;amp;1 appends stdout and stderr to docker.log.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Daily at Midnight
+Backup your craigderington/docker-python app data:
+0 0 * * * /bin/bash /scripts/backup.sh &amp;gt;&amp;gt; /logs/backup.log 2&amp;gt;&amp;amp;1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Runs at 00:00 (midnight) daily.
+Logs output to backup.log.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Every Weekday at 8 AM
+Run a Python script to process logs:
+0 8 * * 1-5 /usr/bin/python3 /scripts/process_logs.py &amp;gt;&amp;gt; /logs/process.log 2&amp;gt;&amp;amp;1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Runs at 08:00 Monday–Friday (1-5).
+Redirects output to process.log.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Every 15 Minutes
+Monitor system resources:
+*/15 * * * * /bin/bash /scripts/monitor.sh &amp;gt;&amp;gt; /logs/monitor.log 2&amp;gt;&amp;amp;1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Runs every 15 minutes (e.g., 00:15, 00:30).
+*/15 is a step value.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;First Day of Month
+Clear old Docker images:
+0 0 1 * * /usr/bin/docker system prune -f &amp;gt;&amp;gt; /logs/docker_prune.log 2&amp;gt;&amp;amp;1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Runs at 00:00 on the 1st of each month.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Specific Times (e.g., 9 AM and 5 PM)
+Run a Java app health check:
+0 9,17 * * * /usr/bin/java -jar /apps/healthcheck.jar &amp;gt;&amp;gt; /logs/healthcheck.log 2&amp;gt;&amp;amp;1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Runs at 09:00 and 17:00 daily.
+9,17 lists multiple hours.&lt;/p&gt;
+&lt;p&gt;Logging Output
+Piping output to logs is crucial for debugging and tracking. The &amp;gt;&amp;gt; appends output, while 2&amp;gt;&amp;amp;1 captures errors too. Example script (check_docker.sh):&lt;/p&gt;
+&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+&lt;p&gt;echo "Checking containers at $(date)"
+docker ps -q | grep craigderington/docker-nginx || echo "Nginx container down!"&lt;/p&gt;
+&lt;p&gt;Add to crontab:
+* * * * * /bin/bash /scripts/check_docker.sh &amp;gt;&amp;gt; /logs/docker.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;p&gt;Check the log:
+cat /logs/docker.log&lt;/p&gt;
+&lt;h1&gt;Output: Checking containers at Thu Jul 17 12:12:01 EDT 2025&lt;/h1&gt;
+&lt;p&gt;Advanced Features
+Environment Variables
+Cron has a minimal environment. Set variables in the crontab:
+PATH=/usr/local/bin:/usr/bin:/bin
+DOCKER_HOST=unix:///var/run/docker.sock
+0 * * * * /scripts/run_docker.sh &amp;gt;&amp;gt; /logs/docker.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;p&gt;This ensures your script can find docker or other tools.
+Special Schedules
+Use shortcuts for common schedules:&lt;/p&gt;
+&lt;p&gt;@daily: Same as 0 0 * * &lt;em&gt;.
+@hourly: Same as 0 * * * &lt;/em&gt;.
+@reboot: Runs once at system startup.Example: Clean temp files on reboot:&lt;/p&gt;
+&lt;p&gt;@reboot /bin/bash /scripts/clean_tmp.sh &amp;gt;&amp;gt; /logs/clean.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;p&gt;Error Notifications
+Send errors to email or a file. Add MAILTO to your crontab:
+MAILTO=admin@example.com
+0 0 * * * /scripts/backup.sh &amp;gt;&amp;gt; /logs/backup.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;p&gt;Or log only errors:
+0 0 * * * /scripts/backup.sh &amp;gt;/dev/null 2&amp;gt;&amp;gt;/logs/backup_errors.log&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;/dev/null: Discards stdout.
+2&amp;gt;&amp;gt;: Appends stderr to backup_errors.log.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Example: Full Backup Workflow
+Here’s a crontab for a backup system using your craigderington/docker-python image:&lt;/p&gt;
+&lt;h1&gt;Backup app data daily at 2 AM&lt;/h1&gt;
+&lt;p&gt;0 2 * * * /usr/bin/docker run --rm craigderington/docker-python /app/backup.py &amp;gt;&amp;gt; /logs/backup.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;h1&gt;Clean old backups weekly on Sunday&lt;/h1&gt;
+&lt;p&gt;0 0 * * 0 /bin/bash /scripts/clean_old_back elegir ups.sh &amp;gt;&amp;gt; /logs/cleanup.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;h1&gt;Notify on errors&lt;/h1&gt;
+&lt;p&gt;MAILTO=admin@example.com&lt;/p&gt;
+&lt;p&gt;backup.py might look like:
+import shutil
+import datetime
+shutil.make_archive(f"backup-{datetime.date.today()}", "zip", "/app/data")
+print(f"Backup created at {datetime.datetime.now()}")&lt;/p&gt;
+&lt;p&gt;Why Cron Shines
+Cron is the unsung hero of Linux automation. It’s dead simple, universally available, and perfect for scheduling tasks like monitoring your Docker containers, running Python scripts, or maintaining PostgreSQL databases. Logging ensures you can debug issues, while flexible schedules handle everything from minute-by-minute checks to monthly cleanups.
+Pro Tips&lt;/p&gt;
+&lt;p&gt;Test first: Run crontab -l to list and verify your jobs.
+Use absolute paths: Avoid errors with /usr/bin/python3 instead of python3.
+Lock files: Prevent overlapping jobs:# In script.sh
+[ -f /tmp/script.lock ] &amp;amp;&amp;amp; exit 1
+touch /tmp/script.lock&lt;/p&gt;
+&lt;h1&gt;Your code&lt;/h1&gt;
+&lt;p&gt;rm /tmp/script.lock&lt;/p&gt;
+&lt;p&gt;Check logs: Use grep CRON /var/log/syslog (or /var/log/cron) to debug cron issues.&lt;/p&gt;
+&lt;p&gt;Cron’s simplicity makes it a must-have for your Notes site, especially for automating tasks with your craigderington Docker images. Schedule, log, and relax—cron’s got your back!&lt;/p&gt;</content><category term="Linux"/><category term="cron"/><category term="scheduler"/><category term="task"/><category term="automation"/><category term="linux"/><category term="python"/><category term="bash"/></entry><entry><title>Don't at me, Bro!</title><link href="https://notes.craigderington.dev/the-one-hit-wonder-of-scheduled-automation.html" rel="alternate"/><published>2025-06-28T04:30:00-04:00</published><updated>2025-06-28T04:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-06-28:/the-one-hit-wonder-of-scheduled-automation.html</id><summary type="html">&lt;p&gt;Do this thing, then disappear.&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Linux at Command: The One-Hit Wonder of Automation&lt;/h4&gt;
+&lt;p&gt;Linux’s cron is the king of recurring tasks, but what about those one-time jobs you need to fire off at a specific moment? Enter at, the unsung hero of one-shot scheduling. It’s like setting a single alarm clock for your scripts, perfect for your Python apps, Docker cleanup, or PostgreSQL maintenance. While cron’s your daily driver, at is the sneaky sidekick for tasks you only need once. Here’s a quirky guide to using at for your Notes site, with examples to automate your craigderington Docker Hub workflows.&lt;/p&gt;
+&lt;h4&gt;Why at?&lt;/h4&gt;
+&lt;p&gt;at schedules a command to run once at a specified time, then disappears like a ninja. It’s lightweight, built into most Linux distros, and ideal for one-off tasks like backups, container restarts, or sending yourself a reminder to take a break. Unlike cron, no crontab editing—just a quick command and you’re done.
+Installing at
+Most distros have at pre-installed. If not:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt install at  # Debian/Ubuntu
+sudo dnf install at  # Fedora/RHEL
+sudo pacman -S at    # Arch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Start the atd daemon:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo systemctl enable --now atd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Basic Usage&lt;/h4&gt;
+&lt;p&gt;Run a command at a specific time:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at 3:30pm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This opens an interactive prompt. Type your command, then press Ctrl+D:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/bin/bash /scripts/backup.sh &amp;gt;&amp;gt; /logs/backup.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ascertain the time:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at now + 5 minutes 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;at executes five minutes from now. You can use natural language like 3:30pm or tomorrow or midnight.&lt;/p&gt;
+&lt;p&gt;Example 1: One-Time Docker Cleanup&lt;/p&gt;
+&lt;p&gt;Schedule a Docker cleanup for tonight:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at 11pm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then enter:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker run --rm craigderington/docker-python /app/cleanup.py &amp;gt;&amp;gt; /logs/cleanup.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This runs your craigderington/docker-python cleanup script once at 11:00 PM, removing unused images or containers.&lt;/p&gt;
+&lt;p&gt;Example 2: Delayed Python Report
+Generate a report at 6 AM tomorrow:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at 6am tomorrow
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then enter:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python3 /scripts/report.py &amp;gt;&amp;gt; /logs/report.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Your Python script (maybe from craigderington/docker-python) runs once, logging output for review.&lt;/p&gt;
+&lt;p&gt;Example 3: One-Off Nginx Restart&lt;/p&gt;
+&lt;p&gt;Restart your craigderington/docker-nginx container at 2 AM:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at 2am
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Enter:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker restart nginx-container &amp;gt;&amp;gt; /logs/nginx_restart.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Perfect for applying a config change without cron’s overhead.&lt;/p&gt;
+&lt;p&gt;Managing at Jobs&lt;/p&gt;
+&lt;p&gt;List jobs: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;atq
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;small&gt;Shows queued jobs with IDs.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Remove job: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;atrm &amp;lt;job-id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;small&gt;Cancels a job.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;View job details: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at -c &amp;lt;job-id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;small&gt;Displays a job’s commands.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Logging Output&lt;/p&gt;
+&lt;p&gt;Like cron, pipe output to logs for debugging:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at 8pm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Enter:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/usr/bin/java -jar /apps/healthcheck.jar &amp;gt;&amp;gt; /logs/healthcheck.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This logs your Java app’s health check, keeping your app's nice &amp;amp; tidy.&lt;/p&gt;
+&lt;h4&gt;Why at is Obscure&lt;/h4&gt;
+&lt;p&gt;Cron hogs the spotlight for recurring tasks, but at is perfect for one-time jobs like post-meeting scripts or temporary reminders. It’s simple, flexible, and doesn’t clutter your crontab. Use it to automate quick tasks with your craigderington Docker images without overthinking.&lt;/p&gt;
+&lt;h4&gt;Pro Tips&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Queue multiple commands: Add multiple lines in the at prompt before Ctrl+D.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Email notifications: Set MAILTO=admin@example.com in /etc/sysconfig/atd for job output emails.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Check status: Use systemctl status atd to ensure the daemon’s running.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;at is your one-hit wonder for Linux automation—simple, stealthy, and perfect for your Notes site’s quirky toolkit.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Linux"/><category term="automation"/><category term="cron"/><category term="at"/><category term="linux"/><category term="scheduled tasks"/></entry></feed>

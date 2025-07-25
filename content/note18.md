@@ -9,6 +9,10 @@ Summary: Because I can never remember all these terminal commands.
 
 #### Kubernetes Command Cheat Sheet
 
+![Kubernetes Official Logo](images/kubes-logo-1024x576.png)
+
+
+
 Containers, which are little app boxes, coexist and function together in Kubernetes, which is like to a magical toy box for apps. We utilize kubectl, a command-line utility that communicates with Kubernetes like a kind wizard, to control this box. Kubectl is your magic tool for managing pods, deploying apps, and assessing cluster health. Motivated by your passion for simple, useful tools, this primer enumerates key kubectl commands for Linux, Docker, and app developers (think Python, Java, and PostgreSQL). Let's explore the Kubernetes ecosystem!
 
 

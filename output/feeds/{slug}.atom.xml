@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>My Linux Notebook</title><link href="https://notes.craigderington.dev/" rel="alternate"></link><link href="https://notes.craigderington.dev/feeds/%7Bslug%7D.atom.xml" rel="self"></link><id>https://notes.craigderington.dev/</id><updated>2025-07-16T14:55:00-04:00</updated><subtitle>My Linux Notebook</subtitle><entry><title>Configure Apache as a Reverse Proxy</title><link href="https://notes.craigderington.dev/configure-apache-as-reverse-proxy-with-ssl.html" rel="alternate"></link><published>2025-07-15T19:00:00-04:00</published><updated>2025-07-15T19:00:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-15:/configure-apache-as-reverse-proxy-with-ssl.html</id><summary type="html">&lt;p&gt;Configure Apache as a Reverse Proxy&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Configure Apache as a Reverse Proxy with SSL&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Linux Notebook</title><link href="https://notes.craigderington.dev/" rel="alternate"/><link href="https://notes.craigderington.dev/feeds/%7Bslug%7D.atom.xml" rel="self"/><id>https://notes.craigderington.dev/</id><updated>2025-07-16T14:55:00-04:00</updated><subtitle>My Linux Notebook</subtitle><entry><title>Configure Apache as a Reverse Proxy</title><link href="https://notes.craigderington.dev/configure-apache-as-reverse-proxy-with-ssl.html" rel="alternate"/><published>2025-07-15T19:00:00-04:00</published><updated>2025-07-15T19:00:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-15:/configure-apache-as-reverse-proxy-with-ssl.html</id><summary type="html">&lt;p&gt;Configure Apache as a Reverse Proxy&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Configure Apache as a Reverse Proxy with SSL&lt;/h4&gt;
 &lt;p&gt;I like to use Apache as a reverse proxy especially for my Java Spring Boot &amp;amp; Python apps.  The configuration syntax is familiar and I prefer Apache over Nginx.  Fire up your application running on localhost and whatever port you have defined.  Next, create this Apache reverse proxy site configuration file, enable the site:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;a2ensite&lt;span class="w"&gt; &lt;/span&gt;your-site-name
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -51,7 +51,7 @@
 &lt;span class="w"&gt;    &lt;/span&gt;CustomLog&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/application-name-ssl-access.log&lt;span class="w"&gt; &lt;/span&gt;combined
 
 &lt;span class="nt"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="apache2"></category><category term="web server"></category><category term="reverse proxy"></category><category term="configuration"></category></entry><entry><title>Eagleson's Law</title><link href="https://notes.craigderington.dev/eaglesons-law-codes-rebellion-against-sanity.html" rel="alternate"></link><published>2025-07-15T09:00:00-04:00</published><updated>2025-07-15T09:00:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-15:/eaglesons-law-codes-rebellion-against-sanity.html</id><summary type="html">&lt;p&gt;Eagleson's Law&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Eagleson's Law&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"/><category term="linux"/><category term="apache2"/><category term="web server"/><category term="reverse proxy"/><category term="configuration"/></entry><entry><title>Eagleson's Law</title><link href="https://notes.craigderington.dev/eaglesons-law-codes-rebellion-against-sanity.html" rel="alternate"/><published>2025-07-15T09:00:00-04:00</published><updated>2025-07-15T09:00:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-15:/eaglesons-law-codes-rebellion-against-sanity.html</id><summary type="html">&lt;p&gt;Eagleson's Law&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Eagleson's Law&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Any code you have written that you have not looked at in 6 months or more might as well been written by someone else. &lt;/p&gt;
 &lt;/blockquote&gt;
@@ -63,7 +63,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Eagleson's Law encourages us to record as if we were describing it to a squirrel or a toddler. Make use of comments, distinct variable names, and perhaps a README with the words, "I apologize to the future me."&lt;/p&gt;
-&lt;p&gt;So, write code like you're writing a love letter to your forgetful future self, accept the ridiculousness, and giggle at the mayhem. Because that squirrel isn't helping.&lt;/p&gt;</content><category term="Programming"></category><category term="programming"></category><category term="humor"></category><category term="data scientist"></category></entry><entry><title>Manage Your Virtual Environments with uv and pipx</title><link href="https://notes.craigderington.dev/manage-python-virtual-environments-with-uv-pipx.html" rel="alternate"></link><published>2025-07-15T08:30:00-04:00</published><updated>2025-07-15T08:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-15:/manage-python-virtual-environments-with-uv-pipx.html</id><summary type="html">&lt;p&gt;Manage your virtual environments with uv and pipx&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Using uv and pipx for Python Virtual Environments&lt;/h4&gt;
+&lt;p&gt;So, write code like you're writing a love letter to your forgetful future self, accept the ridiculousness, and giggle at the mayhem. Because that squirrel isn't helping.&lt;/p&gt;</content><category term="Programming"/><category term="programming"/><category term="humor"/><category term="data scientist"/></entry><entry><title>Manage Your Virtual Environments with uv and pipx</title><link href="https://notes.craigderington.dev/manage-python-virtual-environments-with-uv-pipx.html" rel="alternate"/><published>2025-07-15T08:30:00-04:00</published><updated>2025-07-15T08:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-15:/manage-python-virtual-environments-with-uv-pipx.html</id><summary type="html">&lt;p&gt;Manage your virtual environments with uv and pipx&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Using uv and pipx for Python Virtual Environments&lt;/h4&gt;
 &lt;p&gt;Managing Python virtual environments efficiently is crucial for clean, isolated project setups. Two tools, uv and pipx, simplify this process. Here's a concise guide with examples.&lt;/p&gt;
 &lt;h4&gt;uv: Fast Virtual Environment Management&lt;/h4&gt;
 &lt;p&gt;uv is a lightweight, Rust-based tool for creating and managing Python virtual environments. It’s faster than venv and integrates package management seamlessly.&lt;/p&gt;
@@ -133,7 +133,7 @@ uv pip install flask
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Format code in the project:black myproject/&lt;/p&gt;
-&lt;p&gt;The Python environment is managed more efficiently with uv and pipx. While pipx maintains the accessibility and isolation of CLI tools, uv shines in project-specific environments with quick setup and package handling. When combined, they guarantee Python development that is clear and devoid of conflicts.&lt;/p&gt;</content><category term="Python"></category><category term="python"></category><category term="programming"></category><category term="uv"></category><category term="pipx"></category><category term="virtual"></category><category term="environments"></category><category term="pipfile"></category></entry><entry><title>Python's Static Methods vs. Class Methods</title><link href="https://notes.craigderington.dev/python-static-vs-class-methods.html" rel="alternate"></link><published>2025-07-14T16:55:00-04:00</published><updated>2025-07-16T14:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/python-static-vs-class-methods.html</id><summary type="html">&lt;p&gt;What's the difference between Python's static and class methods&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Python:  Class Method vs Static Method&lt;/h4&gt;
+&lt;p&gt;The Python environment is managed more efficiently with uv and pipx. While pipx maintains the accessibility and isolation of CLI tools, uv shines in project-specific environments with quick setup and package handling. When combined, they guarantee Python development that is clear and devoid of conflicts.&lt;/p&gt;</content><category term="Python"/><category term="python"/><category term="programming"/><category term="uv"/><category term="pipx"/><category term="virtual"/><category term="environments"/><category term="pipfile"/></entry><entry><title>Python's Static Methods vs. Class Methods</title><link href="https://notes.craigderington.dev/python-static-vs-class-methods.html" rel="alternate"/><published>2025-07-14T16:55:00-04:00</published><updated>2025-07-16T14:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/python-static-vs-class-methods.html</id><summary type="html">&lt;p&gt;What's the difference between Python's static and class methods&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Python:  Class Method vs Static Method&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;class&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;A&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;executing foo(%s,%s)&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -176,7 +176,7 @@ uv pip install flask
 &lt;p&gt;A.static_foo('hi')&lt;/p&gt;
 &lt;h1&gt;executing static_foo(hi)&lt;/h1&gt;
 &lt;p&gt;```&lt;/p&gt;
-&lt;p&gt;Staticmethods are used to group functions which have some logical connection with a class to the class.&lt;/p&gt;</content><category term="Python"></category><category term="python"></category><category term="programming"></category><category term="linux"></category><category term="ubuntu"></category><category term="class"></category><category term="static"></category><category term="methods"></category></entry><entry><title>Tmux, the Terminal Multiplexer</title><link href="https://notes.craigderington.dev/tmux-the-terminal-multiplexer.html" rel="alternate"></link><published>2025-07-14T14:55:00-04:00</published><updated>2025-07-14T14:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/tmux-the-terminal-multiplexer.html</id><summary type="html">&lt;p&gt;Go Mouseless with Tmux, the terminal multiplexer...&lt;/p&gt;</summary><content type="html">&lt;h4&gt;TMUX&lt;/h4&gt;
+&lt;p&gt;Staticmethods are used to group functions which have some logical connection with a class to the class.&lt;/p&gt;</content><category term="Python"/><category term="python"/><category term="programming"/><category term="linux"/><category term="ubuntu"/><category term="class"/><category term="static"/><category term="methods"/></entry><entry><title>Tmux, the Terminal Multiplexer</title><link href="https://notes.craigderington.dev/tmux-the-terminal-multiplexer.html" rel="alternate"/><published>2025-07-14T14:55:00-04:00</published><updated>2025-07-14T14:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/tmux-the-terminal-multiplexer.html</id><summary type="html">&lt;p&gt;Go Mouseless with Tmux, the terminal multiplexer...&lt;/p&gt;</summary><content type="html">&lt;h4&gt;TMUX&lt;/h4&gt;
 &lt;p&gt;A Terminal Multiplexer&lt;/p&gt;
 &lt;p&gt;start new tmux session:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;tmux&lt;/code&gt;&lt;/p&gt;
@@ -307,7 +307,7 @@ t  big clock
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;unbind Up bind Up new-window -d -n tmp \; swap-pane -s tmp.1 \; select-window -t tmp
 unbind Down
 bind Down last-window \; swap-pane -s tmp.1 \; kill-window -t tmp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="ubuntu"></category><category term="command line"></category><category term="terminal"></category><category term="multiplexer"></category></entry><entry><title>Simplifying Spring Boot with Maven's Dependency Management</title><link href="https://notes.craigderington.dev/simplifying-spring-boot-with-maven-dependency-management.html" rel="alternate"></link><published>2025-07-14T13:30:00-04:00</published><updated>2025-07-14T13:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/simplifying-spring-boot-with-maven-dependency-management.html</id><summary type="html">&lt;p&gt;Start your projects with the Spring Initialzer&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Simplifying Spring Boot with Maven's Dependency Management&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"/><category term="linux"/><category term="ubuntu"/><category term="command line"/><category term="terminal"/><category term="multiplexer"/></entry><entry><title>Simplifying Spring Boot with Maven's Dependency Management</title><link href="https://notes.craigderington.dev/simplifying-spring-boot-with-maven-dependency-management.html" rel="alternate"/><published>2025-07-14T13:30:00-04:00</published><updated>2025-07-14T13:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/simplifying-spring-boot-with-maven-dependency-management.html</id><summary type="html">&lt;p&gt;Start your projects with the Spring Initialzer&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Simplifying Spring Boot with Maven's Dependency Management&lt;/h4&gt;
 &lt;p&gt;Using Maven to manage dependencies in Spring Boot development can be like trying to herd cats. However, the dependencyManagement block in Maven is a straightforward, frequently disregarded feature that gives your project a Spring-like clean. &lt;/p&gt;
 &lt;p&gt;This gem keeps your pom.xml as clean as a Spring configuration, minimizes conflicts, and streamlines dependency versions.&lt;/p&gt;
 &lt;h4&gt;Dependency Management, Why?&lt;/h4&gt;
@@ -397,7 +397,7 @@ bind Down last-window \; swap-pane -s tmp.1 \; kill-window -t tmp
 &lt;p&gt;This imports all Spring Boot-managed versions without needing a parent POM, perfect for projects with custom parent configurations.
 Why It’s Simple and Clean&lt;/p&gt;
 &lt;p&gt;Like Spring’s philosophy, dependencyManagement reduces boilerplate and enforces consistency. It’s a small trick that saves time, prevents errors, and keeps your pom.xml as elegant as a well-crafted Spring service. Next time you’re wrestling with dependency hell, let dependencyManagement bring order to the chaos.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://start.spring.io/"&gt;Spring Intializer&lt;/a&gt;&lt;/p&gt;</content><category term="Java"></category><category term="java"></category><category term="spring boot"></category><category term="spring initializer"></category><category term="java beans"></category></entry><entry><title>GPG the Easy Way</title><link href="https://notes.craigderington.dev/gpg-the-easy-way.html" rel="alternate"></link><published>2025-07-14T12:55:00-04:00</published><updated>2025-07-14T12:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/gpg-the-easy-way.html</id><summary type="html">&lt;p&gt;Use GPG to Encrypt your Private Communications the Easy Way&lt;/p&gt;</summary><content type="html">&lt;h4&gt;GPG HowTo&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://start.spring.io/"&gt;Spring Intializer&lt;/a&gt;&lt;/p&gt;</content><category term="Java"/><category term="java"/><category term="spring boot"/><category term="spring initializer"/><category term="java beans"/></entry><entry><title>GPG the Easy Way</title><link href="https://notes.craigderington.dev/gpg-the-easy-way.html" rel="alternate"/><published>2025-07-14T12:55:00-04:00</published><updated>2025-07-14T12:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/gpg-the-easy-way.html</id><summary type="html">&lt;p&gt;Use GPG to Encrypt your Private Communications the Easy Way&lt;/p&gt;</summary><content type="html">&lt;h4&gt;GPG HowTo&lt;/h4&gt;
 &lt;p&gt;Generate a key-pair and answer the prompts&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;gpg --gen-key&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;To list your public keys:&lt;/p&gt;
@@ -437,7 +437,7 @@ This is how you would do it (note that all names used must be the names you see 
 &lt;p&gt;&lt;code&gt;gpg --output classifiedinfo.docx --decrypt /path/to/file/classifiedinfo.sig&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;gpg: Signature made 02/12/2016 15:39:05 Central African Time using DSA key ID A657BC83 gpg: Good signature from "Bob &amp;lt; bob@pgp.com &amp;gt;"&lt;/code&gt;&lt;/p&gt;
 &lt;h5&gt;Create a Digital Signature with a specific private key&lt;/h5&gt;
-&lt;p&gt;&lt;code&gt;gpg --local-user [fingerprint] --sign --armor --output somefile.tar.xz.asc --detach-sig somefile.tar.xz&lt;/code&gt;&lt;/p&gt;</content><category term="Crytpography"></category><category term="gpg"></category><category term="cryptography"></category><category term="linux"></category><category term="command line"></category><category term="encryption"></category></entry><entry><title>Encrypt a Single File in Linux with OpenSSL</title><link href="https://notes.craigderington.dev/encrypt-a-single-file-in-ubuntu-with-openssl.html" rel="alternate"></link><published>2025-07-14T09:55:00-04:00</published><updated>2025-07-14T09:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/encrypt-a-single-file-in-ubuntu-with-openssl.html</id><summary type="html">&lt;p&gt;How to encrypt a single file in Linux using OpenSSL&lt;/p&gt;</summary><content type="html">&lt;h4&gt;ENCRYPT SINGLE FILE&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;gpg --local-user [fingerprint] --sign --armor --output somefile.tar.xz.asc --detach-sig somefile.tar.xz&lt;/code&gt;&lt;/p&gt;</content><category term="Crytpography"/><category term="gpg"/><category term="cryptography"/><category term="linux"/><category term="command line"/><category term="encryption"/></entry><entry><title>Encrypt a Single File in Linux with OpenSSL</title><link href="https://notes.craigderington.dev/encrypt-a-single-file-in-ubuntu-with-openssl.html" rel="alternate"/><published>2025-07-14T09:55:00-04:00</published><updated>2025-07-14T09:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-14:/encrypt-a-single-file-in-ubuntu-with-openssl.html</id><summary type="html">&lt;p&gt;How to encrypt a single file in Linux using OpenSSL&lt;/p&gt;</summary><content type="html">&lt;h4&gt;ENCRYPT SINGLE FILE&lt;/h4&gt;
 &lt;p&gt;Encrypting a Single File in Ubuntu&lt;/p&gt;
 &lt;p&gt;Encrypt:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl aes-256-cdc &amp;lt; yourfile.txt &amp;gt; yourfile.txt.asc
@@ -451,7 +451,7 @@ openssl enc -d -aes-256-cbc -pass pass:the-encrypted-files-passphrase -p -in you
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl aes-256-cdc -d &amp;lt; yourfile.txt.asc &amp;gt; yourfile.txt.decrypted
 
 openssl enc -aes-256-cbc -pass pass:the-encrypted-files-passphrase -d -in yourfile.enc -out yourfile.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category><category term="openssl"></category><category term="encryption"></category><category term="decryption"></category></entry><entry><title>MySQL - Create a New Database User Account</title><link href="https://notes.craigderington.dev/create-a-new-user-in-mysql-database.html" rel="alternate"></link><published>2025-07-13T23:55:00-04:00</published><updated>2025-07-13T23:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/create-a-new-user-in-mysql-database.html</id><summary type="html">&lt;p&gt;Create a new MySQL User and Assign Privileges.&lt;/p&gt;</summary><content type="html">&lt;h4&gt;MySQL Users&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"/><category term="linux"/><category term="command line"/><category term="useful commands"/><category term="openssl"/><category term="encryption"/><category term="decryption"/></entry><entry><title>MySQL - Create a New Database User Account</title><link href="https://notes.craigderington.dev/create-a-new-user-in-mysql-database.html" rel="alternate"/><published>2025-07-13T23:55:00-04:00</published><updated>2025-07-13T23:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/create-a-new-user-in-mysql-database.html</id><summary type="html">&lt;p&gt;Create a new MySQL User and Assign Privileges.&lt;/p&gt;</summary><content type="html">&lt;h4&gt;MySQL Users&lt;/h4&gt;
 &lt;h5&gt;Create a NEW User&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;CREATE USER &amp;#39;newuser&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;;
 
@@ -486,7 +486,7 @@ GRANT ALL PRIVILEGES ON database_name.* TO &amp;#39;newuser&amp;#39;@&amp;#39;lo
 
 &lt;span class="n"&gt;mysql&lt;/span&gt;&amp;gt; &lt;span class="n"&gt;FLUSH&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt;;
 &lt;span class="n"&gt;Query&lt;/span&gt; &lt;span class="n"&gt;OK&lt;/span&gt;, &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;rows&lt;/span&gt; &lt;span class="n"&gt;affected&lt;/span&gt; (&lt;span class="mi"&gt;0&lt;/span&gt;,&lt;span class="mo"&gt;01&lt;/span&gt; &lt;span class="nb"&gt;sec&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MySQL"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category><category term="mysql"></category><category term="mysql-server"></category><category term="mysql-workbench"></category></entry><entry><title>MySQL - Event Scheduler</title><link href="https://notes.craigderington.dev/mysql-database-event-scheduler.html" rel="alternate"></link><published>2025-07-13T23:30:00-04:00</published><updated>2025-07-13T23:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/mysql-database-event-scheduler.html</id><summary type="html">&lt;p&gt;Create Events with the MySQL Event Scheduler&lt;/p&gt;</summary><content type="html">&lt;h5&gt;MYSQL EVENT SCHEDULER&lt;/h5&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MySQL"/><category term="linux"/><category term="command line"/><category term="useful commands"/><category term="mysql"/><category term="mysql-server"/><category term="mysql-workbench"/></entry><entry><title>MySQL - Event Scheduler</title><link href="https://notes.craigderington.dev/mysql-database-event-scheduler.html" rel="alternate"/><published>2025-07-13T23:30:00-04:00</published><updated>2025-07-13T23:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/mysql-database-event-scheduler.html</id><summary type="html">&lt;p&gt;Create Events with the MySQL Event Scheduler&lt;/p&gt;</summary><content type="html">&lt;h5&gt;MYSQL EVENT SCHEDULER&lt;/h5&gt;
 &lt;p&gt;MySQL Event Scheduler&lt;/p&gt;
 &lt;p&gt;View Scheduler Settings&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;select&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;@@global&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;event_scheduler&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -544,7 +544,59 @@ GRANT ALL PRIVILEGES ON database_name.* TO &amp;#39;newuser&amp;#39;@&amp;#39;lo
 &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;varchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;YES&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;NULL&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
 &lt;span class="o"&gt;+----------------+-------------+------+-----+---------+----------------+&lt;/span&gt;
 &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;rows&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sec&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MySQL"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category><category term="mysql"></category><category term="mysql-server"></category><category term="mysql-workbench"></category></entry><entry><title>Supervisord</title><link href="https://notes.craigderington.dev/orchestrate-your-system-services-with-supervisor-d.html" rel="alternate"></link><published>2025-07-13T19:55:00-04:00</published><updated>2025-07-13T19:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/orchestrate-your-system-services-with-supervisor-d.html</id><summary type="html">&lt;p&gt;Orchestrate your Linux services with supervisord &amp;amp; systemd-monitor&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Supervisor&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="MySQL"/><category term="linux"/><category term="command line"/><category term="useful commands"/><category term="mysql"/><category term="mysql-server"/><category term="mysql-workbench"/></entry><entry><title>n8n is automation simplified</title><link href="https://notes.craigderington.dev/n8n-is-automation-simplified.html" rel="alternate"/><published>2025-07-13T23:30:00-04:00</published><updated>2025-07-13T23:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/n8n-is-automation-simplified.html</id><summary type="html">&lt;p&gt;Automate All the Things&lt;/p&gt;</summary><content type="html">&lt;h3&gt;🛡️ n8n Workflow Backup Repository&lt;/h3&gt;
+&lt;p&gt;This repo is a dedicated vault for backing up and organizing n8n workflows, ensuring your automation masterpieces are safe, versioned, and ready to deploy. Built for n8n, the open-source automation platform, this repo focuses on preserving your workflows for data syncs, API integrations, and AI-driven tasks.&lt;/p&gt;
+&lt;p&gt;🎯 Purpose
+This repo backs up my personal n8n workflows, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Data Syncs: Automating data transfers between Google Sheets, Airtable, and CRMs like HubSpot.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;API Integrations: Connecting tools like Slack, Trello, and custom APIs for seamless workflows.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AI Workflows: Using LLMs (e.g., OpenAI) for content generation and data enrichment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;No Python scripts or dependencies are included—pure n8n JSON workflows and documentation.&lt;/p&gt;
+&lt;p&gt;📂 What's Inside?&lt;/p&gt;
+&lt;p&gt;/workflows: Stores .json workflow files, named clearly (e.g., sheets_to_hubspot_sync.json, slack_notification.json).&lt;/p&gt;
+&lt;p&gt;/docs: Markdown files detailing each workflow’s purpose, setup, and credentials needed.&lt;/p&gt;
+&lt;p&gt;🚀 Getting Started with n8n&lt;/p&gt;
+&lt;h4&gt;Option 1: Run n8n Locally&lt;/h4&gt;
+&lt;p&gt;Install Docker (if not already installed):
+Docker Installation Guide&lt;/p&gt;
+&lt;p&gt;Run n8n:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker run -it --rm -p 5678:5678 n8nio/n8n
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Open http://localhost:5678 in your browser to access the n8n Editor UI.&lt;/p&gt;
+&lt;h4&gt;Import workflows:&lt;/h4&gt;
+&lt;p&gt;Clone this repo:git clone https://github.com/craigderington/n8n-workflows.git&lt;/p&gt;
+&lt;p&gt;In n8n UI, go to Menu (☰) → Import Workflow.&lt;/p&gt;
+&lt;p&gt;Select a .json file from /workflows.&lt;/p&gt;
+&lt;p&gt;Configure credentials and activate.&lt;/p&gt;
+&lt;h4&gt;Option 2: Use n8n Cloud&lt;/h4&gt;
+&lt;p&gt;Sign up at n8n.io for a cloud instance.&lt;/p&gt;
+&lt;p&gt;Clone this repo:git clone https://github.com/craigderington/n8n-workflows.git&lt;/p&gt;
+&lt;p&gt;In the n8n Cloud UI, import workflows from /workflows as described above.
+Set up credentials for your connected apps.&lt;/p&gt;
+&lt;p&gt;🛡️ Best Practices&lt;/p&gt;
+&lt;p&gt;Test Workflows: Validate in a sandbox environment before production.
+Secure Credentials: Store API keys securely in n8n’s credential manager.
+Regular Backups: Manually export workflows from n8n UI and commit to this repo.
+Sanitize Inputs: For AI workflows, prevent prompt injection by validating inputs.&lt;/p&gt;
+&lt;p&gt;🌍 Contributing
+Want to share a workflow? &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add your .json workflow to /workflows with a descriptive name.&lt;/li&gt;
+&lt;li&gt;Create a markdown file in /docs explaining its setup and use case.&lt;/li&gt;
+&lt;li&gt;Submit a pull request!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;📜 License
+MIT License. Workflows are provided "as is."&lt;/p&gt;
+&lt;p&gt;Keep your automations safe and soar with n8n! 🦅&lt;/p&gt;</content><category term="Automation"/><category term="linux"/><category term="automation"/><category term="n8n"/><category term="events"/><category term="tasks"/><category term="api"/></entry><entry><title>Supervisord</title><link href="https://notes.craigderington.dev/orchestrate-your-system-services-with-supervisor-d.html" rel="alternate"/><published>2025-07-13T19:55:00-04:00</published><updated>2025-07-13T19:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/orchestrate-your-system-services-with-supervisor-d.html</id><summary type="html">&lt;p&gt;Orchestrate your Linux services with supervisord &amp;amp; systemd-monitor&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Supervisor&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get install -y supervisor
 service supervisor restart
 
@@ -636,7 +688,7 @@ sudo systemctl start supervisor
 
 &lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supervised&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s priority higher so it starts first&lt;/span&gt;
 &lt;span class="n"&gt;priority&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;999&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category><category term="automation"></category><category term="systemd"></category><category term="supervisord"></category></entry><entry><title>Things I Like to Do with Git</title><link href="https://notes.craigderington.dev/things-i-like-to-do-with-git.html" rel="alternate"></link><published>2025-07-13T16:55:00-04:00</published><updated>2025-07-13T16:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/things-i-like-to-do-with-git.html</id><summary type="html">&lt;p&gt;Git commands I use on the daily...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;THINGS I LIKE TO DO WITH GIT&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"/><category term="linux"/><category term="command line"/><category term="useful commands"/><category term="automation"/><category term="systemd"/><category term="supervisord"/></entry><entry><title>Things I Like to Do with Git</title><link href="https://notes.craigderington.dev/things-i-like-to-do-with-git.html" rel="alternate"/><published>2025-07-13T16:55:00-04:00</published><updated>2025-07-13T16:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-13:/things-i-like-to-do-with-git.html</id><summary type="html">&lt;p&gt;Git commands I use on the daily...&lt;/p&gt;</summary><content type="html">&lt;h2&gt;THINGS I LIKE TO DO WITH GIT&lt;/h2&gt;
 &lt;p&gt;Little Things I Like to Do with Git&lt;/p&gt;
 &lt;p&gt;Short Log&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;shortlog&lt;span class="w"&gt; &lt;/span&gt;-sn
@@ -705,7 +757,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;log&
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;--graph&lt;span class="w"&gt; &lt;/span&gt;--all&lt;span class="w"&gt; &lt;/span&gt;--decorate&lt;span class="w"&gt; &lt;/span&gt;--stat&lt;span class="w"&gt; &lt;/span&gt;--date&lt;span class="o"&gt;=&lt;/span&gt;iso
 
 --alias&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;graph
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Git"></category><category term="git"></category><category term="github"></category><category term="scm"></category><category term="linux"></category><category term="command line"></category><category term="source code management"></category></entry><entry><title>Python Automation Tricks with Shutil</title><link href="https://notes.craigderington.dev/python-automation-tricks-with-shutil.html" rel="alternate"></link><published>2025-07-12T09:45:00-04:00</published><updated>2025-07-12T09:45:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-12:/python-automation-tricks-with-shutil.html</id><summary type="html">&lt;p&gt;Manage your virtual environments with uv and pipx&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Python Automation Tricks with Shutil&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Git"/><category term="git"/><category term="github"/><category term="scm"/><category term="linux"/><category term="command line"/><category term="source code management"/></entry><entry><title>Python Automation Tricks with Shutil</title><link href="https://notes.craigderington.dev/python-automation-tricks-with-shutil.html" rel="alternate"/><published>2025-07-12T09:45:00-04:00</published><updated>2025-07-12T09:45:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-12:/python-automation-tricks-with-shutil.html</id><summary type="html">&lt;p&gt;Manage your virtual environments with uv and pipx&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Python Automation Tricks with Shutil&lt;/h4&gt;
 &lt;p&gt;Python’s shutil library is a hidden gem for automating file and directory operations, often overlooked for its simplicity and power. It’s perfect for streamlining repetitive tasks like copying, moving, or cleaning up files, embodying Python’s clean, elegant ethos. Here’s a quick guide to shutil tricks for automation, with examples.&lt;/p&gt;
 &lt;h4&gt;Why Shutil?&lt;/h4&gt;
 &lt;p&gt;shutil (shell utilities) provides high-level file operations, surpassing os for tasks like copying directories or zipping files. It’s cross-platform and intuitive, ideal for automation scripts.&lt;/p&gt;
@@ -790,7 +842,7 @@ print(f&amp;quot;Free space: {free // (2**30)} GB&amp;quot;)
 
 &lt;p&gt;This keeps your automation scripts robust and readable.&lt;/p&gt;
 &lt;p&gt;Embrace shutil for file-handling automation—it’s the unsung hero of Python’s standard library, saving you from manual file chaos.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://docs.python.org/3/library/shutil.html"&gt;shutil&lt;/a&gt;&lt;/p&gt;</content><category term="Python"></category><category term="python"></category><category term="programming"></category><category term="standard library"></category><category term="shutil"></category><category term="directory"></category><category term="operations"></category><category term="automation"></category></entry><entry><title>50 Linux Commands I Use Regularly</title><link href="https://notes.craigderington.dev/50-linux-commands-i-use-on-the-regular.html" rel="alternate"></link><published>2025-07-10T19:55:00-04:00</published><updated>2025-07-10T19:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-10:/50-linux-commands-i-use-on-the-regular.html</id><summary type="html">&lt;p&gt;The top 50 Linux commands I use regularly.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;50 Linux Commands&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://docs.python.org/3/library/shutil.html"&gt;shutil&lt;/a&gt;&lt;/p&gt;</content><category term="Python"/><category term="python"/><category term="programming"/><category term="standard library"/><category term="shutil"/><category term="directory"/><category term="operations"/><category term="automation"/></entry><entry><title>50 Linux Commands I Use Regularly</title><link href="https://notes.craigderington.dev/50-linux-commands-i-use-on-the-regular.html" rel="alternate"/><published>2025-07-10T19:55:00-04:00</published><updated>2025-07-10T19:55:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-10:/50-linux-commands-i-use-on-the-regular.html</id><summary type="html">&lt;p&gt;The top 50 Linux commands I use regularly.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;50 Linux Commands&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Terminal Commands To Check System Memory.&lt;/li&gt;
 &lt;/ol&gt;
@@ -1311,7 +1363,124 @@ To block a flood of incoming pings, do the following.&lt;/li&gt;
 • Press CTRL+l to open a location.
 • Use CTRL+up to open the parent directory.
 • Press arrow keys to navigate through folders.&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Linux"></category><category term="linux"></category><category term="command line"></category><category term="useful commands"></category><category term="shell"></category><category term="terminal"></category></entry><entry><title>Your Home Network's Nosy Neighbor</title><link href="https://notes.craigderington.dev/nmap-the-swiss-army-knife-of-network-tools.html" rel="alternate"></link><published>2025-07-01T12:30:00-04:00</published><updated>2025-07-01T12:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-01:/nmap-the-swiss-army-knife-of-network-tools.html</id><summary type="html">&lt;p&gt;Who's sniffing your network?&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Nmap: Your Home Network’s Nosy Neighbor&lt;/h4&gt;
+&lt;/ol&gt;</content><category term="Linux"/><category term="linux"/><category term="command line"/><category term="useful commands"/><category term="shell"/><category term="terminal"/></entry><entry><title>Cron, automation simplified.</title><link href="https://notes.craigderington.dev/mastering-cron-for-automation-success.html" rel="alternate"/><published>2025-07-01T12:30:00-04:00</published><updated>2025-07-01T12:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-01:/mastering-cron-for-automation-success.html</id><summary type="html">&lt;p&gt;Do you cron?&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Cron: My Automation Sidekick&lt;/h4&gt;
+&lt;p&gt;Linux’s cron is the trusty sidekick for scheduling tasks, like a robot butler that runs your scripts exactly when you want. It’s perfect for automating backups, monitoring, or running your Python and Docker apps (like those in your craigderington Docker Hub repo). While cron isn’t as obscure as some Linux tools, its flexibility and logging tricks are often underused. This post dives into cron’s scheduling magic, with examples of different schedules and tips for piping output to logs, keeping your Notes site practical and awesome.&lt;/p&gt;
+&lt;h4&gt;Why Cron?&lt;/h4&gt;
+&lt;p&gt;Cron schedules jobs to run at specific times or intervals, from hourly backups to daily cleanup scripts. It’s built into every Linux system, reliable, and simple, making it ideal for automating tasks like checking your Docker containers or syncing data.
+Setting Up Cron
+Cron jobs are defined in a crontab file. Edit yours with:
+crontab -e&lt;/p&gt;
+&lt;p&gt;This opens your user’s crontab in your default editor (e.g., nano or vim). Each line is a job with a schedule and command.
+Cron Schedule Basics
+A cron schedule has five fields: minute, hour, day of month, month, day of week. The format is:
+* * * * * /path/to/script.sh&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;means “every” (e.g., every minute if in the minute field).
+Numbers, ranges, or lists specify exact times.
+Special characters like / (step) or , (list) add flexibility.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Example Schedules
+1. Run Every Minute
+For testing or frequent tasks (e.g., checking a Docker container):
+* * * * * /bin/bash /scripts/check_docker.sh &amp;gt;&amp;gt; /logs/docker.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;p&gt;Runs every minute.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;/logs/docker.log 2&amp;gt;&amp;amp;1 appends stdout and stderr to docker.log.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Daily at Midnight
+Backup your craigderington/docker-python app data:
+0 0 * * * /bin/bash /scripts/backup.sh &amp;gt;&amp;gt; /logs/backup.log 2&amp;gt;&amp;amp;1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Runs at 00:00 (midnight) daily.
+Logs output to backup.log.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Every Weekday at 8 AM
+Run a Python script to process logs:
+0 8 * * 1-5 /usr/bin/python3 /scripts/process_logs.py &amp;gt;&amp;gt; /logs/process.log 2&amp;gt;&amp;amp;1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Runs at 08:00 Monday–Friday (1-5).
+Redirects output to process.log.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Every 15 Minutes
+Monitor system resources:
+*/15 * * * * /bin/bash /scripts/monitor.sh &amp;gt;&amp;gt; /logs/monitor.log 2&amp;gt;&amp;amp;1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Runs every 15 minutes (e.g., 00:15, 00:30).
+*/15 is a step value.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;First Day of Month
+Clear old Docker images:
+0 0 1 * * /usr/bin/docker system prune -f &amp;gt;&amp;gt; /logs/docker_prune.log 2&amp;gt;&amp;amp;1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Runs at 00:00 on the 1st of each month.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Specific Times (e.g., 9 AM and 5 PM)
+Run a Java app health check:
+0 9,17 * * * /usr/bin/java -jar /apps/healthcheck.jar &amp;gt;&amp;gt; /logs/healthcheck.log 2&amp;gt;&amp;amp;1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Runs at 09:00 and 17:00 daily.
+9,17 lists multiple hours.&lt;/p&gt;
+&lt;p&gt;Logging Output
+Piping output to logs is crucial for debugging and tracking. The &amp;gt;&amp;gt; appends output, while 2&amp;gt;&amp;amp;1 captures errors too. Example script (check_docker.sh):&lt;/p&gt;
+&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+&lt;p&gt;echo "Checking containers at $(date)"
+docker ps -q | grep craigderington/docker-nginx || echo "Nginx container down!"&lt;/p&gt;
+&lt;p&gt;Add to crontab:
+* * * * * /bin/bash /scripts/check_docker.sh &amp;gt;&amp;gt; /logs/docker.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;p&gt;Check the log:
+cat /logs/docker.log&lt;/p&gt;
+&lt;h1&gt;Output: Checking containers at Thu Jul 17 12:12:01 EDT 2025&lt;/h1&gt;
+&lt;p&gt;Advanced Features
+Environment Variables
+Cron has a minimal environment. Set variables in the crontab:
+PATH=/usr/local/bin:/usr/bin:/bin
+DOCKER_HOST=unix:///var/run/docker.sock
+0 * * * * /scripts/run_docker.sh &amp;gt;&amp;gt; /logs/docker.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;p&gt;This ensures your script can find docker or other tools.
+Special Schedules
+Use shortcuts for common schedules:&lt;/p&gt;
+&lt;p&gt;@daily: Same as 0 0 * * &lt;em&gt;.
+@hourly: Same as 0 * * * &lt;/em&gt;.
+@reboot: Runs once at system startup.Example: Clean temp files on reboot:&lt;/p&gt;
+&lt;p&gt;@reboot /bin/bash /scripts/clean_tmp.sh &amp;gt;&amp;gt; /logs/clean.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;p&gt;Error Notifications
+Send errors to email or a file. Add MAILTO to your crontab:
+MAILTO=admin@example.com
+0 0 * * * /scripts/backup.sh &amp;gt;&amp;gt; /logs/backup.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;p&gt;Or log only errors:
+0 0 * * * /scripts/backup.sh &amp;gt;/dev/null 2&amp;gt;&amp;gt;/logs/backup_errors.log&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;/dev/null: Discards stdout.
+2&amp;gt;&amp;gt;: Appends stderr to backup_errors.log.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Example: Full Backup Workflow
+Here’s a crontab for a backup system using your craigderington/docker-python image:&lt;/p&gt;
+&lt;h1&gt;Backup app data daily at 2 AM&lt;/h1&gt;
+&lt;p&gt;0 2 * * * /usr/bin/docker run --rm craigderington/docker-python /app/backup.py &amp;gt;&amp;gt; /logs/backup.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;h1&gt;Clean old backups weekly on Sunday&lt;/h1&gt;
+&lt;p&gt;0 0 * * 0 /bin/bash /scripts/clean_old_back elegir ups.sh &amp;gt;&amp;gt; /logs/cleanup.log 2&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;h1&gt;Notify on errors&lt;/h1&gt;
+&lt;p&gt;MAILTO=admin@example.com&lt;/p&gt;
+&lt;p&gt;backup.py might look like:
+import shutil
+import datetime
+shutil.make_archive(f"backup-{datetime.date.today()}", "zip", "/app/data")
+print(f"Backup created at {datetime.datetime.now()}")&lt;/p&gt;
+&lt;p&gt;Why Cron Shines
+Cron is the unsung hero of Linux automation. It’s dead simple, universally available, and perfect for scheduling tasks like monitoring your Docker containers, running Python scripts, or maintaining PostgreSQL databases. Logging ensures you can debug issues, while flexible schedules handle everything from minute-by-minute checks to monthly cleanups.
+Pro Tips&lt;/p&gt;
+&lt;p&gt;Test first: Run crontab -l to list and verify your jobs.
+Use absolute paths: Avoid errors with /usr/bin/python3 instead of python3.
+Lock files: Prevent overlapping jobs:# In script.sh
+[ -f /tmp/script.lock ] &amp;amp;&amp;amp; exit 1
+touch /tmp/script.lock&lt;/p&gt;
+&lt;h1&gt;Your code&lt;/h1&gt;
+&lt;p&gt;rm /tmp/script.lock&lt;/p&gt;
+&lt;p&gt;Check logs: Use grep CRON /var/log/syslog (or /var/log/cron) to debug cron issues.&lt;/p&gt;
+&lt;p&gt;Cron’s simplicity makes it a must-have for your Notes site, especially for automating tasks with your craigderington Docker images. Schedule, log, and relax—cron’s got your back!&lt;/p&gt;</content><category term="Linux"/><category term="cron"/><category term="scheduler"/><category term="task"/><category term="automation"/><category term="linux"/><category term="python"/><category term="bash"/></entry><entry><title>Your Home Network's Nosy Neighbor</title><link href="https://notes.craigderington.dev/nmap-the-swiss-army-knife-of-network-tools.html" rel="alternate"/><published>2025-07-01T12:30:00-04:00</published><updated>2025-07-01T12:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-07-01:/nmap-the-swiss-army-knife-of-network-tools.html</id><summary type="html">&lt;p&gt;Who's sniffing your network?&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Nmap: Your Home Network’s Nosy Neighbor&lt;/h4&gt;
 &lt;p&gt;Have you ever wondered who is using your Wi-Fi excessively or what sly gadgets are on your home network? Here comes Nmap, the heroic network scanner that is half prankster and half detective. It is like to wearing a wizard hat and conducting a lie detector test on your router. This humorous guide will show you how to use Nmap to scan your home network. It's full with entertaining examples that will make you the coolest nerd in town.&lt;/p&gt;
 &lt;p&gt;&lt;small&gt;* Disclaimer: Only scan networks you own or have permission to poke. Nmap is powerful, not a free pass to snoop on your neighbor’s smart fridge.&lt;/small&gt;&lt;/p&gt;
 &lt;h4&gt;Why Nmap?&lt;/h4&gt;
@@ -1389,7 +1558,108 @@ Nmap’s scripting engine is where the real fun begins. Check for vulnerabilitie
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This dumps results to myscan.txt for later bragging rights.&lt;/p&gt;
-&lt;p&gt;So, fire up Nmap, channel your inner network wizard, and give your devices a playful interrogation. Just don’t be surprised if your smart fridge starts pleading the Fifth.&lt;/p&gt;</content><category term="Networking"></category><category term="nmap"></category><category term="networking"></category><category term="linux"></category><category term="windows"></category><category term="mac"></category><category term="network utilities"></category><category term="network scan"></category><category term="open ports"></category></entry><entry><title>Kubernetes Cheatsheat</title><link href="https://notes.craigderington.dev/kubernetes-cheat-for-dummies.html" rel="alternate"></link><published>2025-06-22T12:45:00-04:00</published><updated>2025-06-23T14:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-06-22:/kubernetes-cheat-for-dummies.html</id><summary type="html">&lt;p&gt;Because I can never remember all these terminal commands.&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Kubernetes Command Cheat Sheet&lt;/h4&gt;
+&lt;p&gt;So, fire up Nmap, channel your inner network wizard, and give your devices a playful interrogation. Just don’t be surprised if your smart fridge starts pleading the Fifth.&lt;/p&gt;</content><category term="Networking"/><category term="nmap"/><category term="networking"/><category term="linux"/><category term="windows"/><category term="mac"/><category term="network utilities"/><category term="network scan"/><category term="open ports"/></entry><entry><title>Don't at me, Bro!</title><link href="https://notes.craigderington.dev/the-one-hit-wonder-of-scheduled-automation.html" rel="alternate"/><published>2025-06-28T04:30:00-04:00</published><updated>2025-06-28T04:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-06-28:/the-one-hit-wonder-of-scheduled-automation.html</id><summary type="html">&lt;p&gt;Do this thing, then disappear.&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Linux at Command: The One-Hit Wonder of Automation&lt;/h4&gt;
+&lt;p&gt;Linux’s cron is the king of recurring tasks, but what about those one-time jobs you need to fire off at a specific moment? Enter at, the unsung hero of one-shot scheduling. It’s like setting a single alarm clock for your scripts, perfect for your Python apps, Docker cleanup, or PostgreSQL maintenance. While cron’s your daily driver, at is the sneaky sidekick for tasks you only need once. Here’s a quirky guide to using at for your Notes site, with examples to automate your craigderington Docker Hub workflows.&lt;/p&gt;
+&lt;h4&gt;Why at?&lt;/h4&gt;
+&lt;p&gt;at schedules a command to run once at a specified time, then disappears like a ninja. It’s lightweight, built into most Linux distros, and ideal for one-off tasks like backups, container restarts, or sending yourself a reminder to take a break. Unlike cron, no crontab editing—just a quick command and you’re done.
+Installing at
+Most distros have at pre-installed. If not:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt install at  # Debian/Ubuntu
+sudo dnf install at  # Fedora/RHEL
+sudo pacman -S at    # Arch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Start the atd daemon:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo systemctl enable --now atd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Basic Usage&lt;/h4&gt;
+&lt;p&gt;Run a command at a specific time:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at 3:30pm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This opens an interactive prompt. Type your command, then press Ctrl+D:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/bin/bash /scripts/backup.sh &amp;gt;&amp;gt; /logs/backup.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ascertain the time:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at now + 5 minutes 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;at executes five minutes from now. You can use natural language like 3:30pm or tomorrow or midnight.&lt;/p&gt;
+&lt;p&gt;Example 1: One-Time Docker Cleanup&lt;/p&gt;
+&lt;p&gt;Schedule a Docker cleanup for tonight:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at 11pm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then enter:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker run --rm craigderington/docker-python /app/cleanup.py &amp;gt;&amp;gt; /logs/cleanup.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This runs your craigderington/docker-python cleanup script once at 11:00 PM, removing unused images or containers.&lt;/p&gt;
+&lt;p&gt;Example 2: Delayed Python Report
+Generate a report at 6 AM tomorrow:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at 6am tomorrow
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then enter:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python3 /scripts/report.py &amp;gt;&amp;gt; /logs/report.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Your Python script (maybe from craigderington/docker-python) runs once, logging output for review.&lt;/p&gt;
+&lt;p&gt;Example 3: One-Off Nginx Restart&lt;/p&gt;
+&lt;p&gt;Restart your craigderington/docker-nginx container at 2 AM:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at 2am
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Enter:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker restart nginx-container &amp;gt;&amp;gt; /logs/nginx_restart.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Perfect for applying a config change without cron’s overhead.&lt;/p&gt;
+&lt;p&gt;Managing at Jobs&lt;/p&gt;
+&lt;p&gt;List jobs: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;atq
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;small&gt;Shows queued jobs with IDs.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Remove job: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;atrm &amp;lt;job-id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;small&gt;Cancels a job.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;View job details: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at -c &amp;lt;job-id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;small&gt;Displays a job’s commands.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Logging Output&lt;/p&gt;
+&lt;p&gt;Like cron, pipe output to logs for debugging:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;at 8pm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Enter:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/usr/bin/java -jar /apps/healthcheck.jar &amp;gt;&amp;gt; /logs/healthcheck.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This logs your Java app’s health check, keeping your app's nice &amp;amp; tidy.&lt;/p&gt;
+&lt;h4&gt;Why at is Obscure&lt;/h4&gt;
+&lt;p&gt;Cron hogs the spotlight for recurring tasks, but at is perfect for one-time jobs like post-meeting scripts or temporary reminders. It’s simple, flexible, and doesn’t clutter your crontab. Use it to automate quick tasks with your craigderington Docker images without overthinking.&lt;/p&gt;
+&lt;h4&gt;Pro Tips&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Queue multiple commands: Add multiple lines in the at prompt before Ctrl+D.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Email notifications: Set MAILTO=admin@example.com in /etc/sysconfig/atd for job output emails.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Check status: Use systemctl status atd to ensure the daemon’s running.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;at is your one-hit wonder for Linux automation—simple, stealthy, and perfect for your Notes site’s quirky toolkit.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Linux"/><category term="automation"/><category term="cron"/><category term="at"/><category term="linux"/><category term="scheduled tasks"/></entry><entry><title>Kubernetes Cheatsheat</title><link href="https://notes.craigderington.dev/kubernetes-cheat-for-dummies.html" rel="alternate"/><published>2025-06-22T12:45:00-04:00</published><updated>2025-06-23T14:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-06-22:/kubernetes-cheat-for-dummies.html</id><summary type="html">&lt;p&gt;Because I can never remember all these terminal commands.&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Kubernetes Command Cheat Sheet&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="Kubernetes Official Logo" src="images/kubes-logo-1024x576.png"&gt;&lt;/p&gt;
 &lt;p&gt;Containers, which are little app boxes, coexist and function together in Kubernetes, which is like to a magical toy box for apps. We utilize kubectl, a command-line utility that communicates with Kubernetes like a kind wizard, to control this box. Kubectl is your magic tool for managing pods, deploying apps, and assessing cluster health. Motivated by your passion for simple, useful tools, this primer enumerates key kubectl commands for Linux, Docker, and app developers (think Python, Java, and PostgreSQL). Let's explore the Kubernetes ecosystem!&lt;/p&gt;
 &lt;h4&gt;What’s Kubectl?&lt;/h4&gt;
@@ -1630,7 +1900,7 @@ Pods are the smallest units, like containers running your Python or Java apps.&l
 &lt;p&gt;Save output: Use -o yaml &amp;gt; output.yaml to save resource configs for later.&lt;/p&gt;
 &lt;p&gt;Resources:&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://kubernetes.io/docs/home/"&gt;Kubernetes Official&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.k8s.guide/overview/"&gt;K8s Guide&lt;/a&gt;&lt;/p&gt;</content><category term="Kubernetes"></category><category term="docker"></category><category term="kubernetes"></category><category term="container management"></category><category term="orchestration"></category><category term="kubectl"></category></entry><entry><title>Docker Compose makes containers simple and fun</title><link href="https://notes.craigderington.dev/docker-compose-makes-containers-simple-and-fun.html" rel="alternate"></link><published>2025-06-18T08:45:00-04:00</published><updated>2025-06-19T14:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-06-18:/docker-compose-makes-containers-simple-and-fun.html</id><summary type="html">&lt;p&gt;Who's managing your containers?&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Docker Compose: Making Containers Simple and Fun!&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://www.k8s.guide/overview/"&gt;K8s Guide&lt;/a&gt;&lt;/p&gt;</content><category term="Kubernetes"/><category term="docker"/><category term="kubernetes"/><category term="container management"/><category term="orchestration"/><category term="kubectl"/></entry><entry><title>Docker Compose makes containers simple and fun</title><link href="https://notes.craigderington.dev/docker-compose-makes-containers-simple-and-fun.html" rel="alternate"/><published>2025-06-18T08:45:00-04:00</published><updated>2025-06-19T14:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-06-18:/docker-compose-makes-containers-simple-and-fun.html</id><summary type="html">&lt;p&gt;Who's managing your containers?&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Docker Compose: Making Containers Simple and Fun!&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="docker logo" src="images/docker-500x281.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Why Docker Compose?&lt;/p&gt;
 &lt;p&gt;Docker Compose uses a single file &lt;code&gt;docker-compose.yml&lt;/code&gt; to describe how multiple containers should work together. Instead of running lots of complicated Docker commands, you write one file, type docker-compose up, and boom—your app is running! It’s perfect for setting up apps with multiple parts, like a website, a database, and a helper tool, all talking to each other.&lt;/p&gt;
@@ -1744,7 +2014,7 @@ services:
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;volumes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;volumes&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;\
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;\
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;portainer&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;2.27&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Docker"></category><category term="docker"></category><category term="compose"></category><category term="containers"></category><category term="networking"></category><category term="services"></category><category term="ingress"></category><category term="load balancer"></category><category term="docker engine"></category></entry><entry><title>Blockchain Demo: The best explanation of blockchain</title><link href="https://notes.craigderington.dev/this-is-the-best-blockchain-demo-ever-done.html" rel="alternate"></link><published>2025-06-11T15:30:00-04:00</published><updated>2025-06-21T21:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-06-11:/this-is-the-best-blockchain-demo-ever-done.html</id><summary type="html">&lt;p&gt;Easy to understand visualization of how blockchain works.&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Blockchain Demo&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Docker"/><category term="docker"/><category term="compose"/><category term="containers"/><category term="networking"/><category term="services"/><category term="ingress"/><category term="load balancer"/><category term="docker engine"/></entry><entry><title>Blockchain Demo: The best explanation of blockchain</title><link href="https://notes.craigderington.dev/this-is-the-best-blockchain-demo-ever-done.html" rel="alternate"/><published>2025-06-11T15:30:00-04:00</published><updated>2025-06-21T21:30:00-04:00</updated><author><name>Craig Derington</name></author><id>tag:notes.craigderington.dev,2025-06-11:/this-is-the-best-blockchain-demo-ever-done.html</id><summary type="html">&lt;p&gt;Easy to understand visualization of how blockchain works.&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Blockchain Demo&lt;/h4&gt;
 &lt;p&gt;This is by far the easiest visualization I have ever seen to help explain how the cryptography in blockchain works.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=_160oMzblY8" title="Blockchain Demo"&gt;&lt;img alt="Alt Text" src="https://img.youtube.com/vi/_160oMzblY8/0.jpg"&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;small&gt;Video by: &lt;a href="https://www.youtube.com/@anders94"&gt;Anders Brownworth&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;</content><category term="Cryptography"></category><category term="blockchain"></category></entry></feed>
+&lt;p&gt;&lt;small&gt;Video by: &lt;a href="https://www.youtube.com/@anders94"&gt;Anders Brownworth&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;</content><category term="Cryptography"/><category term="blockchain"/></entry></feed>

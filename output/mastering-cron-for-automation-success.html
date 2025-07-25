@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet/less" type="text/css" href="https://notes.craigderington.dev/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://notes.craigderington.dev/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://notes.craigderington.dev/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://notes.craigderington.dev/theme/pygments/monokai.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://notes.craigderington.dev/theme/font-awesome/css/solid.css">
+
+
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Microsoft EDGE -->
+  <meta name="msapplication-TileColor" content="#333333">
+
+  <link href="https://notes.craigderington.dev/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="My Linux Notebook Atom">
+
+
+
+ 
+
+<meta name="author" content="Craig Derington" />
+<meta name="description" content="Do you cron?" />
+<meta name="keywords" content="cron, scheduler, task, automation, linux, python, bash">
+
+
+  <meta property="og:site_name" content="My Linux Notebook"/>
+  <meta property="og:title" content="Cron, automation simplified."/>
+  <meta property="og:description" content="Do you cron?"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://notes.craigderington.dev/mastering-cron-for-automation-success.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2025-07-01 12:30:00-04:00"/>
+  <meta property="article:modified_time" content="2025-07-01 12:30:00-04:00"/>
+  <meta property="article:author" content="https://notes.craigderington.dev/author/craig-derington.html">
+  <meta property="article:section" content="Linux"/>
+  <meta property="article:tag" content="cron"/>
+  <meta property="article:tag" content="scheduler"/>
+  <meta property="article:tag" content="task"/>
+  <meta property="article:tag" content="automation"/>
+  <meta property="article:tag" content="linux"/>
+  <meta property="article:tag" content="python"/>
+  <meta property="article:tag" content="bash"/>
+  <meta property="og:image" content="/images/craig-128x128.png">
+
+  <title>My Linux Notebook &ndash; Cron, automation simplified.</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://notes.craigderington.dev/">
+      <img src="/images/craig-128x128.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://notes.craigderington.dev/"></a>
+    </h1>
+
+    <p>My Linux Notebook</p>
+
+
+
+    <ul class="social">
+      <li>
+        <a class="sc-github"
+           href="https://github.com/craigderington"
+           target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-docker"
+           href="https://hub.docker.com/u/craigderington"
+           target="_blank">
+          <i class="fa-brands fa-docker"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-python"
+           href="https://craigderington.dev"
+           target="_blank">
+          <i class="fa-brands fa-python"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-java"
+           href="https://craigderington.github.io"
+           target="_blank">
+          <i class="fa-brands fa-java"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-btc"
+           href="https://strike.me/cderington17"
+           target="_blank">
+          <i class="fa-brands fa-btc"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="mastering-cron-for-automation-success">Cron, automation simplified.</h1>
+    <p>
+      Posted on July 01, 2025 in <a href="https://notes.craigderington.dev/category/linux.html">Linux</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h4>Cron: My Automation Sidekick</h4>
+<p>Linux’s cron is the trusty sidekick for scheduling tasks, like a robot butler that runs your scripts exactly when you want. It’s perfect for automating backups, monitoring, or running your Python and Docker apps (like those in your craigderington Docker Hub repo). While cron isn’t as obscure as some Linux tools, its flexibility and logging tricks are often underused. This post dives into cron’s scheduling magic, with examples of different schedules and tips for piping output to logs, keeping your Notes site practical and awesome.</p>
+<h4>Why Cron?</h4>
+<p>Cron schedules jobs to run at specific times or intervals, from hourly backups to daily cleanup scripts. It’s built into every Linux system, reliable, and simple, making it ideal for automating tasks like checking your Docker containers or syncing data.
+Setting Up Cron
+Cron jobs are defined in a crontab file. Edit yours with:
+crontab -e</p>
+<p>This opens your user’s crontab in your default editor (e.g., nano or vim). Each line is a job with a schedule and command.
+Cron Schedule Basics
+A cron schedule has five fields: minute, hour, day of month, month, day of week. The format is:
+* * * * * /path/to/script.sh</p>
+<ul>
+<li>means “every” (e.g., every minute if in the minute field).
+Numbers, ranges, or lists specify exact times.
+Special characters like / (step) or , (list) add flexibility.</li>
+</ul>
+<p>Example Schedules
+1. Run Every Minute
+For testing or frequent tasks (e.g., checking a Docker container):
+* * * * * /bin/bash /scripts/check_docker.sh &gt;&gt; /logs/docker.log 2&gt;&amp;1</p>
+<p>Runs every minute.</p>
+<blockquote>
+<blockquote>
+<p>/logs/docker.log 2&gt;&amp;1 appends stdout and stderr to docker.log.</p>
+</blockquote>
+</blockquote>
+<ol>
+<li>Daily at Midnight
+Backup your craigderington/docker-python app data:
+0 0 * * * /bin/bash /scripts/backup.sh &gt;&gt; /logs/backup.log 2&gt;&amp;1</li>
+</ol>
+<p>Runs at 00:00 (midnight) daily.
+Logs output to backup.log.</p>
+<ol>
+<li>Every Weekday at 8 AM
+Run a Python script to process logs:
+0 8 * * 1-5 /usr/bin/python3 /scripts/process_logs.py &gt;&gt; /logs/process.log 2&gt;&amp;1</li>
+</ol>
+<p>Runs at 08:00 Monday–Friday (1-5).
+Redirects output to process.log.</p>
+<ol>
+<li>Every 15 Minutes
+Monitor system resources:
+*/15 * * * * /bin/bash /scripts/monitor.sh &gt;&gt; /logs/monitor.log 2&gt;&amp;1</li>
+</ol>
+<p>Runs every 15 minutes (e.g., 00:15, 00:30).
+*/15 is a step value.</p>
+<ol>
+<li>First Day of Month
+Clear old Docker images:
+0 0 1 * * /usr/bin/docker system prune -f &gt;&gt; /logs/docker_prune.log 2&gt;&amp;1</li>
+</ol>
+<p>Runs at 00:00 on the 1st of each month.</p>
+<ol>
+<li>Specific Times (e.g., 9 AM and 5 PM)
+Run a Java app health check:
+0 9,17 * * * /usr/bin/java -jar /apps/healthcheck.jar &gt;&gt; /logs/healthcheck.log 2&gt;&amp;1</li>
+</ol>
+<p>Runs at 09:00 and 17:00 daily.
+9,17 lists multiple hours.</p>
+<p>Logging Output
+Piping output to logs is crucial for debugging and tracking. The &gt;&gt; appends output, while 2&gt;&amp;1 captures errors too. Example script (check_docker.sh):</p>
+<h1>!/bin/bash</h1>
+<p>echo "Checking containers at $(date)"
+docker ps -q | grep craigderington/docker-nginx || echo "Nginx container down!"</p>
+<p>Add to crontab:
+* * * * * /bin/bash /scripts/check_docker.sh &gt;&gt; /logs/docker.log 2&gt;&amp;1</p>
+<p>Check the log:
+cat /logs/docker.log</p>
+<h1>Output: Checking containers at Thu Jul 17 12:12:01 EDT 2025</h1>
+<p>Advanced Features
+Environment Variables
+Cron has a minimal environment. Set variables in the crontab:
+PATH=/usr/local/bin:/usr/bin:/bin
+DOCKER_HOST=unix:///var/run/docker.sock
+0 * * * * /scripts/run_docker.sh &gt;&gt; /logs/docker.log 2&gt;&amp;1</p>
+<p>This ensures your script can find docker or other tools.
+Special Schedules
+Use shortcuts for common schedules:</p>
+<p>@daily: Same as 0 0 * * <em>.
+@hourly: Same as 0 * * * </em>.
+@reboot: Runs once at system startup.Example: Clean temp files on reboot:</p>
+<p>@reboot /bin/bash /scripts/clean_tmp.sh &gt;&gt; /logs/clean.log 2&gt;&amp;1</p>
+<p>Error Notifications
+Send errors to email or a file. Add MAILTO to your crontab:
+MAILTO=admin@example.com
+0 0 * * * /scripts/backup.sh &gt;&gt; /logs/backup.log 2&gt;&amp;1</p>
+<p>Or log only errors:
+0 0 * * * /scripts/backup.sh &gt;/dev/null 2&gt;&gt;/logs/backup_errors.log</p>
+<blockquote>
+<p>/dev/null: Discards stdout.
+2&gt;&gt;: Appends stderr to backup_errors.log.</p>
+</blockquote>
+<p>Example: Full Backup Workflow
+Here’s a crontab for a backup system using your craigderington/docker-python image:</p>
+<h1>Backup app data daily at 2 AM</h1>
+<p>0 2 * * * /usr/bin/docker run --rm craigderington/docker-python /app/backup.py &gt;&gt; /logs/backup.log 2&gt;&amp;1</p>
+<h1>Clean old backups weekly on Sunday</h1>
+<p>0 0 * * 0 /bin/bash /scripts/clean_old_back elegir ups.sh &gt;&gt; /logs/cleanup.log 2&gt;&amp;1</p>
+<h1>Notify on errors</h1>
+<p>MAILTO=admin@example.com</p>
+<p>backup.py might look like:
+import shutil
+import datetime
+shutil.make_archive(f"backup-{datetime.date.today()}", "zip", "/app/data")
+print(f"Backup created at {datetime.datetime.now()}")</p>
+<p>Why Cron Shines
+Cron is the unsung hero of Linux automation. It’s dead simple, universally available, and perfect for scheduling tasks like monitoring your Docker containers, running Python scripts, or maintaining PostgreSQL databases. Logging ensures you can debug issues, while flexible schedules handle everything from minute-by-minute checks to monthly cleanups.
+Pro Tips</p>
+<p>Test first: Run crontab -l to list and verify your jobs.
+Use absolute paths: Avoid errors with /usr/bin/python3 instead of python3.
+Lock files: Prevent overlapping jobs:# In script.sh
+[ -f /tmp/script.lock ] &amp;&amp; exit 1
+touch /tmp/script.lock</p>
+<h1>Your code</h1>
+<p>rm /tmp/script.lock</p>
+<p>Check logs: Use grep CRON /var/log/syslog (or /var/log/cron) to debug cron issues.</p>
+<p>Cron’s simplicity makes it a must-have for your Notes site, especially for automating tasks with your craigderington Docker images. Schedule, log, and relax—cron’s got your back!</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://notes.craigderington.dev/tag/cron.html">cron</a>
+      <a href="https://notes.craigderington.dev/tag/scheduler.html">scheduler</a>
+      <a href="https://notes.craigderington.dev/tag/task.html">task</a>
+      <a href="https://notes.craigderington.dev/tag/automation.html">automation</a>
+      <a href="https://notes.craigderington.dev/tag/linux.html">linux</a>
+      <a href="https://notes.craigderington.dev/tag/python.html">python</a>
+      <a href="https://notes.craigderington.dev/tag/bash.html">bash</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2025  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://notes.craigderington.dev/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " My Linux Notebook ",
+  "url" : "https://notes.craigderington.dev",
+  "image": "/images/craig-128x128.png",
+  "description": "My Computer Programming Notebook "
+}
+</script><a href="https://github.com/craigderington" target="_blank" class="github-corner" aria-label="View source on Github">
+    <svg width="80"
+         height="80"
+         viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor"
+              style="transform-origin: 130px 106px;"
+              class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor"
+              class="octo-body">
+        </path>
+    </svg>
+</a>
+
+</body>
+</html>
